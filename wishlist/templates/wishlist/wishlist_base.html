@@ -1,0 +1,64 @@
+{% extends 'accounts/account_base/base.html' %}
+{% load static %}
+{% block account_content %}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'accounts/css/auth.css' %}">
+    <link rel="stylesheet" href="{% static 'mainapp/css/pagination.css' %}">
+    <div class="col-lg-9">
+        <div class="cabinet-form__box">
+            <div class="cabinet-form__header">
+                <h5>Список бажань</h5>
+            </div>
+            <div class="cabinet__content">
+                <div class="whish-list">
+                    <div class="whish-list__inner">
+                        <!-- Whishlist Item -->
+                        {% for item in wishlist_items %}
+                            <div class="whish-list__item">
+                                <div class="product-card type-remove ">
+                                    <a href="{% url 'wishlist:remove_wishlist' product_slug=item.wished_item.slug %}"
+                                       class="product-card__remove"></a>
+                                    <a href="{{ item.wished_item.get_absolute_url }}" class="product-card__image">
+                                        <img src="{{ item.wished_item.productimage_set.first.img.url }}"
+                                             alt="{{ item.wished_item.title }}"
+                                             title="{{ item.wished_item.title }}">
+                                    </a>
+                                    <div class="product-card__content">
+                                        <a href="{{ item.wished_item.get_absolute_url }}"
+                                           class="product-card__title">{{ item.wished_item.title }}</a>
+                                        <div class="product-card__status ">В наличии</div>
+                                        <div class="product-card__price">
+                                            <span class="current">{{ item.wished_item.price }} ₴</span>
+                                        </div>
+                                        <div class="product-card__buttons">
+                                            <a href="{% url 'cart:cart_add' product_id=item.wished_item.id %}"
+                                               class="product-card__buy btn-red-out remarketing_cart_button">Купить</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // order dropdown
+        $(document).on('click', '.order-top', function (e) {
+            e.preventDefault();
+            if ($(this).hasClass('active')) {
+                $('.order-top').removeClass('active');
+                $('.order-info').slideUp();
+                $('.order-top').removeClass('vis');
+            } else {
+                $('.order-top').removeClass('active');
+                $('.order-info').slideUp();
+                $('.order-top').removeClass('vis');
+                $(this).addClass('active');
+                $(this).parent().find('.order-info').slideDown();
+            }
+        });
+    </script>
+
+{% endblock account_content %}

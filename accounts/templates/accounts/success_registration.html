@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block contend %}
+    {% include 'include/catalog.html' %}
+    <section class="section text-section">
+        <div class="container">
+            <h2 class="section__title">Облікова запис успішно створена!</h2>
+            <div class="text-section__block">
+                <p> Вітаємо! Ваш Обліковий запис було успішно створено. </p>
+                <p> Тепер Ви можете скористатися додатковими можливостями: перегляд історії замовлень, друк рахунків,
+                    зміну своєї контактної інформації та адрес доставки, стежити за накопиченими балами і багато іншого
+                    ... </p>
+                <p> Якщо у Вас є які-небудь питання, напишіть нам. </p>
+                <p> Лист з даними про реєстрацію було надіслано на вказаний E-mail. Якщо Ви не отримали листа, будь
+                    ласка <a href="{% url 'footer:contact' %}"> зв’яжіться з нами </a>. </p>
+                <div class="buttons text-center">
+                    <a href="{% url 'accounts:account_detail' %}"
+                       class="form__submit btn-red btn-blick">Продовжити</a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

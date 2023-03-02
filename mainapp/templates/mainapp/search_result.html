@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block contend %}
+    <div class="catalog-products">
+                                {% for product in products %}
+                                    <div class="col-lg-3">
+                                        <div class="productsticker">
+                                            {% if product.tag %}
+                                                <span style="color: {{ product.tag.color }}; background: {{ product.tag.background }};"
+                                                      accesskey=""
+                                                      class="product-gallery__detail-label  ">{{ product.tag.title }}</span>
+                                            {% endif %}
+                                        </div>
+                                        <div class="product-card ">
+                                            <a href="{{ product.get_absolute_url }}" class="product-card__image">
+                                                <img src="{{ product.productimage_set.first.img.url }}"
+                                                     alt="{{ product.title }}">
+                                            </a>
+                                            <div class="product-card__content">
+                                                <a href="{{ product.get_absolute_url }}"
+                                                   class="product-card__title">{{ product.title }}</a>
+                                                <div class="product-card__status ">В наявності</div>
+                                                <div class="product-card__price">
+                                                    <span class="current">{{ product.price }} ₴</span>
+                                                </div>
+                                                <div class="product-card__buttons">
+                                                    <a href="{% url 'cart:cart_add' product.id %}"
+                                                       class="product-card__buy btn-red-out">В кошик</a>
+                                                    <a class="product-card__btn product-card__btn--whishlist icon-whishlist"></a>
+                                                    <a class="product-card__btn product-card__btn--compare icon-compare"></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+{% endblock %}

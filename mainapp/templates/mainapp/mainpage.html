@@ -1,0 +1,588 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contend %}
+    <!-- =========== Header > Bottom =========== -->
+    {% if request.user.is_authenticated %}
+        {{ user.username }}
+    {% endif %}
+    <div class="header__bottom">
+        <div class="container">
+            <div class="row">
+                <!-- Header > Catalog button -->
+                <div class="col-lg-3 position-none">
+                    <div class="header1__catalog active">
+                        <div class="header__catalog-shadow"></div>
+                        <a href="" class="header__catalog-btn btn-red">
+                            <picture>
+                                <source srcset="{% static 'icon/menu.svg' %}" type="image/webp">
+                                <img src="{% static 'icon/menu.svg' %}" alt="">
+                            </picture>
+                            <span>Каталог товаров</span>
+                        </a>
+                        <!-- =========== Header Catalog =========== -->
+                        <div class="header__catalog-menu">
+                            <ul>
+                                {% for i in top_category %}
+                                    <li>
+                                        <a href="">
+                                            <img class="menucust_icon" src="{{ i.category_icon.url }}"/>
+                                            <span>{{ i.title }}</span></a>
+                                        <ul>
+                                            {% for cat in i.category_set.all %}
+                                                <li>
+                                                    <a href="{{ cat.get_absolute_url }}"><span>{{ cat.title }}</span></a>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                {% endfor %}
+                            <li><a href=""> <span>Усі категорія</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </header>
+    <!-- ===================== /.Header =====================-->
+    <!-- ===================== Mobile Menu / Mobile Catalog =====================-->
+    <div class="mobile-menu mobile-menu--hide">
+        <div class="mobile-menu__wrapper">
+            <div class="mobile-menu__content">
+                <a href="" class="mobile-menu__logo">
+                    <picture>
+                        <source srcset="image/catalog/demo/banners/logo.svg" type="image/webp">
+                        <img src="image/catalog/demo/banners/logo.svg" alt="">
+                    </picture>
+                </a>
+                <!-- Mobile Menu > Login -->
+                <div class="mobile-menu__login">
+                    <a href="" class="mobile-menu__login--sign-in">Вход</a>
+                    <a href=""
+                       class="mobile-menu__login--register">Регистрация</a>
+                </div>
+                <!-- Mobile Menu > Catalog -->
+                <ul class="mobile-menu__catalog">
+                    <li>
+                        <a id="mobmenu"><span>Каталог товаров</span></a>
+                        <ul>
+                            {% for i in top_category %}
+                                <li>
+                                    <a href="">
+                                        <img class="menucust_icon" src="{{ i.category_icon.url }}"/>
+                                        <span>{{ i.title }}</span></a>
+                                    <ul>
+                                        {% for cat in i.category_set.all %}
+                                            <li><a href="{{ cat.get_absolute_url }}"><span>{{ cat.title }}</span></a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                </ul>
+                <!-- Mobile Menu > Actions -->
+                <div class="mobile-menu__actions">
+                    <a href="wishlist/" class="mobile-menu__actions--whishlist">Избранное</a>
+                    <a href="compare-products/"
+                       class="mobile-menu__actions--compare">Сравнение</a>
+                    <a href="simplecheckout/" class="mobile-menu__actions--cart">Корзина</a>
+                </div>
+                <!-- Mobile Menu > Contacts -->
+                <div class="mobile-menu__contacts">
+                    <a data-target="#orderModal" class="callback js-callback-popup">Обратная связь</a>
+                    <a href="#" class="email">info@978.com.ua</a>
+                    <a href="tel:++38(066)520-80-05" class="phone">+38(066)520-80-05</a>
+                </div>
+                <!-- Mobile Menu > Menu -->
+                <ul class="mobile-menu__menu">
+                    <li><a href="blog"><span>Блог</span></a></li>
+                    <li><a href="dostavka-oplata"><span>Оплата и доставка</span></a></li>
+                    <li><a href="contact-us"><span>Контакты</span></a></li>
+                </ul>
+                <div id="ocd_multilang" class="header__language">
+                    <a style="cursor:pointer" class="header__language-button">
+                        <span>RU</span>
+                    </a>
+                    <ul class="header__language-menu">
+                        <li><a href=""><span>Русский</span></a></li>
+                        <li><a href="ua"><span>Українська</span></a></li>
+                    </ul>
+                </div>
+                <ul id="ocd_multilang2" class="mobile-menu__language">
+                    <li>
+                        <a href="#"><span>Русский</span></a>
+                        <ul>
+                            <li><a href=""><span>Русский</span></a></li>
+                            <li><a href="ua"><span>Українська</span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- Mobile Menu > Close Button -->
+            <a href="#" class="mobile-menu__close js__mobile-menu">Закрыть</a>
+        </div>
+    </div>
+    <!-- ===================== /.Mobile Menu / Mobile Catalog =====================-->
+    <!-- ===================== Promo Section =====================-->
+    <section class="promo">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9 offset-lg-3 promo__inner">
+                    <!-- =========== Promo > Slider =========== -->
+                    <div class="promo__slider">
+                        {% for i in banner %}
+                            <div class="promo__slider-slide">
+                                {#                                <div class="promo__slider-image">#}
+                                <div class="">
+                                    <picture><img src="{{ i.image.url }}" alt="Бесплатная доставка"/></picture>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <!-- Promo Slider > Controls -->
+                    <div class="promo__slider-controls slick-controls">
+                        <div class="slick-controls__dots"></div>
+                        <div class="slick-controls__arrows"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ===================== /.Promo Section =====================-->
+    <section class="section advantages">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="advantages__item">
+                        <div class="advantages__item-content">
+                            <p class="advantages__item-title">Доставка</p>
+                            <p class="advantages__item-description">Доставка за адресою курєром або в вказане відділення
+                                “Нова Пошта”</p>
+                        </div>
+                        <div class="advantages__item-icon">
+                            <picture>
+                                <source srcset="{% static 'icon/delivery.svg' %}" type="image/webp">
+                                <img src="{% static 'icon/delivery.svg' %}" alt="">
+                            </picture>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="advantages__item">
+                        <div class="advantages__item-content">
+                            <p class="advantages__item-title">Гарантія</p>
+                            <p class="advantages__item-description">Сертифицированное оборудование 978 с гарантией
+                                от 24 месяцев</p>
+                        </div>
+                        <div class="advantages__item-icon">
+                            <picture>
+                                <source srcset="{% static 'icon/guarantee.svg' %}" type="image/webp">
+                                <img src="{% static 'icon/guarantee.svg' %}" alt="">
+                            </picture>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="advantages__item">
+                        <div class="advantages__item-content">
+                            <p class="advantages__item-title">Оплата</p>
+                            <p class="advantages__item-description">Оплатити покупку можна готівкою, карткою або
+                                безготівковим...</p>
+                        </div>
+                        <div class="advantages__item-icon">
+                            <picture>
+                                <source srcset="{% static 'icon/payments.svg' %}" type="image/webp">
+                                <img src="{% static 'icon/payments.svg' %}" alt="">
+                            </picture>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="advantages__item">
+                        <div class="advantages__item-content">
+                            <p class="advantages__item-title">Повернення</p>
+                            <p class="advantages__item-description">Повернення впродовж 14 днів після покупки,
+                                відповідно до закону</p>
+                        </div>
+                        <div class="advantages__item-icon">
+                            <picture>
+                                <source srcset="{% static 'icon/exchange.svg' %}" type="image/webp">
+                                <img src="{% static 'icon/exchange.svg' %}" alt="">
+                            </picture>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <main class="main">
+        <div class="container">
+            <div class="main__inner row">
+                <article class="main__article">
+                    <section class="section info">
+                        <div class="container">
+                            <div class="row">
+                                <!-- ========== Consultation ========== -->
+                                <div class="col-md-7 js_consultation--mobile"></div>
+                                <!-- ========== Help ========== -->
+                                <div class="col-md-5 js_help--mobile"></div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="section tabs">
+                        <div class="container">
+                            <div class="tabs__head">
+                                <p class="tabs__title section__title">Топ товаров</p>
+                                <!-- ========== Tabs > Nav ========== -->
+                            </div>
+                            <!-- ========== Tabs > Content ========== -->
+                            <div class="tabs__content">
+                                <!-- ========== Tabs > Tab ========== -->
+                                <div class="tabs__tab">
+                                    <!-- ========== Product Slider ========== -->
+                                    <div class="products-slider">
+                                        {% for i in popular_products %}
+                                            <div class="products-slider__slide">
+                                                <div class="product-card">
+                                                    <a href="{{ i.get_absolute_url }}" class="product-card__image">
+                                                        <img src="{{ i.productimage_set.first.img.url }}" alt="IC Mifare карта IC-S50">
+                                                    </a>
+                                                    <div class="product-card__content">
+                                                        <a href="{{ i.get_absolute_url }}"
+                                                           class="product-card__title">{{ i.title }}</a>
+                                                        <div class="product-card__status ">В наявності</div>
+                                                        <div class="product-card__price">
+                                                            <span class="current">{{ i.price }} ₴</span>
+                                                        </div>
+                                                        <div class="product-card__buttons">
+                                                            <a href="{% url 'cart:cart_add' i.id %}"
+                                                               class="product-card__buy btn-red-out remarketing_cart_button">В
+                                                                кошик</a>
+                                                            <a class="product-card__btn product-card__btn--whishlist icon-whishlist"
+                                                               tabindex="0"></a>
+                                                            <a class="product-card__btn product-card__btn--compare icon-compare"
+                                                               tabindex="0"></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+
+                                        <!-- Product Card -->
+                                        <!-- Products Slider > Controls -->
+                                        <div class="slick-controls">
+                                            <div class="slick-controls__dots"></div>
+                                            <div class="slick-controls__arrows"></div>
+                                        </div>
+                                    </div>
+                                    <!-- ========== /.Product Slider ========== -->
+                                </div>
+                                <!-- ========== /.Tabs > Tab ========== -->
+                            </div>
+                        </div>
+                    </section>
+                    <section class="section tabs">
+                        <div class="container">
+                            <div class="tabs__head">
+                                <p class="tabs__title section__title">Раніше переглянуті</p>
+                                <!-- ========== Tabs > Nav ========== -->
+                            </div>
+                            <!-- ========== Tabs > Content ========== -->
+                            <div class="tabs__content">
+                                <!-- ========== Tabs > Tab ========== -->
+                                <div class="tabs__tab">
+                                    <!-- ========== Product Slider ========== -->
+                                    <div class="products-slider">
+                                       {% for i in recently_viewed %}
+                                            <div class="products-slider__slide">
+                                                <div class="product-card">
+                                                    <a href="{{ i.get_absolute_url }}" class="product-card__image">
+                                                        <img src="{{ i.productimage_set.first.img.url }}" alt="IC Mifare карта IC-S50">
+                                                    </a>
+                                                    <div class="product-card__content">
+                                                        <a href="{{ i.get_absolute_url }}"
+                                                           class="product-card__title">{{ i.title }}</a>
+                                                        <div class="product-card__status ">В наявності</div>
+                                                        <div class="product-card__price">
+                                                            <span class="current">{{ i.price }} ₴</span>
+                                                        </div>
+                                                        <div class="product-card__buttons">
+                                                            <a href="{% url 'cart:cart_add' i.id %}"
+                                                               class="product-card__buy btn-red-out remarketing_cart_button">В
+                                                                кошик</a>
+                                                            <a class="product-card__btn product-card__btn--whishlist icon-whishlist"
+                                                               tabindex="0"></a>
+                                                            <a class="product-card__btn product-card__btn--compare icon-compare"
+                                                               tabindex="0"></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+
+
+                                        <!-- Product Card -->
+                                        <!-- Products Slider > Controls -->
+                                        <div class="slick-controls">
+                                            <div class="slick-controls__dots"></div>
+                                            <div class="slick-controls__arrows"></div>
+                                        </div>
+                                    </div>
+                                    <!-- ========== /.Product Slider ========== -->
+                                </div>
+                                <!-- ========== /.Tabs > Tab ========== -->
+                            </div>
+                        </div>
+                    </section>
+                    {#                    <section class="section">#}
+                    {#                        <div class="container">#}
+                    {#                            <p class="section__title">Новости</p>#}
+                    {#                            <!-- ========== News Slider ========== -->#}
+                    {#                            <div class="news-slider">#}
+                    {#                                <!-- News Slider > Slide -->#}
+                    {#                                <div class="news-slider__slide">#}
+                    {#                                    <div class="news-card">#}
+                    {#                                        <a href="top-byudzhetnyh-kamer-dlya-videonablyudeniya-2022-goda"#}
+                    {#                                           class="news-card__image">#}
+                    {#                                            <img src="image/cache/catalog/blog/q12-315x190.jpg"#}
+                    {#                                                 alt="ТОП бюджетных камер для видеонаблюдения 2022 года"#}
+                    {#                                                 class="img-responsive"/></a>#}
+                    {#                                        </a>#}
+                    {#                                        <div class="news-card__content">#}
+                    {#                                            <a href="top-byudzhetnyh-kamer-dlya-videonablyudeniya-2022-goda"#}
+                    {#                                               class="news-card__title">ТОП бюджетных камер для видеонаблюдения 2022#}
+                    {#                                                года</a>#}
+                    {#                                            <p class="news-card__description">#}
+                    {#                                                Камеры видеонаблюдения – неотъемлемая часть современной системы#}
+                    {#                                                безопасности на объектах различного назначения. Именно с...#}
+                    {#                                            </p>#}
+                    {#                                            <a href="top-byudzhetnyh-kamer-dlya-videonablyudeniya-2022-goda"#}
+                    {#                                               class="news-card__link btn-more">Прочитать</a>#}
+                    {#                                        </div>#}
+                    {#                                    </div>#}
+                    {#                                </div>#}
+                    {#                                <!-- News Slider > Slide -->#}
+                    {#                                <div class="news-slider__slide">#}
+                    {#                                    <div class="news-card">#}
+                    {#                                        <a href="kak-obespechit-bespereboinoe-pitanie-v-zagorodnom-dome"#}
+                    {#                                           class="news-card__image">#}
+                    {#                                            <img src="image/cache/catalog/blog/kak-osvetit-dom-blog-315x190.jpg"#}
+                    {#                                                 alt="Как обеспечить бесперебойное питание в загородном доме?"#}
+                    {#                                                 class="img-responsive"/></a>#}
+                    {#                                        </a>#}
+                    {#                                        <div class="news-card__content">#}
+                    {#                                            <a href="kak-obespechit-bespereboinoe-pitanie-v-zagorodnom-dome"#}
+                    {#                                               class="news-card__title">Как обеспечить бесперебойное питание в#}
+                    {#                                                загородном доме?</a>#}
+                    {#                                            <p class="news-card__description">#}
+                    {#                                                Технологии плотно вошли в нашу жизнь, поэтому любое отключение света#}
+                    {#                                                автоматически снижает качество сфера. Если смартфон...#}
+                    {#                                            </p>#}
+                    {#                                            <a href="kak-obespechit-bespereboinoe-pitanie-v-zagorodnom-dome"#}
+                    {#                                               class="news-card__link btn-more">Прочитать</a>#}
+                    {#                                        </div>#}
+                    {#                                    </div>#}
+                    {#                                </div>#}
+                    {#                                <!-- News Slider > Slide -->#}
+                    {#                                <div class="news-slider__slide">#}
+                    {#                                    <div class="news-card">#}
+                    {#                                        <a href="top-10-kamer-dlya-ofisa-i-magazina"#}
+                    {#                                           class="news-card__image">#}
+                    {#                                            <img src="image/cache/catalog/blog/top-10-kamer-dlya-ofisa-i-magazina-blog-315x190.jpg"#}
+                    {#                                                 alt="ТОП-10 камер для офиса и магазина" class="img-responsive"/></a>#}
+                    {#                                        </a>#}
+                    {#                                        <div class="news-card__content">#}
+                    {#                                            <a href="top-10-kamer-dlya-ofisa-i-magazina"#}
+                    {#                                               class="news-card__title">ТОП-10 камер для офиса и магазина</a>#}
+                    {#                                            <p class="news-card__description">#}
+                    {#                                                О безопасности коммерческой недвижимости нужно заботиться не меньше, чем#}
+                    {#                                                о безопасности в жилых помещениях. Именно это м...#}
+                    {#                                            </p>#}
+                    {#                                            <a href="top-10-kamer-dlya-ofisa-i-magazina"#}
+                    {#                                               class="news-card__link btn-more">Прочитать</a>#}
+                    {#                                        </div>#}
+                    {#                                    </div>#}
+                    {#                                </div>#}
+                    {#                                <!-- News Slider > Slide -->#}
+                    {#                                <div class="news-slider__slide">#}
+                    {#                                    <div class="news-card">#}
+                    {#                                        <a href="v-chem-osobennosti-intellektualnyh-funkcii-v-kamerah-978"#}
+                    {#                                           class="news-card__image">#}
+                    {#                                            <img src="image/cache/catalog/blog/acusense_camera-new-smart-blog-1-315x190.jpg"#}
+                    {#                                                 alt="В чем особенности интеллектуальных функций в камерах 978?"#}
+                    {#                                                 class="img-responsive"/></a>#}
+                    {#                                        </a>#}
+                    {#                                        <div class="news-card__content">#}
+                    {#                                            <a href="v-chem-osobennosti-intellektualnyh-funkcii-v-kamerah-978"#}
+                    {#                                               class="news-card__title">В чем особенности интеллектуальных функций в#}
+                    {#                                                камерах 978?</a>#}
+                    {#                                            <p class="news-card__description">#}
+                    {#                                                Камеры видеонаблюдения 978 – это не классическое оборудование для#}
+                    {#                                                наблюдения за объектами различного назначения. Э...#}
+                    {#                                            </p>#}
+                    {#                                            <a href="v-chem-osobennosti-intellektualnyh-funkcii-v-kamerah-978"#}
+                    {#                                               class="news-card__link btn-more">Прочитать</a>#}
+                    {#                                        </div>#}
+                    {#                                    </div>#}
+                    {#                                </div>#}
+                    {#                                <!-- News Slider > Slide -->#}
+                    {#                                <div class="news-slider__slide">#}
+                    {#                                    <div class="news-card">#}
+                    {#                                        <a href="kamery-videonablyudeniya-978-s-tehnologiei-acusense-idealnyi-vybor-dlya-malogo-i-srednego-biznesa"#}
+                    {#                                           class="news-card__image">#}
+                    {#                                            <img src="image/cache/catalog/blog/acusense-blog-978-315x190.jpg"#}
+                    {#                                                 alt="Камеры видеонаблюдения 978 с технологией AcuSense – идеальный выбор для малого и среднего бизнеса"#}
+                    {#                                                 class="img-responsive"/></a>#}
+                    {#                                        </a>#}
+                    {#                                        <div class="news-card__content">#}
+                    {#                                            <a href="kamery-videonablyudeniya-978-s-tehnologiei-acusense-idealnyi-vybor-dlya-malogo-i-srednego-biznesa"#}
+                    {#                                               class="news-card__title">Камеры видеонаблюдения 978 с технологией#}
+                    {#                                                AcuSense – идеальный выбор для малого и среднего бизнеса</a>#}
+                    {#                                            <p class="news-card__description">#}
+                    {#                                                Системы безопасности – это обязательный элемент для коммерческих#}
+                    {#                                                объектов. Учитывая уровень преступности и различные неш...#}
+                    {#                                            </p>#}
+                    {#                                            <a href="kamery-videonablyudeniya-978-s-tehnologiei-acusense-idealnyi-vybor-dlya-malogo-i-srednego-biznesa"#}
+                    {#                                               class="news-card__link btn-more">Прочитать</a>#}
+                    {#                                        </div>#}
+                    {#                                    </div>#}
+                    {#                                </div>#}
+                    {#                                <!-- News Slider > Slide -->#}
+                    {#                                <div class="news-slider__slide">#}
+                    {#                                    <div class="news-card">#}
+                    {#                                        <a href="videonablyudenie-za-avtomobilem-na-parkovke"#}
+                    {#                                           class="news-card__image">#}
+                    {#                                            <img src="image/cache/catalog/blog/978-drive-hibrido-acusense-315x190.jpg"#}
+                    {#                                                 alt="Видеонаблюдение за автомобилем на парковке"#}
+                    {#                                                 class="img-responsive"/></a>#}
+                    {#                                        </a>#}
+                    {#                                        <div class="news-card__content">#}
+                    {#                                            <a href="videonablyudenie-za-avtomobilem-na-parkovke"#}
+                    {#                                               class="news-card__title">Видеонаблюдение за автомобилем на парковке</a>#}
+                    {#                                            <p class="news-card__description">#}
+                    {#                                                Автомобиль – не роскошь, а средство передвижение, которое требует#}
+                    {#                                                тщательного контроля от злоумышленников. Увеличение ко...#}
+                    {#                                            </p>#}
+                    {#                                            <a href="videonablyudenie-za-avtomobilem-na-parkovke"#}
+                    {#                                               class="news-card__link btn-more">Прочитать</a>#}
+                    {#                                        </div>#}
+                    {#                                    </div>#}
+                    {#                                </div>#}
+                    {#                                <!-- News Slider > Controls -->#}
+                    {#                                <div class="slick-controls">#}
+                    {#                                    <div class="slick-controls__dots"></div>#}
+                    {#                                    <div class="slick-controls__arrows"></div>#}
+                    {#                                </div>#}
+                    {#                            </div>#}
+                    {#                            <!-- ========== /.News Slider ========== -->#}
+                    {#                        </div>#}
+                    {#                    </section>#}
+                    <!-- ===================== Reviews Section =====================-->
+                    <section class="section review-section">
+                        <div class="container">
+                            <p class="section__title">Отзывы</p>
+                            <div class="review-group js_reviews--mobile"></div>
+                        </div>
+                    </section>
+                    <!-- ===================== /.Reviews Section =====================-->
+                    <section class="section text-section">
+                        <div class="container">
+                            <div class="text-section__block descr">
+                                <h2>978 Украина</h2>
+                                <p>
+                                <p class="MsoNormal">Компания 978 – это лидер в области систем безопасности,
+                                    который начал свою деятельность в 2001 году. Несмотря на свое относительно недавнее
+                                    появление, компания смогла вырасти из маленькой компании штатом в 28 человек в
+                                    крупную корпорацию, которая сегодня насчитывает свыше 10 000 инженеров-разработчиков
+                                    высшего ранга и 25 000 квалифицированных сотрудников. Мощная команда из специалистов
+                                    высокой квалификации и постоянное внедрение инновационных решений позволяет ежегодно
+                                    представлять исключительно современную и надежную продукцию. Это способствует тому,
+                                    что продукция уже несколько лет находится на лидирующих позициях.</p>
+                                <p class="MsoNormal">Видеонаблюдение – это ключевой момент при обеспечении безопасности
+                                    объектов различного назначения. Но учитывая огромное количество брендов на
+                                    отечественном рынке, выбрать систему видеонаблюдения достойного качества довольно
+                                    сложно. Ни одной компании не удается на долгое время заручиться доверием со стороны
+                                    специалистов, обосновавшись в смете. Только компания 978 (Хиквижн) сумела это
+                                    сделать, предоставив широкий ассортимент оборудования для видеонаблюдения различного
+                                    типа.<br></p>
+                                <h2 style="text-align: center; ">Особенности систем безопасности от 978
+                                    (Хиквижн)</h2>
+                                <p class="MsoNormal">Каталог товаров 978&nbsp; включает в себя комплексные
+                                    решения, которые предназначены для обеспечения эффективной безопасности объектов
+                                    различного направления <a href="videoregistratory/"
+                                                              target="_blank">видеорегистраторы</a>, камеры
+                                    видеонаблюдения, контроль доступа, <a href="domofony/"
+                                                                          target="_blank">домофоны</a> и различное
+                                    дополнительное оборудование. Видеонаблюдение обеспечивает максимальную безопасность
+                                    благодаря инновационным технологиям кодирования полученной информации, хранению
+                                    данных и обработки видеоизображений. Производитель предлагает не только видеокамеры,
+                                    но также решения для автоматизации охраны на промышленных объектах и для умного
+                                    дома.</p>
+                                <p class="MsoNormal">Применяются видеокамеры данного бренда на объектах совершенно любой
+                                    сложности частные дома и квартиры, объекты промышленного типа, стратегического
+                                    назначения и т.д. Оборудование от китайского производителя положительно себя
+                                    зарекомендовало даже в непростых условиях эксплуатации с резкими перепадами
+                                    температур и высокой влажностью. Обширные опции способствует тому, что камеры
+                                    видеонаблюдения могут использоваться при установке системы видеонаблюдения на
+                                    крупном масштабируемом объекте. Показателем качества является то, что официальный
+                                    сайт 978 (Хиквижн) предоставляет гарантию на 5 лет.</p>
+                                <h3 style="text-align: center; ">Ключевые преимущества систем видеонаблюдения
+                                    978</h3>
+                                <ul>
+                                    <li>Производитель не копирует технологии, а разрабатывает свои уникальные решения,
+                                        которые получают только положительные отзывы от специалистов в этой области.
+                                    </li>
+                                    <li>Все <a href="kamery-videonablyudeniya/ip-kamery/"
+                                               target="_blank">IP камеры</a> и другое оборудование бренда производится
+                                        исключительно с использованием инновационных технологий, постоянно
+                                        совершенствуясь.
+                                    </li>
+                                    <li>В каталоге компании представлен широкий ассортимент техники, среди которой
+                                        каждый сможет подобрать оптимальное решение.
+                                    </li>
+                                    <li>На всю продукцию 978 цена находится в доступном диапазоне, поэтому каждый
+                                        может установить инновационную систему видеонаблюдения.
+                                    </li>
+                                    <li>Производитель предоставляет на видеорегистратор, камеры и любое другое
+                                        оборудование гарантию 5 лет.
+                                    </li>
+                                </ul>
+                                <h3 style="text-align: center; ">Продажа оборудования 978 от официального
+                                    партнера</h3>
+                                <p class="MsoNormal">Наш фирменный магазин предлагает купить 978 в Украине на
+                                    максимально выгодных условиях. Доступные цены обусловлены тем, что мы являемся
+                                    официальным представителем китайской компании. Непосредственное сотрудничество с
+                                    производителем способствует не только выгодным ценам, но также предоставляем
+                                    исключительно качественное оборудование, которое имеет все необходимые сертификаты.
+                                    Своевременные поставки способствуют тому, что в наших силах реализовать даже крупные
+                                    проекты без задержек.</p>
+                                <p class="MsoNormal">Если вы хотите купить 978 в Украине или остались
+                                    дополнительные вопросы, просто свяжитесь со специалистами нашей компании любым
+                                    удобным способом, либо оформите покупку на сайте. Все поможем подобрать оптимальное
+                                    оборудование, учитывая пожелания, особенности местности и финансовые возможности
+                                    клиента.</p>
+                                <p class="MsoNormal">Вместе с системами видеонаблюдения 978 любой объект в полной
+                                    безопасности!</p>
+                                </p>
+                            </div>
+                            <a class="btn-more more-descr"><span>Читати детальніше</span></a>
+                        </div>
+                        <script>
+                            $(".more-descr").click(function () {
+                                var text = $(".more-descr span").text();
+
+                                $(".more-descr span").text(
+                                    text == "Читати детальніше" ? "Приховати" : "Читати далі");
+                                $(".descr").toggleClass("more");
+                            });
+                        </script>
+                    </section>
+                </article>
+            </div>
+        </div>
+    </main>
+{% endblock %}

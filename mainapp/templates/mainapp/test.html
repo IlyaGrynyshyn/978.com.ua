@@ -1,0 +1,84 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/nouislider.css' %}">
+</head>
+<body>
+<div id=container>
+  <div id=slider></div>
+</div>
+<div id="leftvalue">
+
+</div>
+<div id="rightvalue">
+
+</div>
+
+</body>
+<script src="{% static 'js/nouislider.min.js' %}"></script>
+<script src="{% static 'mainapp/js/main.js' %}"></script>
+<script>
+    var slider = document.getElementById("slider"),
+		leftValue = document.getElementById('leftvalue'),
+    rightValue = document.getElementById('rightvalue');
+
+// 0 = initial minutes from start of day
+// 1440 = maximum minutes in a day
+// step: 30 = amount of minutes to step by.
+var initialStartMinute = 431,
+ 		initialEndMinute = 1425,
+ 		step = 15;
+
+slider = noUiSlider.create(slider,{
+  start:[initialStartMinute,initialEndMinute],
+  connect:true,
+  step:step,
+  range:{
+    'min':initialStartMinute,
+    'max':initialEndMinute
+  },
+  keyboard:true
+});
+
+var convertValuesToTime = function(values,handle){
+  var hours = 0,
+  		minutes = 0;
+
+  if(handle === 0){
+  	hours = convertToHour(values[0]);
+    minutes = convertToMinute(values[0],hours);
+  	leftValue.innerHTML = formatHoursAndMinutes(hours,minutes);
+    return;
+  };
+
+  hours = convertToHour(values[1]);
+  minutes = convertToMinute(values[1],hours);
+ 	rightValue.innerHTML = formatHoursAndMinutes(hours,minutes);
+
+};
+
+var convertToHour = function(value){
+	return Math.floor(value / 60);
+};
+var convertToMinute = function(value,hour){
+	return value - hour * 60;
+};
+var formatHoursAndMinutes = function(hours,minutes){
+		if(hours.toString().length == 1) hours = '0' + hours;
+  	if(minutes.toString().length == 1) minutes = '0' + minutes;
+    return hours+':'+minutes;
+};
+
+slider.on('update',function(values,handle){
+  convertValuesToTime(values,handle);
+});
+
+
+</script>
+</html>

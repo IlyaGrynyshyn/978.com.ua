@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+    <link href="https://telemart.ua/themes/hardevel/styles/bootstrap.min.css" rel="stylesheet" type="text/css"
+          media="screen">
+    <link href="https://telemart.ua/themes/hardevel/styles/style.css?v=2.519" rel="stylesheet" type="text/css"
+          media="screen">
+    <link href="https://telemart.ua/themes/hardevel/styles/responsive.css?v=2.519" rel="stylesheet" type="text/css"
+          media="all">
+    <link rel="stylesheet" href="{% static 'cart/css/main.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="b-content clearfix" style="max-width: 1200px;margin: 0 auto">
+        <div class="b-order-box">
+            <h1 class="b-order-box-title">Оформлення замовлення</h1>
+            <form method="post" action="" id="order_form"
+                  novalidate="novalidate">
+                <div class="b-order-box-slider-wrapper">
+                    <div class="b-order-box-slider carousel slide" data-ride="carousel" id="simplecar"
+                         data-interval="false">
+
+
+                        <div class="carousel-inner" role="listbox">
+
+                            <div class="b-order-box-slider-item item active col-sm-6">
+                                <div class="b-order-box-slider-item-inner">
+
+                                    <div class="b-obox-subhead b-obox-subhead-basket">
+                                        Кошик <i class="b-num total_quantity">1</i>
+                                    </div>
+
+                                </div>
+
+                                <ul class="b-obox-basket-list">
+                                    {% for item in cart %}
+                                        {% with product=item.product %}
+                                            <li class="b-item product_wrapper">
+                                                <div class="b-obs-product">
+                                                    <div class="b-obsp-pic"><img
+                                                            src={{ item.product.img.url }}
+                                                                    alt=""></div>
+                                                    <div class="b-obsp-desc">
+                                                        <div class="b-obsp-name-container">
+                                                            <div class="b-obsp-name"><a
+                                                                    href="{{ item.product.get_absolute_url }}">{{ item.product.title }}</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="b-obsp-mtb">
+                                                            <div class="b-obsp-prices">
+                                                                <div class="b-old-price">53 699 <i>грн</i></div>
+
+                                                                <div class="b-price">{{ item.product.price }} <i>грн</i>
+                                                                </div>
+                                                            </div>
+                                                            <div class="b-obsp-quant">
+                                                                <ul class="b-obspq-list">
+                                                                    <li class="b-item">
+                                                                        <input class="b-quant-inp" name="quantity"
+                                                                               value="1" type="text"
+                                                                               data-max_quantity="9999"
+                                                                               aria-invalid="false">
+                                                                    </li>
+                                                                    <li class="b-item">
+                                                                        <div class="quantity">
+                                                                            <img data-product="{{ item.product.id }}"
+                                                                                 data-action="add"
+                                                                                 class="chg-quantity update-cart"
+                                                                                 src="{% static  'mainapp/img/arrow-up.png' %}">
+
+                                                                            <img data-product="{{ item.product.id }}"
+                                                                                 data-action="remove"
+                                                                                 class="chg-quantity update-cart"
+                                                                                 src="{% static  'mainapp/img/arrow-down.png' %}">
+                                                                        </div>
+                                                                    </li>
+                                                                    <li class="b-item">
+                                                                        <a href="{% url "cart:cart_remove" product.id %}"
+                                                                           class="b-quant-del">
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        {% endwith %}
+                                    {% endfor %}
+                                </ul>
+
+                            </div>
+                        </div><!-- /.b-order-box-slider-item -->
+                        <div class="b-order-box-slider-item hard_deliv item b-order-box-slider-item-z-10 col-sm-6">
+                            <div class="b-order-box-slider-item-inner">
+                                <div class="b-obox-mobile-step">
+                                    <div class="b-obox-subitem b-obox-subitem-delivery">
+                                        <div class="b-obox-subhead">
+                                            <div class="b-obox-subhead">Особисті дані</div>
+                                        </div>
+
+                                        <!-- first steps delivery -->
+                                        <div class="form-group">
+                                            <form action=".." method="post" class="order-form">
+                                                {{ form }}
+                                                <p><input class="btn btn-primary btn-sm btn-block" type="submit"
+                                                          value="Place order"></p>
+                                                {% csrf_token %}
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    </form>
+    <script src="{% static 'cart/js/cart.js' %}"></script>
+
+{% endblock %}

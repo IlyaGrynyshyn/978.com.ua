@@ -1,0 +1,53 @@
+{% extends 'accounts/account_base/base.html' %}
+{% block account_content %}
+    <!-- =========== Cabinet > Content =========== -->
+    <div class="cabinet__content">
+        <div class="personal-data">
+            <div class="row">
+                <div class="col-lg-9">
+                    <form method="post"
+                          enctype="multipart/form-data" class="form cabinet-form personal-data__form">
+                        <div class="cabinet-form__box">
+                            <div class="cabinet-form__header">
+                                <h5>Особисті дані</h5>
+                            </div>
+                            <div class="cabinet-form__content">
+                                <div class="form__group">
+                                    <label for="text">ПІБ</label>
+                                    <input type="text" id="text" name="firstname" value="{{ request.user.first_name }}"
+                                           placeholder="Введите ваши инициалы" required="">
+                                </div>
+                                {% if request.user.email %}
+                                    <div class="form__group">
+                                        <label for="email">Ваша почта</label>
+                                        <input type="email" id="email" name="email"
+                                               value="{{ request.user.email }}" placeholder="mymail@mail.com"
+                                               required="">
+                                    </div>
+                                {% else %}
+                                    <div class="form__group">
+                                        <label for="email">Ваша почта</label>
+                                        <input type="email" id="email" name="email"
+                                               value="{{ request.user.email }}" placeholder="mymail@mail.com"
+                                               required="">
+                                    </div>
+                                {% endif %}
+                                <div class="form__group">
+                                    <label for="phone">Номер телефону</label>
+                                    <input id="phone" type="tel" name="telephone"
+                                           value="{{ request.user.phone }}" placeholder="Телефон" required=""
+                                           maxlength="19">
+                                </div>
+                                <div class="form__group">
+                                    <button type="submit" class="form__submit btn-red btn-blick">
+                                        Продовжити
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock  %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% include 'include/catalog.html' %}
+{% block contend %}
+    {% block custom_css %}
+        <link rel="stylesheet" href="{% static 'information_footer/css/information_footer.css' %}">
+    {% endblock %}
+    {% include 'include/catalog.html' %}
+    <main class="main">
+        <div class="breadcrumbs">
+            <div class="container">
+                <ol>
+                    <li style="list-style: none"><a href={% url 'home' %}><i class="fa fa-home"></i></a></li>
+                    <li style="list-style: none">Доставка і Оплата</li>
+                </ol>
+            </div>
+        </div>
+        <section class="section text-section">
+            <div class="container">
+                <h1>Співпраця</h1>
+            </div>
+        </section>
+    </main>
+{% endblock %}

@@ -1,0 +1,48 @@
+h1 {
+    font-size: 36px;
+    font-weight: 400;
+    color: #4f5250;
+    line-height: 45px;
+    padding: 15px 0 20px 0;
+    margin: 0;
+}
+
+li {
+    padding: 0 0 15px 20px;
+    position: relative;
+}
+ul li:after {
+  content: '';
+  border-radius: 2px;
+  width: 5px;
+  height: 5px;
+  background: #e91629;
+  left: 4px;
+  top: 10px;
+  position: absolute;
+}
+
+p {
+    margin: 0 0 20px 0;
+    padding: 0;
+}
+
+h4 {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 30px;
+    padding: 0 0 20px 0;
+    margin: 0;
+}
+h2{
+    font-size: 24px;
+font-weight: 700;
+line-height: 30px;
+padding: 0 0 20px 0;
+margin: 0;
+}
+strong{
+font-weight: bold;
+}
+a {
+}

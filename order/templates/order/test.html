@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load widget_tweaks %}
+{% load static %}
+{% block contend %}
+    <link rel="stylesheet" href="{% static 'delivery.css' %}">
+
+    <script src="{% static 'jquery.autocomplete.min.js' %}"></script>
+    <script src="{% static 'delivery.js' %}"></script>
+     <form method="post" class="order-form">
+     {% csrf_token %}
+    {{ form }}
+       <p><input class="btn btn-primary btn-sm btn-block" type="submit"
+                  value="Place order"></p>
+     </form>
+    <script>
+        (function ($) {
+            new DeliveryForm({
+                $deliveryMethod: $('#{{ form.delivery_method.auto_id }}'),
+                $city: $('#{{ form.city.auto_id }}'),
+                $warehouse: $('#{{ form.warehouse.auto_id }}'),
+                citiesUrl: '{% url 'delivery:cities' %}',
+                warehousesUrl: '{% url 'delivery:warehouses' %}',
+                deliveryMethods: {{ form.delivery_methods|safe }}
+            });
+        })(jQuery);
+    </script>
+{% endblock %}

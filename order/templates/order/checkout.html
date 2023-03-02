@@ -1,0 +1,201 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contend %}
+    {% block custom_css %}
+        <link rel="stylesheet" href="{% static 'order/css/select2.min.css' %}">
+    {% endblock %}
+    <link rel="stylesheet" href="{% static 'order/css/style.css' %}">
+    {% include 'include/catalog.html' %}
+    <style>
+        .c-error .c-validation {
+            background: #ffddde !important;
+            padding: 10px !important;
+            border-radius: 0 !important;
+            position: relative;
+            display: inline-block !important;
+            box-shadow: 1px 1px 1px #aaaaaa;
+            margin-top: 10px;
+            color: #666;
+        }
+
+        .c-validation:before {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid #ffddde;
+            position: absolute;
+            top: -10px;
+        }
+
+        .errors {
+            font-size: 16px;
+            color: #909090;
+            padding: 0 11px;
+            line-height: 26px;
+            background: #ffddde;
+            position: relative;
+            font-weight: 400;
+            border-radius: 0 0 3px 3px;
+        }
+    </style>
+
+    <div class="checkout-main-area pt-100 pb-100">
+        <div class="container">
+            <form method="post">
+                {% csrf_token %}
+                <div class="checkout-wrap">
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <div class="billing-info-wrap mr-100">
+                                <h3>Оформлення замовлення</h3>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="billing-info mb-25">
+                                            <label>{{ form.first_name.label }} <abbr class="required"
+                                                                                     title="required">*</abbr></label>
+                                            {{ form.first_name }}
+                                            {% if form.first_name.errors %}
+                                                <div class="c-error">
+                                                    <div class="c-validation">
+                                                        {{ form.first_name.errors }}
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="billing-info mb-25">
+                                            <label>{{ form.last_name.label }} <abbr class="required"
+                                                                                    title="required">*</abbr></label>
+                                            {{ form.last_name }}
+                                            {% if form.last_name.errors %}
+                                                <div class="c-error">
+                                                    <div class="c-validation">
+                                                        {{ form.last_name.errors }}
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="billing-info mb-25">
+                                            <label>{{ form.midl_name.label }} <abbr class="required"
+                                                                                    title="required">*</abbr></label>
+                                            {{ form.midl_name }}
+                                            {% if form.midl_name.errors %}
+                                                <div class="c-error">
+                                                    <div class="c-validation">
+                                                        {{ form.midl_name.errors }}
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="billing-info mb-25">
+                                            <label>{{ form.phone.label }} <abbr class="required"
+                                                                                title="required">*</abbr></label>
+                                            {{ form.phone }}
+                                            {% if form.phone.errors %}
+                                                <div class="c-error">
+                                                    <div class="c-validation">
+                                                        {{ form.phone.errors }}
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="billing-info mb-25">
+                                            <label>{{ form.email.label }} <abbr class="required"
+                                                                                title="required">*</abbr></label>
+                                            {{ form.email }}
+                                            {% if form.email.errors %}
+                                                <div class="c-error">
+                                                    <div class="c-validation">
+                                                        {{ form.email.errors }}
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="billing-info mb-25">
+                                            {{ form.delivery }}
+                                            {% if form.delivery.errors %}
+                                                <div class="c-error">
+                                                    <div class="c-validation">
+                                                        {{ form.delivery.errors }}
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="additional-info-wrap">
+                                    <h3>Коментарій</h3>
+                                    <label>{{ form.comment.label }}</label>
+                                    {{ form.comment }}
+                                    {% if form.comment.errors %}
+                                        <div class="c-error">
+                                            <div class="c-validation">
+                                                {{ form.comment.errors }}
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="your-order-area">
+                                <h3>Ваше замовлення</h3>
+                                <div class="your-order-wrap gray-bg-4">
+                                    <div class="your-order-info-wrap">
+                                        {#                                    <div class="your-order-info">#}
+                                        {#                                        <ul>#}
+                                        {#                                            <li>Product <span>Total</span></li>#}
+                                        {#                                        </ul>#}
+                                        {#                                    </div>#}
+                                        <div class="your-order-middle">
+                                            <ul>
+                                                {% for item in cart %}
+                                                    {% with product=item.product %}
+                                                        <li>{{ item.product.title }} X {{ item.quantity }}
+                                                            <span>{{ item.total_price }} грн </span></li>
+                                                    {% endwith %}
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                        <div class="your-order-info order-subtotal">
+                                            <ul>
+                                                <li>Доставка <span>Уточнюйте </span></li>
+                                            </ul>
+                                        </div>
+                                        <div class="your-order-info order-total">
+                                            <ul>
+                                                <li> Всього <span>{{ cart.get_total_price }} грн</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="payment-method">
+
+                                    </div>
+                                </div>
+                                <div class="Place-order mt-30">
+                                    {#                                    <p><input class="btn btn-primary btn-sm btn-block" type="submit"#}
+                                    {#                  value="Place order"></p>#}
+                                    <p><input style="background-color: #e91629; color: white"
+                                              class="btn btn-primary btn-sm btn-block" type="submit"
+                                              value="Замовити"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="{% static 'order/js/select2.min.js' %}"></script>
+{% endblock %}

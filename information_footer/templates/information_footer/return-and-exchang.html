@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% include 'include/catalog.html' %}
+{% block contend %}
+    {% block custom_css %}
+        <link rel="stylesheet" href="{% static 'information_footer/css/information_footer.css' %}">
+    {% endblock %}
+    {% include 'include/catalog.html' %}
+    <main class="main">
+        <div class="breadcrumbs">
+            <div class="container">
+                <ol>
+                    <li style="list-style: none"><a href={% url 'home' %}><i class="fa fa-home"></i></a></li>
+                    <li style="list-style: none">Доставка і Оплата</li>
+                </ol>
+            </div>
+        </div>
+        <section class="section text-section">
+            <div class="container">
+          <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+    <div class="b-info-bpage">
+        <article class="b-article">
+            <h1>Повернення і обмін товару</h1>
+            <p>Обмін і повернення товару здійснюється протягом 14 днів після покупки. Повернення товару регламентовано Законом України &quot;Про захист прав споживача&quot;.</p>
+            <p>Умови обміну товару, або повернення грошових коштів:</p>
+            <ul>
+                <li>Минуло не більше 14 днів від дня покупки.</li>
+                <li>Товар повинен бути в повній комплектації і не мати слідів використання. Всі пакувальні матеріали, в тому числі пломби і ярлики, збережені цілими.</li>
+            </ul>
+            <p>Для оформлення обміну товару на іншу модель нам знадобляться оригінали гарантійного талону і товарного чеку. При поверненні коштів - ще й ваші паспортні дані, ІПН, номер банківської карти, на яку необхідно здійснити повернення.</p>
+            <p>Ми продаємо технічно складні вироби, а отже для підтвердження цілісності товару може знадобитися до 7 робочих днів. Однак в більшості випадків ми приймаємо рішення скоріше. Для оформлення заявки вам необхідно заповнений бланк-заява(<a href="https://www.aks.ua/userfiles/files/Zayavlenie-na-vozvrat-tovara-aks_ua.docx"><em>Скачати бланк заяви</em></a><em>)</em></p>
+            <p>Зверніть увагу, що послуги служби доставки з пересилання товарів сплачуються покупцем.</p>
+        </article>
+    </div>
+</div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

@@ -1,0 +1,117 @@
+@charset "UTF-8";
+/* ============== Fontawesome Pro v5.10.0 ============== */
+@import url("https://pro.fontawesome.com/releases/v5.10.0/css/all.css");
+/* ============== SF Pro Display ============== */
+@font-face {
+   font-family: "SF Pro Display";
+   src: url("../fonts/SFPro/SFProDisplay-Regular.woff2") format("woff2"), url("../fonts/SFPro/SFProDisplay-Regular.woff") format("woff");
+   font-weight: normal;
+   font-style: normal;
+}
+@font-face {
+   font-family: "SF Pro Display";
+   src: url("../fonts/SFPro/SFProDisplay-Medium.woff2") format("woff2"), url("../fonts/SFPro/SFProDisplay-Medium.woff") format("woff");
+   font-weight: 500;
+   font-style: normal;
+}
+@font-face {
+   font-family: "SF Pro Display";
+   src: url("../fonts/SFPro/SFProDisplay-Semibold.woff2") format("woff2"), url("../fonts/SFPro/SFProDisplay-Semibold.woff") format("woff");
+   font-weight: 600;
+   font-style: normal;
+}
+@font-face {
+   font-family: "SF Pro Display";
+   src: url("../fonts/SFPro/SFProDisplay-Bold.woff2") format("woff2"), url("../fonts/SFPro/SFProDisplay-Bold.woff") format("woff");
+   font-weight: 700;
+   font-style: normal;
+}
+@font-face {
+   font-family: "SF Pro Display";
+   src: url("../fonts/SFPro/SFProDisplay-Heavy.woff2") format("woff2"), url("../fonts/SFPro/SFProDisplay-Heavy.woff") format("woff");
+   font-weight: 800;
+   font-style: normal;
+}
+@font-face {
+   font-family: "SF Pro Display";
+   src: url("../fonts/SFPro/SFProDisplay-Black.woff2") format("woff2"), url("../fonts/SFPro/SFProDisplay-Black.woff") format("woff");
+   font-weight: 900;
+   font-style: normal;
+}
+/* ============== Custom Icons ============== */
+@font-face {
+   font-family: "icons";
+   src: url("../fonts/custom-icons/icons.woff") format("woff"), url("../fonts/custom-icons/icons.woff2") format("woff2");
+   font-weight: normal;
+   font-style: normal;
+   font-display: block;
+}
+[class^=icon-], [class*=" icon-"] {
+   /* use !important to prevent issues with browser extensions that change fonts */
+   font-family: "icons" !important;
+   speak: never;
+   font-style: normal;
+   font-weight: normal;
+   font-variant: normal;
+   text-transform: none;
+   line-height: 1;
+   /* Better Font Rendering =========== */
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-cart:before {
+   content: "";
+}
+
+.icon-clock:before {
+   content: "";
+}
+
+.icon-exchange:before {
+   content: "";
+}
+
+.icon-exit:before {
+   content: "";
+}
+
+.icon-file:before {
+   content: "";
+}
+
+.icon-password:before {
+   content: "";
+}
+
+.icon-user:before {
+   content: "";
+}
+
+.icon-compare:before {
+   content: "";
+}
+
+.icon-share:before {
+   content: "";
+}
+
+.icon-whishlist:before {
+   content: "";
+}
+
+.icon-coins:before {
+   content: "";
+}
+
+.icon-credit-card:before {
+   content: "";
+}
+
+.icon-money:before {
+   content: "";
+}
+
+.icon-privat:before {
+   content: "";
+}

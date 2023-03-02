@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+{% block contend %}
+    {% include 'include/catalog.html' %}
+    <style>
+        .errors {
+            font-size: 16px;
+            color: #909090;
+            padding: 0 11px;
+            line-height: 26px;
+            background: #ffddde;
+            position: relative;
+            font-weight: 400;
+            border-radius: 0 0 3px 3px;
+        }
+    </style>
+    <section class="section login-section">
+        <div class="container">
+            <div class="row">
+                <div class="login">
+                    <div class="login__body">
+                        <h3 class="login__title">Вход</h3>
+                        <h5 class="login__sign-in">Еще нет аккаунта? <a href="{% url 'accounts:registration' %}">Зарегистрируйтесь</a>
+                        </h5>
+                        <form method="post" class="form">
+                            {% csrf_token %}
+                            <div class="form__group" style="margin-top: 15px;">
+                                <label for="email">Ваша пошта або телефон</label>
+                                {{ form.username }}
+                                 {% if form.non_field_errors %}
+                                <div class="errors">{{ form.non_field_errors }}</div>
+                            {% endif %}
+                            </div>
+                            <div class="form__group">
+                                <label for="password">Пароль</label>
+                                {{ form.password }}
+                            </div>
+                            <div class="form__group login__footer">
+                                <label class="custom-checkbox">
+                                    <input type="checkbox">
+                                    <span class="custom-checkbox__checkmark"></span>
+                                    <span class="custom-checkbox__label">Запам'ятати мене</span>
+                                </label>
+                                <a href="{% url 'accounts:reset_password' %}">Забули пароль?</a>
+                            </div>
+                            <button type="submit" class="form__submit login__submit btn-red btn-blick">Увійти</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ===================== /.Sign In =====================-->
+{% endblock %}

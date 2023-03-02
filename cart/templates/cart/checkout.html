@@ -1,0 +1,65 @@
+{% extends 'mainapp' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block css %} <link rel="stylesheet" href="{% static 'cart/css/main.css' %}"> {% endblock %}
+{% block content %}
+     <div class="row" style="max-width:1300px; margin: 0 auto">
+		<div class="col-lg-6">
+			<div class="box-element" id="form-wrapper">
+				<form id="form">
+					<div id="user-info">
+						<div class="form-field">
+							<input required class="form-control" type="text" name="name" placeholder="Name..">
+						</div>
+						<div class="form-field">
+							<input required class="form-control" type="email" name="email" placeholder="Email..">
+						</div>
+					</div>
+
+					<div id="shipping-info">
+						<hr>
+						<p>Shipping Information:</p>
+						<hr>
+						<div class="form-field">
+							<input class="form-control" type="text" name="address" placeholder="Address..">
+						</div>
+						<div class="form-field">
+							<input class="form-control" type="text" name="city" placeholder="City..">
+						</div>
+						<div class="form-field">
+							<input class="form-control" type="text" name="state" placeholder="State..">
+						</div>
+						<div class="form-field">
+							<input class="form-control" type="text" name="zipcode" placeholder="Zip code..">
+						</div>
+						<div class="form-field">
+							<input class="form-control" type="text" name="country" placeholder="Zip code..">
+						</div>
+					</div>
+
+					<hr>
+					<input id="form-button" class="btn btn-success btn-block" type="submit" value="Continue">
+				</form>
+			</div>
+		</div>
+
+		<div class="col-lg-6">
+			<div class="box-element">
+				<hr>
+				<h3>Ваша корзина</h3>
+				<hr>
+				{% for item in cart %}
+                    {% with product=item.product %}
+				<div class="cart-row">
+					<div style="flex:2"><img class="row-image" src="{{item.product.productimage_set.first.img.url}}"></div>
+					<div style="flex:2"><p>{{item.product.title}}</p></div>
+					<div style="flex:1"><p>${{item.price|floatformat:2}}</p></div>
+					<div style="flex:1"><p>x{{item.quantity}}</p></div>
+				</div>
+				{% endwith %}
+				{% endfor %}
+                <h5>Разом::<strong> {{cart.get_total_price}} грн</strong></h5>
+			</div>
+		</div>
+	</div>
+{% endblock content %}

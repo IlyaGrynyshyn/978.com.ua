@@ -1,0 +1,347 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block custom_css %}
+    <link rel="stylesheet" href="{% static 'slick-1.8.1/slick/slick.css' %}">
+    {#    <link rel="stylesheet" href="{% static 'slick-1.8.1/slick/slick-theme.css' %}">#}
+    <link rel="stylesheet" href="{% static 'slick-1.8.1/slick/slick.min.js' %}">
+    <link rel="stylesheet" href="{% static 'mainapp/css/product_page.css' %}">
+    {#    <link rel="stylesheet" href="{% static 'mainapp/css/bootstrap.min.css' %}">#}
+
+{% endblock %}
+{% block contend %}
+    {% include "include/catalog.html" %}
+    <div class="breadcrumbs">
+        <div class="breadcrumbs__inner">
+            <div class="container">
+                <ol>
+                    <li>
+                        <a href="{% url 'home' %}"><span>Главная</span></a>
+                    </li>
+                    <li>
+                        <a><span> {{ product.category.top_category.title }}</span></a>
+                    </li>
+                    <li>
+                        <a href="{{ product.category.get_absolute_url }}"><span>{{ product.category.title }}</span></a>
+                    </li>
+                    <li class="active"> {{ product.title }}</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="">
+            <div class="b-product-top-side" id="secProdAll">
+                <div class="b-product-top-side-inner">
+                    <div class="b-product-top-side-head product_wrapper">
+                        <h1 class="b-page-title" itemprop="name">{{ product.title }}</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="b-content b-content-gray clearfix">
+                <div class="row b-product-drow product_wrapper">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="b-product-desc-box">
+                            <div class="b-product-db-meta-top clearfix">
+                                <div class="b-i-product-ratio">
+                                    <ul class="b-i-product-ratio-list">
+                                        <li>
+                                            <div class="b-star"></div>
+                                        </li>
+                                        <li>
+                                            <div class="b-star"></div>
+                                        </li>
+                                        <li>
+                                            <div class="b-star"></div>
+                                        </li>
+                                        <li>
+                                            <div class="b-star"></div>
+                                        </li>
+                                        <li>
+                                            <div class="b-star-null"></div>
+                                        </li>
+
+                                        <li>
+                                            <div class="b-ratio-num">3.8</div>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                                </span>
+                                <div class="b-i-product-articul">Код: <i>{{ product.product_code }}</i></div>
+                                <div class="cl"></div>
+                            </div><!-- /.b-product-db-meta-top -->
+                            {% block js %}
+                                <script src="{% static 'js/slick.min.js' %}"></script>
+
+                                <script>
+                                    $(function () {
+                                        $('.b-product-db-photos-slider-big').slick({
+                                            slidesToShow: 1,
+                                            slidesToScroll: 1,
+                                            arrows: true,
+                                            fade: true,
+                                            asNavFor: '.b-product-db-photos-slider-thumbs'
+                                        });
+                                        $('.b-product-db-photos-slider-thumbs').slick({
+                                            slidesToShow: 4,
+                                            slidesToScroll: 1,
+                                            asNavFor: '.b-product-db-photos-slider-big',
+                                            dots: false,
+                                            centerMode: false,
+                                            focusOnSelect: true,
+                                            responsive: [
+                                                {
+                                                    breakpoint: 1024,
+                                                    settings: {
+                                                        slidesToShow: 4,
+                                                        slidesToScroll: 1,
+                                                        infinite: false,
+                                                        dots: false
+                                                    }
+                                                },
+                                                {
+                                                    breakpoint: 600,
+                                                    settings: {
+                                                        slidesToShow: 4,
+                                                        slidesToScroll: 1,
+                                                        infinite: false
+                                                    }
+                                                },
+                                                {
+                                                    breakpoint: 480,
+                                                    settings: {
+                                                        slidesToShow: 4,
+                                                        slidesToScroll: 1,
+                                                        infinite: false
+                                                    }
+                                                }
+                                                // You can unslick at a given breakpoint now by adding:
+                                                // settings: "unslick"
+                                                // instead of a settings object
+                                            ]
+
+                                        })
+                                    })
+                                    let maxHeight = -1;
+                                    $('.b-product-db-photos-slider-big .slick-slide').each(function () {
+                                        if ($(this).height() > maxHeight) {
+                                            maxHeight = $(this).height();
+                                        }
+                                    });
+                                    $('.b-product-db-photos-slider-big .slick-slide').each(function () {
+                                        if ($(this).height() < maxHeight) {
+                                            $(this).css('margin', Math.ceil((maxHeight - $(this).height()) / 2) + 'px 0');
+                                        }
+                                    });
+
+                                    if ($('.b-product-db-photos-slider-thumbs .b-item').length === 1) {
+                                        $('.b-product-db-photos-slider-thumbs').addClass('hidden');
+                                    }
+
+
+                                    $('.b-product-mob-title').click(function () {
+                                        if (isMobile3) {
+                                            if (!$(this).parent().hasClass('c-active')) {
+                                                $(this).parent().addClass('c-active');
+                                                $(this).parent().find('.b-product-mob-body').stop(true, true).slideDown(200);
+                                                return false;
+                                            } else {
+                                                $(this).parent().removeClass('c-active');
+                                                $(this).parent().find('.b-product-mob-body').stop(true, true).slideUp(100);
+                                                return false;
+                                            }
+                                        } else {
+                                            return false;
+                                        }
+                                    });
+                                </script>
+                            {% endblock %}
+                            <div class="b-product-db-photos">
+                                <div class="b-product-db-photos-slider-big">
+                                    {% for i in product.productimage_set.all %}
+                                        <div class="b-item"><img
+                                                src="{{ i.img.url }}"
+                                                height="auto" alt="product1"></div>
+                                    {% endfor %}
+                                </div>
+                                <div class="b-product-db-photos-slider-thumbs">
+                                    {% for i in product.productimage_set.all %}
+                                        <div class="b-item"><img
+                                                src="{{ i.img.url }}"
+                                                height="auto" alt="product1"></div>
+                                    {% endfor %}
+                                </div>
+                            </div><!-- /.b-product-db-photos -->
+                            <div class="b-product-mpr-info-for-mobile">
+                                <div class="b-product-mpr-info">
+                                    <div class="b-product-mpr-info-helper clearfix">
+                                        <div class="b-i-product-available b-i-product-available-green">Є в наявності
+                                        </div>
+                                    </div>
+                                    {% if product.new_price %}
+                                        <div class="b-i-product-old-price"><span>{{ product.price }} <i>грн</i></span>
+                                        </div>
+                                        <div class="b-price">{{ product.new_price }} <i>грн</i></div>
+                                    {% else %}
+                                        <div class="b-price"><span>{{ product.price }} <i>грн</i></span>
+                                        </div>
+                                    {% endif %}
+                                    <div class="b-i-product-wrap-price">
+                                        <a href="{% url 'cart:cart_add' product.id %}"
+                                           class="b-link-add2bas b-link-add2bas-already-add ">У кошику</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div><!-- /.b-product-desc-box -->
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="b-product-wtbox">
+                            <div class="b-product-mpr-info">
+                                <div class="b-pmi-cols">
+                                    <div class="b-pmi-col-left">
+                                        <div class="b-i-product-available b-i-product-available-green">Є в наявності
+                                        </div>
+                                        <div class="b-i-product-mid-meta-color"></div>
+                                        {% if product.new_price %}
+                                            <div class="b-i-product-old-price">
+                                                <span> {{ product.price }} <i>грн</i></span>
+                                            </div>
+                                            <div class="b-price">{{ product.new_price }} <i>грн</i></div>
+                                        {% else %}
+                                            <div class="b-price"><span>{{ product.price }} <i>грн</i></span>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="b-pmi-col-right">
+                                        <div class="b-i-product-wrap-price">
+                                            <a class="b-link-add2bas b-link-add2bas-already-add "
+                                               href="{% url 'cart:cart_add' product.id %}">У кошику</a>
+                                        </div>
+                                    </div>
+                                </div><!-- /.b-pmi-cols -->
+                                <div class="b-pmi-cols b-pmi-cols-vatop">
+                                    <div class="b-pmi-col-left"></div>
+                                </div>
+                                <div class="b-pmi-cols b-pmi-cols-vatop">
+                                    <div class="b-pmi-col-left">
+                                        <ul class="b-i-product-hi-list">
+                                            <li>
+                                                <a class="b-i-product-hi-link-add2wish" href="#cPopupEnterTab"
+                                                   data-toggle="modal" data-target="#popupERL" rel="nofollow"
+                                                   title="Увійти">До
+                                                    списку бажань</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.b-product-wtbox -->
+                    </div>
+
+                </div><!-- /.b-product-drow -->
+            </div>
+            <div class="b-content">
+                <div class="b-wrap-ptech-chars c-active" id="secChars">
+                    <div class="b-product-mob-title">Характеристики</div>
+                    <div class="b-product-mob-body">
+                        <h2 class="b-ptech-chars-head">Технічні характеристики <span
+                                class="b-ptech-chars-head-product-name">{{ product.title }}</span>
+                        </h2>
+                        <div class="row b-tech-chars-row" id="productFeaturesList">
+                            <div class="col-lg-12 col-md-12 col-sm-12" itemprop="description">
+                                <div class="b-ptech-param-head">Процесор</div>
+                                <table class="b-ptech-param-table">
+                                    <tbody>
+                                    {% for f_name, f_value in product.get_features.items %}
+                                        <tr>
+                                            <td class="b-ptech-pt-label">
+                                                {{ f_name }}
+                                            </td>
+                                            <td class="b-ptech-pt-value 1510 ">
+                                                <a target="_blank">
+                                                    {{ f_value }}</a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.b-wrap-ptech-chars -->
+                <div class="text-section__block">
+                    <h2 class="ph4">Опис {{ product.title }}</h2>
+                    <div>
+                        <div id="full_text">
+                            {{ product.description|safe }}
+                        </div>
+                    </div>
+                </div>
+                <div class="b-related-products c-active">
+                    <div class="b-product-mob-body">
+                        <h2 class="b-related-products-head">Рекомендуємо до покупки <span
+                                class="b-related-products-product-name">{{ product.title }}</span></h2>
+                        {% if recently_viewed %}
+                            <section class="section tabs">
+                                <div class="container">
+                                    <div class="tabs__head">
+                                        <p class="tabs__title section__title">Нещодавно переглянуто</p>
+                                        <!-- ========== Tabs > Nav ========== -->
+                                    </div>
+                                    <!-- ========== Tabs > Content ========== -->
+                                    <div class="tabs__content">
+                                        <!-- ========== Tabs > Tab ========== -->
+                                        <div class="tabs__tab">
+                                            <!-- ========== Product Slider ========== -->
+                                            <div class="products-slider">
+                                                {% for i in recently_viewed %}
+                                                    <div class="products-slider__slide">
+                                                        <div class="product-card">
+                                                            <a href="{{ i.get_absolute_url }}"
+                                                               class="product-card__image">
+                                                                <img src="{{ i.productimage_set.first.img.url }}"
+                                                                     alt="{{ i.title }}">
+                                                            </a>
+                                                            <div class="product-card__content">
+                                                                <a href="{{ i.get_absolute_url }}"
+                                                                   class="product-card__title">{{ i.title }}</a>
+                                                                <div class="product-card__status ">В наявності</div>
+                                                                <div class="product-card__price">
+                                                                    <span class="current">{{ i.price }} ₴</span>
+                                                                </div>
+                                                                <div class="product-card__buttons">
+                                                                    <a href="{% url 'cart:cart_add' i.id %}"
+                                                                       class="product-card__buy btn-red-out remarketing_cart_button"
+                                                                       tabindex="0">В
+                                                                        кошик</a>
+                                                                    <a class="product-card__btn product-card__btn--whishlist icon-whishlist"
+                                                                       tabindex="0"></a>
+                                                                    <a class="product-card__btn product-card__btn--compare icon-compare"
+                                                                       tabindex="0"></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+
+                                                <!-- Product Card -->
+                                                <!-- Products Slider > Controls -->
+                                                <div class="slick-controls">
+                                                    <div class="slick-controls__dots"></div>
+                                                    <div class="slick-controls__arrows"></div>
+                                                </div>
+                                            </div>
+                                            <!-- ========== /.Product Slider ========== -->
+                                        </div>
+                                        <!-- ========== /.Tabs > Tab ========== -->
+                                    </div>
+                                </div>
+                            </section>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

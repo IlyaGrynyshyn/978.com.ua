@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block contend %}
+    {% include 'include/catalog.html' %}
+    <main class="main">
+        <div class="breadcrumbs">
+            <div class="container">
+                <ol>
+                    <li><a href="{% url 'home' %}"><i class="fa fa-home"></i></a></li>
+                    <li>Особистий кабінет</li>
+                </ol>
+            </div>
+        </div>
+        <!-- ===================== /.Page Breadcrumbs ===================== -->
+        <!-- ===================== Personal Data =====================-->
+        <section class="section cabinet">
+            <div class="container">
+                <div class="cabinet__inner row">
+                    <div class="cabinet__nav">
+                        <h3 class="cabinet__title section__title-2">Особистий Кабінет</h3>
+                        <div class="cabinet-menu">
+                            <div class="cabinet-menu__header">
+                                <h5>{{ request.user.first_name }}</h5>
+                                <a href="{% url 'accounts:log_out' %}"><i
+                                        class="icon-exit"></i><span>Вийти</span></a>
+                            </div>
+                            <div class="cabinet-menu__content">
+                                <a href="{% url 'accounts:account_detail' %}"><i class="icon-user"></i><span>Обліковий запис</span></a>
+                                <a href="{% url 'accounts:change_password' %}"><i class="icon-password"></i><span>Зміна пароля</span></a>
+                                <a href="{% url 'wishlist:wishlist' %}"><i class="icon-whishlist"></i><span>Список бажань</span></a>
+                                <a href="{% url 'accounts:order_history' %}"><i class="icon-clock"></i><span>Мої замовлення</span></a>
+{#                                <a href=""><i class="icon-file"></i><span>Файли для скачування</span></a>#}
+{#                                <a href=""><i class="icon-exchange"></i><span>Повернення товару</span></a>#}
+                                <a href="{% url 'accounts:log_out' %}" class="cabinet-menu__exit"><i
+                                        class="icon-exit"></i><span>Вийти</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    {% block account_content %}
+                    {% endblock account_content %}
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock contend %}

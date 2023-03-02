@@ -1,0 +1,146 @@
+{% extends 'accounts/account_base/base.html' %}
+{% load static %}
+{% block account_content %}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'accounts/css/auth.css' %}">
+    <link rel="stylesheet" href="{% static 'mainapp/css/pagination.css' %}">
+    <div class="col-lg-9">
+        <div class="cabinet-form__box">
+            <div class="cabinet-form__header">
+                <h4>Мої замовлення</h4>
+            </div>
+            <div class="cabinet-form__content">
+                <div class="order-list">
+                    {% for i in page_obj %}
+                        <div class="order-item">
+                            <div class="order-top">
+                                <div class="order-number">
+                                    № <a>{{ i.id }}</a>
+                                </div>
+                                <div class="order-top-prod">
+                                    {% for a in order_item %}
+                                        {% if i.id == a.order_id %}
+                                            <div class="order-top-prod-img">
+                                                <img src="{{ a.product.productimage_set.first.img.url }}" alt="">
+                                            </div>
+                                            <div class="order-top-prod-text"><a href="">{{ a.product.title }}</a></div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                                <div class="order-date">{{ i.created|date }}</div>
+                                <div class="order-top-status status-completed">{{ i.status }}</div>
+                            </div>
+                            <div class="order-info" style="display: none;">
+                                <div class="order-hidden">
+                                    <div class="order-hidden-left">
+                                        <dl class="order-hidden-list">
+                                            <dt>Спосіб оплати</dt>
+                                            <dd>Накладений платіж</dd>
+                                            <dt>Способ доставки</dt>
+                                            <dd>{{ i.delivery_method }}</dd>
+                                            <dt>Відділення</dt>
+                                            <dd>{{ i.warehouse }}</dd>
+                                        </dl>
+                                    </div>
+                                    <div class="order-hidden-right">
+                                        <div class="order-status-title">Статус замовлення</div>
+                                        <div class="order-status-big status-completed">
+                                            {{ i.status }}
+                                        </div>
+                                    </div>
+                                </div>
+                                {% for a in order_item %}
+                                    {% if i.id == a.order_id %}
+                                        <div class="order-prod-line">
+                                            <div class="order-list-prod">
+                                                <div class="order-list-prod-img">
+                                                    <img src="{{ a.product.productimage_set.first.img.url }}"
+                                                         alt="">
+                                                </div>
+                                                <div class="order-list-prod-content">
+                                                    <div class="order-list-prod-link">
+                                                        <a href="{{ a.product.get_absolute_url }}">{{ a.product.title }}</a>
+                                                    </div>
+                                                    <div class="order-list-prod-code">Код товара
+                                                        <span>{{ a.product.product_code }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="order-list-price">
+                                                <div class="order-list-price-num">{{ a.product.price }} грн</div>
+                                                <div class="order-list-price-min">
+                                                    К-во: {{ a.product.qty_product }}</div>
+                                            </div>
+                                            <div class="order-list-price-total">{{ a.get_cost }} грн</div>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                                <div class="order-list-total">
+                                    <div class="order-list-total-float">
+                                        <div class="order-list-total-text">Итого:</div>
+                                        <div class="order-list-total-sum">{{ i.get_total_cost }} грн</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                    <div id="app" class="container_pa">
+                        <ul class="page">
+                            {% if page_obj.has_previous %}
+                                <li class="page__btn">
+                                    <a href={% url 'accounts:order_history' %}"?page={{ page_obj.previous_page_number }}"></a>
+                                    <a class="material-icons"
+                                       href="{% url 'accounts:order_history' %}?page={{ page_obj.previous_page_number }}">chevron_left</a>
+                                </li>
+                            {% endif %}
+                            {#                                        {% if page_obj.number|add: '-2' > 1 %}#}
+                            {#                                            <li class="page__dots"><a#}
+                            {#                                                    href="{% url 'category_detail' top_category_slug category_slug %}?page={{ page_obj|add: '-2' }}">...</a>#}
+                            {#                                            </li>#}
+                            {#                                        {% endif %}#}
+                            {% for page_num in page_obj.paginator.page_range %}
+                                {% if page_obj.number == page_num %}
+                                    <li class="page__numbers active"><a
+                                            href="{% url 'accounts:order_history' %}?page={{ page_num }}">{{ page_num }}   </a>
+                                    </li>
+                                {% else %}
+                                    <li class="page__numbers"><a
+                                            href="{% url 'accounts:order_history' %}?page={{ page_num }}">{{ page_num }}   </a>
+                                    </li>
+                                    {#                                            {% elif page_num in page_obj.number|add: '-2' and page_num < page_obj.number|add:'-2' %}#}
+                                {% endif %}
+                            {% endfor %}
+
+                            {% if page_obj.has_next %}
+                                <li class="page__btn">
+                                    <a href="{% url 'accounts:order_history' %}?page={{ page_obj.next_page_number }}"></a>
+                                    <a class="material-icons"
+                                       href="{% url 'accounts:order_history' %}?page={{ page_obj.next_page_number }}">chevron_right</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // order dropdown
+        $(document).on('click', '.order-top', function (e) {
+            e.preventDefault();
+            if ($(this).hasClass('active')) {
+                $('.order-top').removeClass('active');
+                $('.order-info').slideUp();
+                $('.order-top').removeClass('vis');
+            } else {
+                $('.order-top').removeClass('active');
+                $('.order-info').slideUp();
+                $('.order-top').removeClass('vis');
+                $(this).addClass('active');
+                $(this).parent().find('.order-info').slideDown();
+            }
+        });
+    </script>
+
+{% endblock account_content %}

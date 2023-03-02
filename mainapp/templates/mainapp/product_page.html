@@ -1,0 +1,2941 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contend %}
+    {% include 'include/catalog.html' %}
+    <div class="breadcrumbs">
+        <div class="breadcrumbs__inner">
+            <div class="container">
+                <ol>
+                    <li>
+                        <a href="{% url 'home' %}"><span>Головна</span></a>
+                    </li>
+                    <li>
+                        <a href="{{ product }}"><span> {{ product.category.top_category.title }}</span></a>
+                    </li>
+                    <li>
+                        <a href="{{ product.category.get_absolute_url }}"><span>{{ product.category.title }}</span></a>
+                    </li>
+                    <li class="active"> {{ product.title }}</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <main class="main main--reverse" id="product">
+        <div class="container">
+
+
+            <div class="main__inner row">
+
+
+                <!-- ========================================== Aside Content ========================================== -->
+                <aside class="main__aside">
+
+                    <!-- ===================== Useful Info =====================-->
+                    <div class="js_useful-info--desktop">
+                        <div class="useful-info">
+                            <p class="section__title-2">Інформація </p>
+                            <div class="useful-info__card">
+                                <p class="useful-info__title">
+                                    <picture>
+                                        <source srcset="catalog/view/theme/moneymaker2/img/icons/delivery_box.svg"
+                                                type="image/webp">
+                                        <img src="catalog/view/theme/moneymaker2/img/icons/delivery_box.svg" alt="">
+                                    </picture>
+                                    <span>Доставка</span>
+                                </p>
+                                <p class="useful-info__item">Безкоштовна доставка у відділення Нової пошти : при
+                                    замовленні від 2000 грн </p>
+                                <p class="useful-info__item">Безкоштовна адресна доставка Новою поштою: при замовленні
+                                    від 2000 грн </p>
+                            </div>
+                            <div class="useful-info__card">
+                                <p class="useful-info__title">
+                                    <picture>
+                                        <source srcset="catalog/view/theme/moneymaker2/img/icons/wallet.svg"
+                                                type="image/webp">
+                                        <img src="catalog/view/theme/moneymaker2/img/icons/wallet.svg" alt=""></picture>
+                                    <span>Оплата</span>
+                                </p>
+                                <p class="useful-info__item">Оплата на картку ПриватБанк / MonoBank </p>
+                                <p class="useful-info__item">Оплата готівкою при отриманні (післяплата) </p>
+                                <p class="useful-info__item">Онлайн-оплата карткою VISA / MasterCard </p>
+                                <p class="useful-info__item">Безготівкова оплата (з ПДВ і без) </p>
+                            </div>
+                            <div class="useful-info__card">
+                                <p class="useful-info__title">
+                                    <picture>
+                                        <source srcset="catalog/view/theme/moneymaker2/img/icons/warranty.svg"
+                                                type="image/webp">
+                                        <img src="catalog/view/theme/moneymaker2/img/icons/warranty.svg" alt="">
+                                    </picture>
+                                    <span>Гарантія </span>
+                                </p>
+                                <p class="useful-info__item">Гарантія на все обладнання </p>
+                                <p class="useful-info__item">Обмін / повернення товару протягом 14 днів </p>
+                                <p class="useful-info__item">Перевірка товару перед відправкою </p>
+                            </div>
+                            <div class="useful-info__card">
+                                <p class="useful-info__title">
+                                    <picture>
+                                        <source srcset="catalog/view/theme/moneymaker2/img/icons/credit.svg"
+                                                type="image/webp">
+                                        <img src="catalog/view/theme/moneymaker2/img/icons/warranty.svg" alt="">
+                                    </picture>
+                                    <span>Рассрочка </span>
+                                </p>
+                                <p class="useful-info__item">Оплата частинами від Monobank </p>
+                                <p class="useful-info__item">Миттєва розстрочка від ПриватБанк </p>
+                                <p class="useful-info__item">Покупка частинами від ПриватБанк </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ===================== /.Useful Info =====================-->
+
+
+                    <!-- ===================== Accessories =====================-->
+                    <!-- ===================== /.Accessories =====================-->
+
+
+                    <div class="js_consultation--desktop">
+                        <div class="consultation">
+                            <div class="consultation__content">
+                                <p class="consultation__subtitle">Допомога від справжніх <br> фахівців</p>
+                                <p class="consultation__title section__title-2">
+                                    <span>Налаштування <br> і консультація</span></p>
+                                <a href="#" class="consultation__btn-inner btn-red btn-blick js-callback-popup">Замовити
+                                    дзвінок</a>
+                                <div class="consultation__image">
+                                    <picture>
+                                        <source srcset="catalog/view/theme/moneymaker2/img/consultation_man.webp"
+                                                type="image/webp">
+                                        <img src="catalog/view/theme/moneymaker2/img/consultation_man.png" alt="">
+                                    </picture>
+                                </div>
+                            </div>
+                            <a href="#" class="consultation__btn btn-red btn-blick js-callback-popup">Замовити зворотний
+                                дзвінок</a>
+                        </div>
+                    </div>
+
+                </aside>
+                <!-- ========================================== /.Aside Content ========================================== -->
+                <!-- ========================================== Article Content ========================================== -->
+                <article class="main__article">
+
+                    <!-- ===================== Product ===================== -->
+                    <section class="section product-section">
+                        <div class="container">
+                            <div class="product product--stock">
+                                <h1 class="product__title">2 МП AcuSense IP камера 978 DS-2CD2423G2-I 2.8мм</h1>
+
+                                <div class="product__content">
+
+                                    <!-- ============= Product > Gallary ============= -->
+                                    <div class="product-gallery">
+                                        <div class="product-galleryflex">
+                                            <div class="product-gallery__group" id="product-gallery">
+                                                <div class="product-gallery__item active">
+                                                    <a href="image/cache/catalog/i/na/aa/97068a1e5a361fcf09649c61d9817780-650x650.png">
+                                                        <img src="image/cache/catalog/i/na/aa/97068a1e5a361fcf09649c61d9817780-450x450.png"
+                                                             alt="2 МП AcuSense IP камера 978 DS-2CD2423G2-I 2.8мм">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="product-gallery__detail">
+                                                <a href="image/cache/catalog/i/na/aa/97068a1e5a361fcf09649c61d9817780-650x650.png"
+                                                   id="product-detail" data-index="0">
+
+
+                                                    <picture>
+                                                        <source srcset="image/cache/catalog/i/na/aa/97068a1e5a361fcf09649c61d9817780-650x650.png"
+                                                                type="image/webp">
+                                                        <img src="image/cache/catalog/i/na/aa/97068a1e5a361fcf09649c61d9817780-650x650.png"
+                                                             alt=""></picture>
+                                                </a>
+                                            </div>
+                                        </div>
+
+
+                                        <!-- ===================== Accessories =====================-->
+
+                                        <div class="js_accessories--desktop accesaded">
+                                            <div class="accessories">
+                                                <p class="accessories__title">Доступні аксесуари</p>
+                                                <div class="accessories__content">
+                                                    <div class="accessories__item">
+                                                        <label class="custom-checkbox">
+                                                            <input name="option[7197][]" data-preorder-quantity="999"
+                                                                   value="11056" data-points="0" data-prefix="+"
+                                                                   data-price="199.0000" type="checkbox">
+                                                            <span class="custom-checkbox__checkmark"></span>
+                                                        </label>
+                                                        <a class="accessories__item-image">
+                                                            <img src="image/cache/catalog/blokpit1a12v-50x50.png"
+                                                                 alt="Блок живлення 1А 12V +199 ₴">
+
+                                                        </a>
+                                                        <div class="accessories__item-content">
+                                                            <a class="accessories__item-title">Блок живлення 1А 12V</a>
+                                                            <span class="accessories__item-price">+199 ₴</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="accessories__item">
+                                                        <label class="custom-checkbox">
+                                                            <input name="option[7197][]" data-preorder-quantity="999"
+                                                                   value="11054" data-points="0" data-prefix="+"
+                                                                   data-price="350.0000" type="checkbox">
+                                                            <span class="custom-checkbox__checkmark"></span>
+                                                        </label>
+                                                        <a class="accessories__item-image">
+                                                            <img src="image/cache/catalog/poe-ins-003-500x5003-50x50.jpg"
+                                                                 alt="PoE інжектор +350 ₴">
+
+                                                        </a>
+                                                        <div class="accessories__item-content">
+                                                            <a class="accessories__item-title">PoE інжектор</a>
+                                                            <span class="accessories__item-price">+350 ₴</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="accessories__item">
+                                                        <label class="custom-checkbox">
+                                                            <input name="option[7197][]" data-preorder-quantity="999"
+                                                                   value="11055" data-points="0" data-prefix="+"
+                                                                   data-price="600.0000" type="checkbox">
+                                                            <span class="custom-checkbox__checkmark"></span>
+                                                        </label>
+                                                        <a class="accessories__item-image">
+                                                            <img src="image/cache/catalog/kinston128-50x50.jpg"
+                                                                 alt="Карта пам'яті microSD 128GB +600 ₴">
+
+                                                        </a>
+                                                        <div class="accessories__item-content">
+                                                            <a class="accessories__item-title">Карта пам'яті microSD
+                                                                128GB</a>
+                                                            <span class="accessories__item-price">+600 ₴</span>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- ===================== /.Accessories =====================-->
+                                    </div>
+
+                                    <!-- ============= Product > Info ============= -->
+                                    <div class="product-info">
+                                        <div class="product-info__group">
+
+                                            <div class="product-info__row ">
+                                                <div class="product-info__available ">В наявності</div>
+                                                <div class="product-info__code">Код товару: <span>3418</span></div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="product-info__group product-info__group--price">
+                                            <div class="product-info__row jc-sb">
+                                                <div class="product-info__price">
+                                                    <span class="current"><span
+                                                            class="autocalc-product-price">4 275 ₴</span></span>
+                                                </div>
+
+
+                                                <div class="product-info__vat-price">
+                                                    <span>Ціна з ПДВ:</span>
+                                                    <span>4 275 ₴</span>
+                                                </div>
+                                            </div>
+                                            <a class="product-info__discount skidka">Отримати знижку</a>
+
+                                            <script>
+                                                $('.skidka').click(function () {
+                                                    $('.popup_mask').fadeTo(750, 0.5);
+                                                    $('.window_holder1').show();
+                                                    $('body').addClass('sk');
+                                                });
+                                            </script>
+
+
+                                        </div>
+
+
+                                        <div class="product-info__group">
+                                            <div class="product-info__options">
+                                                <div class="product-info__options-item">
+                                                    <span>Вид (форм фактор):</span>
+                                                    <span>Мініатюрна, Кубічна</span>
+                                                </div>
+                                                <div class="product-info__options-item">
+                                                    <span>Дальність ІЧ-підсвічування:</span>
+                                                    <span> 10 метрів</span>
+                                                </div>
+                                                <div class="product-info__options-item">
+                                                    <span>Запис:</span>
+                                                    <span>На SD карту пам'яті, На жорсткий диск HDD</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" name="product_id" value="2725">
+                                        <div class="product-info__group">
+
+
+                                            <div class="product-info__row">
+
+
+                                                <a id="button-cart"
+                                                   class="product-info__action-btn btn-red btn-blick   ">В кошик</a>
+
+
+                                                <a class="product-info__action-btn btn-red-out btn-blick btn btn-link"
+                                                   id="button-cart2">
+                                                    Швидке замовлення</a></div>
+
+
+                                            <div class="rassr">
+                                                <p class="variantheader">Варіанти розстрочки</p>
+                                                <a rel="nofollow"
+                                                   href="/ua/oplata-chastyami-i-mgnovennaya-rassrochka-ot-privatbank"
+                                                   class="variant"><img src="/image/raasrvariant1.png"
+                                                                        alt="Миттєва розстрочка від ПриватБанк"><span>Миттєва розстрочка від ПриватБанк</span></a>
+                                                <a rel="nofollow"
+                                                   href="/ua/oplata-chastyami-i-mgnovennaya-rassrochka-ot-privatbank"
+                                                   class="variant"><img src="/image/raasrvariant2.png"
+                                                                        alt="Оплата частинами від ПриватБанк"><span>Оплата частинами від ПриватБанк</span></a>
+                                                <a rel="nofollow" href="/ua/pokupka-chastyami-ot-monobank"
+                                                   class="variant"><img src="/image/raasrvariant3.png"
+                                                                        alt="Купівля частинами від Монобанку"><span>Купівля частинами від Монобанку</span></a>
+
+
+                                            </div>
+
+
+                                        </div>
+
+
+                                        <div class="product-info__group">
+                                            <div class="product-info__row">
+                                                <a onclick="wishlist.add('2725');"
+                                                   class="product-info__btn btn-blick whishlist"><span>У закладки</span></a>
+                                                <a onclick="compare.add('2725');"
+                                                   class="product-info__btn btn-blick compare"><span>До порівняння</span></a>
+                                                <a href="#" class="product-info__btn btn-blick share"
+                                                   onclick="$(this).next().find('a').trigger('click');return false;">Поділитись</a>
+                                                <!-- AddThis Button BEGIN -->
+                                                <div class="addthis_toolbox addthis_default_style" style="display: none"
+                                                     data-url="ua/978-ds-2cd2423g2-i-28mm">
+                                                    <a class="addthis_counter addthis_pill_style"
+                                                       style="display: inline-block;" href="#"><a
+                                                            class="atc_s addthis_button_compact">Share<span></span></a><a
+                                                            class="addthis_button_expanded" target="_blank" title="More"
+                                                            href="#"></a></a>
+                                                    <div class="atclear"></div>
+                                                </div>
+                                                <script type="text/javascript"
+                                                        src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-515eeaf54693130e"></script>
+                                                <!-- AddThis Button END -->
+                                            </div>
+                                            <a href="#" class="product-info__parameters js_to-parameters">Дивитися
+                                                характеристики </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- ===================== /.Product ===================== -->
+
+
+                    <!-- ===================== Tabs Product =====================-->
+                    <section class="section tabs product-tabs">
+                        <div class="container">
+
+                            <!-- ========== Tabs > Nav ========== -->
+                            <div class="product-tabs__nav">
+                                <div class="tabs__nav">
+                                    <a href="#" class="tabs__nav-item active">Опис</a>
+
+
+                                    <a href="#" class="tabs__nav-item js_parameters">Характеристики</a>
+                                    <a href="#" class="tabs__nav-item revtabss">Відгуки (0)</a>
+                                    <a href="#" class="tabs__nav-item">Питання-відповідь</a>
+
+                                </div>
+                            </div>
+
+
+                            <!-- ========== Tabs > Content ========== -->
+                            <div class="tabs__content">
+                                <!-- Tabs > Tab -->
+                                <div class="tabs__tab">
+
+                                    <!-- ========== Product Description ========== -->
+                                    <div class="text-section product-description ">
+                                        <div class="text-section__block">
+                                            <h2 class="ph4">Опис 2 МП AcuSense IP камера 978 DS-2CD2423G2-I
+                                                2.8мм</h2>
+                                            <div><h2>2 МП AcuSense IP камера 978 DS-2CD2423G2-I 2.8мм</h2>
+                                                <h3>Особливості:</h3>
+                                                <ul>
+                                                    <li>2 Мп IP;</li>
+                                                    <li> Матриця: 1/2.8" CMOS;</li>
+                                                    <li> стистення: H.264 / H.265 / H.264+ / H.265+;</li>
+                                                    <li>Об’єктив: f=2.8 мм (кут огляду 108);</li>
+                                                    <li>колір: 0,005 лк (F1.6, AGC ON), Ч / Б: 0 лк з ІЧ ;</li>
+                                                    <li> запис: 1920 х 1080, 1280 x 960, 1280 x 720 - 25 к/с;</li>
+                                                    <li> Функції: WDR 120 дБ, 3D DNR, BLC, HLC;</li>
+                                                    <li> аналітика: детекція обличчя, перетин лінії, вторгнення, цільові
+                                                        типи; вбуд. мікрофон і динамік;
+                                                    </li>
+                                                    <li> ІЧ-підсвітка до 10 м, PIR до 10 метров;</li>
+                                                    <li> Слот пам’яті: micro SD до 256 Гб;</li>
+                                                    <li> DC 12В/7Вт;</li>
+                                                    <li>PoE 802.3af;</li>
+                                                    <li>103 х 65 х 33 мм;</li>
+                                                    <li>&nbsp; -10 °C - 40 °C;</li>
+                                                    <li>120 г<br></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- ========== /.Product Description ========== -->
+                                </div>
+
+
+                                <!-- Tabs > Tab -->
+                                <div class="tabs__tab" style="display: none;">
+                                    <div class="product-parameters">
+                                        <p class="ph5">Основні характеристики</p>
+                                        <ul>
+                                            <li>
+                                                <span>Вид (форм фактор)</span>
+                                                <span>Мініатюрна, Кубічна</span>
+                                            </li>
+                                            <li>
+                                                <span>Дальність ІЧ-підсвічування</span>
+                                                <span> 10 метрів</span>
+                                            </li>
+                                            <li>
+                                                <span>Запис</span>
+                                                <span>На SD карту пам'яті, На жорсткий диск HDD</span>
+                                            </li>
+                                            <li>
+                                                <span>Особливості</span>
+                                                <span>ІЧ підсвічування, Відеоаналітика, Мікрофон, Запис звуку, Датчик руху, Розпізнавання облич, Ширококутова, Віддалений перегляд</span>
+                                            </li>
+                                            <li>
+                                                <span>Призначення</span>
+                                                <span>Для будинку, Для квартири, Для магазину, Для офісу, Для приміщення</span>
+                                            </li>
+                                            <li>
+                                                <span>Роздільна здатність</span>
+                                                <span> 2 МП</span>
+                                            </li>
+                                            <li>
+                                                <span>Тип встановлення</span>
+                                                <span> Внутрішня</span>
+                                            </li>
+                                            <li>
+                                                <span>Тип підключення</span>
+                                                <span>Дротові, PoE живлення</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="product-parameters">
+                                        <p class="ph5">Характеристики</p>
+                                        <ul>
+                                            <li>
+                                                <span>Вага</span>
+                                                <span>120 г</span>
+                                            </li>
+                                            <li>
+                                                <span>Матеріал</span>
+                                                <span>пластик</span>
+                                            </li>
+                                            <li>
+                                                <span>Робоча температура</span>
+                                                <span>-10 °C - 40 °C</span>
+                                            </li>
+                                            <li>
+                                                <span>BLC</span>
+                                                <span>Підтримує</span>
+                                            </li>
+                                            <li>
+                                                <span>HLC</span>
+                                                <span>Підтримує</span>
+                                            </li>
+                                            <li>
+                                                <span>PoE</span>
+                                                <span>802.3af, Class 3</span>
+                                            </li>
+                                            <li>
+                                                <span>ROI</span>
+                                                <span>1 зона для головного та дод. потоку</span>
+                                            </li>
+                                            <li>
+                                                <span>WDR</span>
+                                                <span>120 дБ</span>
+                                            </li>
+                                            <li>
+                                                <span>Ідентифікація об'єкта</span>
+                                                <span>3 м</span>
+                                            </li>
+                                            <li>
+                                                <span>Апертура</span>
+                                                <span>F1.6</span>
+                                            </li>
+                                            <li>
+                                                <span>Відео компресія</span>
+                                                <span>H.265/H.264/H.264+/H.265+</span>
+                                            </li>
+                                            <li>
+                                                <span>Виявлення облич</span>
+                                                <span>Підтримує</span>
+                                            </li>
+                                            <li>
+                                                <span>Виявлення об’єкта</span>
+                                                <span>39 м</span>
+                                            </li>
+                                            <li>
+                                                <span>Вторгнення в область</span>
+                                                <span>Підтримує</span>
+                                            </li>
+                                            <li>
+                                                <span>Дальність підсвічування</span>
+                                                <span>10 м</span>
+                                            </li>
+                                            <li>
+                                                <span>Живлення</span>
+                                                <span>12 В DC, 0.49 A</span>
+                                            </li>
+                                            <li>
+                                                <span>Кількість одночасних підключень</span>
+                                                <span>6</span>
+                                            </li>
+                                            <li>
+                                                <span>Користувачі/рівні</span>
+                                                <span>32/3</span>
+                                            </li>
+                                            <li>
+                                                <span>Кути огляду</span>
+                                                <span>Г: 108.8°, В: 57.7°, Д: 129.4°</span>
+                                            </li>
+                                            <li>
+                                                <span>Мін. Чутливість</span>
+                                                <span>Колір: 0,005 лк (F1.6, AGC ON), Ч/Б: 0 лк з ІЧ</span>
+                                            </li>
+                                            <li>
+                                                <span>Матриця</span>
+                                                <span>1/2.8" CMOS</span>
+                                            </li>
+                                            <li>
+                                                <span>Мережеві інтерфейси</span>
+                                                <span>1 RJ45 10 M/100 M</span>
+                                            </li>
+                                            <li>
+                                                <span>Метод зберігання</span>
+                                                <span>NAS (NFS, SMB/CIFS), (ANR), microSD 256 Гб</span>
+                                            </li>
+                                            <li>
+                                                <span>Підтримка браузерів</span>
+                                                <span>IE 10, IE 11, Chrome 57.0+, Firefox 52.0+</span>
+                                            </li>
+                                            <li>
+                                                <span>Перетин лінії</span>
+                                                <span>Підтримує</span>
+                                            </li>
+                                            <li>
+                                                <span>Потужність споживання</span>
+                                                <span>7 Вт</span>
+                                            </li>
+                                            <li>
+                                                <span>Придушення шуму (DNR)</span>
+                                                <span>3D</span>
+                                            </li>
+                                            <li>
+                                                <span>Програмне забезпечення</span>
+                                                <span>iVMS-4200, Hik-Connect, Hik-Central</span>
+                                            </li>
+                                            <li>
+                                                <span>Регулювання по осях</span>
+                                                <span>Поворот: 0 ° - 360 °, нахил: 0 ° - 90°, оберт: 0 ° - 360°</span>
+                                            </li>
+                                            <li>
+                                                <span>Розміри</span>
+                                                <span>103 × 65 × 33 мм</span>
+                                            </li>
+                                            <li>
+                                                <span>Розпізнавання об’єкту</span>
+                                                <span>7 м</span>
+                                            </li>
+                                            <li>
+                                                <span>Спостереження за об’єктом</span>
+                                                <span>15 м</span>
+                                            </li>
+                                            <li>
+                                                <span>Сумісність</span>
+                                                <span>ONVIF (PROFILE S, PROFILE G, PROFILE T), ISAPI, SDK</span>
+                                            </li>
+                                            <li>
+                                                <span>Тип підсвічування</span>
+                                                <span>ІЧ</span>
+                                            </li>
+                                            <li>
+                                                <span>Фокусна відстань</span>
+                                                <span>2.8 мм</span>
+                                            </li>
+                                            <li>
+                                                <span>Цільові типи</span>
+                                                <span>Підтримує</span>
+                                            </li>
+                                            <li>
+                                                <span>Частота кадрів (головний потік)</span>
+                                                <span>1920 × 1080, 1280 × 720 25 к/с</span>
+                                            </li>
+                                            <li>
+                                                <span>Частота кадрів (дод2. потік)</span>
+                                                <span>1920 × 1080, 1280 × 720, 640 × 480, 640 × 360 10 к/с</span>
+                                            </li>
+                                            <li>
+                                                <span>Частота кадрів (доп. потік)</span>
+                                                <span>640 × 480, 640 × 360 25 к/с</span>
+                                            </li>
+                                            <li>
+                                                <span>Швидкість затвора</span>
+                                                <span>1/3 -1/100,000 с</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Tabs > Tab -->
+                                <div class="tabs__tab " style="display: none;">
+
+                                    <!-- ========== Product Comments ========== -->
+                                    <div class="product-comments product-comments--reviews">
+                                        <p>Немає відгуків про цей товар.</p>
+
+
+                                        <!-- Product Comments > Form -->
+                                        <form id="form-review" class="form">
+                                            <p class="ph5">Написати відгук</p>
+                                            <div class="form__row">
+                                                <div class="form__group">
+                                                    <input type="text" name="name" placeholder="Name" required="">
+                                                </div>
+                                                <div class="form__group">
+                                                    <input type="email" name="email" placeholder="Почта" required="">
+                                                </div>
+                                            </div>
+                                            <div class="form__row">
+                                                <div class="form__group">
+                                                    <input type="text" name="plus" placeholder="Достоинства">
+                                                </div>
+                                                <div class="form__group">
+                                                    <input type="text" name="minus" placeholder="Недостатки">
+                                                </div>
+                                            </div>
+                                            <div class="form__group">
+                                                <textarea rows="5" name="text" placeholder="Ваш відгук"></textarea>
+                                            </div>
+                                            <div class="form__footer">
+                                                <div class="form__rating">
+                                                    <span>Рейтинг</span>
+                                                    <div class="rateit33"></div>
+                                                    <input name="rating" type="text" id="comment_rating">
+                                                </div>
+                                                <button type="button" id="button-review"
+                                                        class="form__submit btn-red btn-blick">Submit
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <!-- ========== /.Product Comments ========== -->
+                                </div>
+
+                                <!-- Tabs > Tab -->
+                                <div class="tabs__tab" style="display: none;">
+
+                                    <!-- ========== Product Comments ========== -->
+                                    <div class="product-comments product-comments--question">
+                                        <!-- Product Comments > Form -->
+                                        <form role="form" id="answer_add_form" class="form">
+                                            <p class="ph5">Нове питання</p>
+                                            <div class="form__row">
+                                                <div class="form__group">
+                                                    <input name="author" type="text" class="form-control" id="inputName"
+                                                           placeholder="Ваше ім`я">
+                                                </div>
+                                                <div class="form__group">
+                                                    <input name="email" type="email" class="form-control"
+                                                           id="inputEmail" placeholder="*Ваш e-mail">
+                                                </div>
+                                            </div>
+                                            <div class="form__group">
+                                                <textarea name="text" id="inputAsk" class="form-control"
+                                                          placeholder="Ваше питання"></textarea>
+                                            </div>
+                                            <div class="form__footer">
+                                                <button type="submit" class="form__submit btn-red btn-blick">Задати
+                                                    питання
+                                                </button>
+                                            </div>
+                                            <div class="form__footer">
+                                                <div style="display:none" class="form__result">
+                                                    Ваше питання успішно відправлено!
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="product_id" value="2725">
+                                        </form>
+
+
+                                        <script>
+                                            $(document).ready(function () {
+
+                                                $('#answertab_add').on('click', function () {
+                                                    $('#answer_add').modal('show');
+                                                });
+
+                                                $('#answer_add_form').on('submit', function () {
+
+                                                    $('#inputName').removeClass('error');
+                                                    if ($('#inputName').val() === '') {
+                                                        $('#inputName').addClass('error');
+                                                        return false;
+                                                    }
+
+                                                    $('#inputEmail').removeClass('error');
+                                                    if ($('#inputEmail').val() === '') {
+                                                        $('#inputEmail').addClass('error');
+                                                        return false;
+                                                    }
+
+                                                    $('#inputAsk').removeClass('error');
+                                                    if ($('#inputAsk').val() === '') {
+                                                        $('#inputAsk').addClass('error');
+                                                        return false;
+                                                    }
+
+                                                    $.ajax({
+                                                        url: 'index.php?route=extension/module/answertab/addask',
+                                                        type: 'POST',
+                                                        data: new FormData($('#answer_add_form')[0]),
+                                                        contentType: false,
+                                                        processData: false,
+                                                        success: function (json) {
+
+                                                            $('#inputEmail').val('');
+                                                            $('#inputName').val('');
+                                                            $('#inputAsk').val('').text('');
+                                                            $('.form__result').show();
+
+                                                            $('#answer_add').modal('hide');
+                                                        }
+                                                    });
+
+                                                    return false;
+                                                });
+
+                                            });
+                                        </script>
+
+                                        <style type="text/css">
+
+                                            .error {
+                                                animation: anierror 2s infinite alternate;
+                                            }
+
+                                            @keyframes anierror {
+                                                0% {
+                                                    box-shadow: none;
+                                                }
+
+                                                20% {
+                                                    box-shadow: 0 0 15px rgb(255, 0, 0);
+                                                    border-color: #ff5151;
+                                                }
+
+                                                100% {
+                                                    box-shadow: 0 0 5px rgb(255, 0, 0);
+                                                    border-color: #ff5151;
+                                                }
+                                            }
+
+                                            .modal-body .form-group {
+                                                padding-bottom: 58px;
+                                                padding-top: 10px;
+                                            }
+
+                                            .modal {
+                                                text-align: center;
+                                            }
+
+                                            @media screen and (min-width: 768px) {
+                                                .modal:before {
+                                                    display: inline-block;
+                                                    vertical-align: middle;
+                                                    content: " ";
+                                                    height: 100%;
+                                                }
+                                            }
+
+                                            .modal-dialog {
+                                                display: inline-block;
+                                                text-align: left;
+                                                vertical-align: middle;
+                                            }
+
+                                            .ask {
+                                                min-height: 40px; /*min height of DIV should be set to at least 2x the width of the arrow*/
+                                                background: #ececec;
+                                                color: black;
+                                                position: relative;
+                                                word-wrap: break-word;
+                                                -moz-border-radius: 5px; /*add some nice CSS3 round corners*/
+                                                -webkit-border-radius: 5px;
+                                                border-radius: 5px;
+                                                margin-bottom: 2em;
+                                                border: 1px solid #dadada;
+                                                padding: 10px;
+                                            }
+
+                                            .ask:after {
+                                                content: '';
+                                                display: block;
+                                                position: absolute;
+                                                top: 10px;
+                                                left: -20px; /*should be set to -border-width x 2 */
+                                                width: 0;
+                                                height: 0;
+                                                border-color: transparent #ececec transparent transparent;
+                                                border-style: solid;
+                                                border-width: 10px;
+                                            }
+
+                                            .answer_item {
+                                                padding: 25px 0 25px 0;
+                                            }
+
+                                            .answer_item .author {
+                                                font-weight: bold;
+                                            }
+
+                                            .ans {
+                                                min-height: 40px; /*min height of DIV should be set to at least 2x the width of the arrow*/
+                                                background: #f9f9f9;
+                                                color: black;
+                                                position: relative;
+                                                word-wrap: break-word;
+                                                -moz-border-radius: 5px; /*add some nice CSS3 round corners*/
+                                                -webkit-border-radius: 5px;
+                                                border-radius: 5px;
+                                                margin-bottom: 2em;
+                                                border: 1px solid #eaeaea;
+                                                padding: 10px;
+                                            }
+
+                                            .ans:after {
+                                                content: '';
+                                                display: block;
+                                                position: absolute;
+                                                top: -20px; /*should be set to -border-width x 2 */
+                                                left: 30px;
+                                                width: 0;
+                                                height: 0;
+                                                border-color: transparent transparent #f6f6f6 transparent;
+                                                border-style: solid;
+                                                border-width: 10px;
+                                            }
+
+                                            @media screen and (max-width: 768px) {
+                                                .answer_logo {
+                                                    width: 35%;
+                                                    margin-bottom: 10px;
+                                                }
+                                            }
+
+                                            .answer_logo {
+                                                padding: 5px 13px 5px 14px;
+                                            }
+
+                                        </style>
+
+
+                                    </div>
+                                    <!-- ========== /.Product Comments ========== -->
+                                </div>
+
+                            </div>
+                            <!-- ========== /.Tabs > Content ========== -->
+
+                        </div>
+                    </section>
+                    <!-- ===================== /.Tabs Product =====================-->
+
+
+                    <!-- ===================== Info =====================-->
+                    <section class="section info">
+                        <div class="container">
+                            <div class="row">
+
+                                <!-- ========== Accessories ========== -->
+                                <div class="col-md-12 js_accessories--mobile">
+                                    <p class="section__title">Аксесуари </p>
+                                    <div class="accessories">
+
+                                    </div>
+                                </div>
+                                <!-- ========== Useful Info ========== -->
+                                <div class="col-md-12 js_useful-info--mobile"></div>
+
+                                <!-- ========== Consultation ========== -->
+                                <div class="col-md-7 js_consultation--mobile"></div>
+
+                                <!-- ========== Help ========== -->
+                                <div class="col-md-5 js_help--mobile"></div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- ===================== /.Info =====================-->
+
+
+                    <!-- ===================== С этим товаром покупают =====================-->
+
+
+                    <section class="section">
+                        <div class="container">
+                            <p class="section__title">Рекомендовані товари</p>
+
+                            <!-- ========== Product Slider ========== -->
+                            <div class="products-slider products-slider--1 slick-initialized slick-slider slick-dotted">
+
+                                <div aria-live="polite" class="slick-list draggable">
+                                    <div class="slick-track"
+                                         style="opacity: 1; width: 4482px; transform: translate3d(-996px, 0px, 0px);"
+                                         role="listbox">
+                                        <div class="products-slider__slide slick-slide slick-cloned"
+                                             data-slick-index="-4" id="" aria-hidden="true" style="width: 249px;"
+                                             tabindex="-1">
+                                            <div class="product-card ">
+
+                                                <a href="ua/978-ds-2cd2143g2-i-28-mm"
+                                                   class="product-card__image" tabindex="-1">
+                                                    <img src="image/cache/catalog/2423i4-260x260.png"
+                                                         alt="IP відеокамера 978 DS-2CD2143G2-I (2.8 мм)">
+                                                </a>
+                                                <div class="product-card__content">
+                                                    <a href="ua/978-ds-2cd2143g2-i-28-mm"
+                                                       class="product-card__title" tabindex="-1">IP відеокамера
+                                                        978 DS-2CD2143G2-I (2.8 мм)</a>
+
+                                                    <div class="product-card__status ">В наявності</div>
+                                                    <div class="product-card__price">
+
+                                                        <span class="current">5 389 ₴</span>
+                                                    </div>
+                                                    <div class="product-card__buttons">
+
+
+                                                        <a onclick="cart.add('2441', '1');"
+                                                           class="product-card__buy btn-red-out remarketing_cart_button"
+                                                           data-product_id="2441" tabindex="-1">В кошик</a>
+
+
+                                                        <a onclick="wishlist.add('2441');"
+                                                           class="product-card__btn product-card__btn--whishlist icon-whishlist"
+                                                           tabindex="-1"></a>
+                                                        <a onclick="compare.add('2441');"
+                                                           class="product-card__btn product-card__btn--compare icon-compare"
+                                                           tabindex="-1"></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="products-slider__slide slick-slide slick-cloned"
+                                             data-slick-index="-3" id="" aria-hidden="true" style="width: 249px;"
+                                             tabindex="-1">
+                                            <div class="product-card ">
+
+                                                <a href="ua/978-ds-2cd1743g0-izc-28-12mm"
+                                                   class="product-card__image" tabindex="-1">
+                                                    <img src="image/cache/catalog/i/oh/dn/3ea4418285924513955cad46f30ced69-260x260.jpg"
+                                                         alt="4Мп IP камера 978 DS-2CD1743G0-IZ(C) 2.8-12мм">
+                                                </a>
+                                                <div class="product-card__content">
+                                                    <a href="ua/978-ds-2cd1743g0-izc-28-12mm"
+                                                       class="product-card__title" tabindex="-1">4Мп IP камера 978
+                                                        DS-2CD1743G0-IZ(C) 2.8-12мм</a>
+
+                                                    <div class="product-card__status ">В наявності</div>
+                                                    <div class="product-card__price">
+
+                                                        <span class="current">8 133 ₴</span>
+                                                    </div>
+                                                    <div class="product-card__buttons">
+
+
+                                                        <a onclick="cart.add('2733', '1');"
+                                                           class="product-card__buy btn-red-out remarketing_cart_button"
+                                                           data-product_id="2733" tabindex="-1">В кошик</a>
+
+
+                                                        <a onclick="wishlist.add('2733');"
+                                                           class="product-card__btn product-card__btn--whishlist icon-whishlist"
+                                                           tabindex="-1"></a>
+                                                        <a onclick="compare.add('2733');"
+                                                           class="product-card__btn product-card__btn--compare icon-compare"
+                                                           tabindex="-1"></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="products-slider__slide slick-slide slick-cloned"
+                                             data-slick-index="-2" id="" aria-hidden="true" style="width: 249px;"
+                                             tabindex="-1">
+                                            <div class="product-card ">
+
+                                                <a href="ua/978-ds-2cd4212fwd-iz"
+                                                   class="product-card__image" tabindex="-1">
+                                                    <img src="image/cache/catalog/foto/krrgbr10-260x260.JPG"
+                                                         alt="IP камера 978 DS-2CD4212FWD-IZ">
+                                                </a>
+                                                <div class="product-card__content">
+                                                    <a href="ua/978-ds-2cd4212fwd-iz"
+                                                       class="product-card__title" tabindex="-1">IP камера 978
+                                                        DS-2CD4212FWD-IZ</a>
+
+                                                    <div class="product-card__status ">В наявності</div>
+                                                    <div class="product-card__price">
+
+                                                        <span class="current">4 100 ₴</span>
+                                                    </div>
+                                                    <div class="product-card__buttons">
+
+
+                                                        <a onclick="cart.add('423', '1');"
+                                                           class="product-card__buy btn-red-out remarketing_cart_button"
+                                                           data-product_id="423" tabindex="-1">В кошик</a>
+
+
+                                                        <a onclick="wishlist.add('423');"
+                                                           class="product-card__btn product-card__btn--whishlist icon-whishlist"
+                                                           tabindex="-1"></a>
+                                                        <a onclick="compare.add('423');"
+                                                           class="product-card__btn product-card__btn--compare icon-compare"
+                                                           tabindex="-1"></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="products-slider__slide slick-slide slick-cloned"
+                                             data-slick-index="-1" id="" aria-hidden="true" style="width: 249px;"
+                                             tabindex="-1">
+                                            <div class="product-card ">
+
+                                                <a href="ua/978-ds-2cd5026g0-ap"
+                                                   class="product-card__image" tabindex="-1">
+                                                    <img src="image/cache/catalog/ds-2cd5026g0-ap-260x260.png"
+                                                         alt="IP відеокамера 978 DS-2CD5026G0-AP">
+                                                </a>
+                                                <div class="product-card__content">
+                                                    <a href="ua/978-ds-2cd5026g0-ap"
+                                                       class="product-card__title" tabindex="-1">IP відеокамера
+                                                        978 DS-2CD5026G0-AP</a>
+
+                                                    <div class="product-card__status ">В наявності</div>
+                                                    <div class="product-card__price">
+
+                                                        <span class="current">Ціну уточнюйте</span>
+                                                    </div>
+                                                    <div class="product-card__buttons">
+
+
+                                                        <button id="" type="button"
+                                                                onclick="askforprice('7', '1529', '1');"
+                                                                class="product-card__buy btn-red-out" tabindex="-1">
+                                                            Дізнатись ціну
+                                                        </button>
+
+
+                                                        <a onclick="wishlist.add('1529');"
+                                                           class="product-card__btn product-card__btn--whishlist icon-whishlist"
+                                                           tabindex="-1"></a>
+                                                        <a onclick="compare.add('1529');"
+                                                           class="product-card__btn product-card__btn--compare icon-compare"
+                                                           tabindex="-1"></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="products-slider__slide slick-slide slick-current slick-active"
+                                             data-slick-index="0" aria-hidden="false" style="width: 249px;"
+                                             tabindex="-1" role="option" aria-describedby="slick-slide00">
+                                            <div class="product-card ">
+
+                                                <a href="ua/978-ds-2cd1t47g0-l"
+                                                   class="product-card__image" tabindex="0">
+                                                    <img src="image/cache/catalog/i/gg/gl/a1d933b45681f4d51cd402a3bcfa437b-260x260.jpg"
+                                                         alt="4MP IP камера 978 DS-2CD1T47G0-L ">
+                                                </a>
+                                                <div class="product-card__content">
+                                                    <a href="ua/978-ds-2cd1t47g0-l"
+                                                       class="product-card__title" tabindex="0">4MP IP камера 978
+                                                        DS-2CD1T47G0-L </a>
+
+                                                    <div class="product-card__status ">В наявності</div>
+                                                    <div class="product-card__price">
+
+                                                        <span class="current">5 681 ₴</span>
+                                                    </div>
+                                                    <div class="product-card__buttons">
+
+
+                                                        <a onclick="cart.add('2824', '1');"
+                                                           class="product-card__buy btn-red-out remarketing_cart_button"
+                                                           data-product_id="2824" tabindex="0">В кошик</a>
+
+
+                                                        <a onclick="wishlist.add('2824');"
+                                                           class="product-card__btn product-card__btn--whishlist icon-whishlist"
+                                                           tabindex="0"></a>
+                                                        <a onclick="compare.add('2824');"
+                                                           class="product-card__btn product-card__btn--compare icon-compare"
+                                                           tabindex="0"></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="products-slider__slide slick-slide slick-active"
+                                             data-slick-index="1" aria-hidden="false" style="width: 249px;"
+                                             tabindex="-1" role="option" aria-describedby="slick-slide01">
+                                            <div class="product-card ">
+
+                                                <a href="ua/978-ds-2cd2555fwd-iws-28-mm"
+                                                   class="product-card__image" tabindex="0">
+                                                    <img src="image/cache/catalog/foto/ogth1dll-260x260.JPG"
+                                                         alt="IP камера 978 DS-2CD2555FWD-IWS (2.8 мм)">
+                                                </a>
+                                                <div class="product-card__content">
+                                                    <a href="ua/978-ds-2cd2555fwd-iws-28-mm"
+                                                       class="product-card__title" tabindex="0">IP камера 978
+                                                        DS-2CD2555FWD-IWS (2.8 мм)</a>
+
+                                                    <div class="product-card__status ">В наявності</div>
+                                                    <div class="product-card__price">
+
+                                                        <span class="current">10 742 ₴</span>
+                                                    </div>
+                                                    <div class="product-card__buttons">
+
+
+                                                        <a onclick="cart.add('425', '1');"
+                                                           class="product-card__buy btn-red-out remarketing_cart_button"
+                                                           data-product_id="425" tabindex="0">В кошик</a>
+
+
+                                                        <a onclick="wishlist.add('425');"
+                                                           class="product-card__btn product-card__btn--whishlist icon-whishlist"
+                                                           tabindex="0"></a>
+                                                        <a onclick="compare.add('425');"
+                                                           class="product-card__btn product-card__btn--compare icon-compare"
+                                                           tabindex="0"></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="products-slider__slide slick-slide slick-active"
+                                             data-slick-index="2" aria-hidden="false" style="width: 249px;"
+                                             tabindex="-1" role="option" aria-describedby="slick-slide02">
+                                            <div class="product-card ">
+
+                                                <a href="ua/978-ds-2cd1121-id-28-mm"
+                                                   class="product-card__image" tabindex="0">
+                                                    <img src="image/cache/catalog/foto/wphueyix-260x260.jpg"
+                                                         alt="IP камера 978 DS-2CD1121-I (D) (2.8 мм)">
+                                                </a>
+                                                <div class="product-card__content">
+                                                    <a href="ua/978-ds-2cd1121-id-28-mm"
+                                                       class="product-card__title" tabindex="0">IP камера 978
+                                                        DS-2CD1121-I (D) (2.8 мм)</a>
+
+                                                    <div class="product-card__status ">В наявності</div>
+                                                    <div class="product-card__price">
+
+                                                        <span class="current">2 891 ₴</span>
+                                                    </div>
+                                                    <div class="product-card__buttons">
+
+
+                                                        <a onclick="cart.add('941', '1');"
+                                                           class="product-card__buy btn-red-out remarketing_cart_button"
+                                                           data-product_id="941" tabindex="0">В кошик</a>
+
+
+                                                        <a onclick="wishlist.add('941');"
+                                                           class="product-card__btn product-card__btn--whishlist icon-whishlist"
+                                                           tabindex="0"></a>
+                                                        <a onclick="compare.add('941');"
+                                                           class="product-card__btn product-card__btn--compare icon-compare"
+                                                           tabindex="0"></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="products-slider__slide slick-slide slick-active"
+                                             data-slick-index="3" aria-hidden="false" style="width: 249px;"
+                                             tabindex="-1" role="option" aria-describedby="slick-slide03">
+                                            <div class="product-card ">
+
+                                                <a href="ua/978-ds-2cd2t46g2-isusl"
+                                                   class="product-card__image" tabindex="0">
+                                                    <img src="image/cache/catalog/product/ipcamera/ds-2cd2t26g1-4i%284mm%29-260x260.jpg"
+                                                         alt="IP відеокамера 978 DS-2CD2T46G2-ISU/SL">
+                                                </a>
+                                                <div class="product-card__content">
+                                                    <a href="ua/978-ds-2cd2t46g2-isusl"
+                                                       class="product-card__title" tabindex="0">IP відеокамера 978
+                                                        DS-2CD2T46G2-ISU/SL</a>
+
+                                                    <div class="product-card__status ">В наявності</div>
+                                                    <div class="product-card__price">
+
+                                                        <span class="current">8 376 ₴</span>
+                                                    </div>
+                                                    <div class="product-card__buttons">
+
+
+                                                        <a onclick="cart.add('2307', '1');"
+                                                           class="product-card__buy btn-red-out remarketing_cart_button"
+                                                           data-product_id="2307" tabindex="0">В кошик</a>
+
+
+                                                        <a onclick="wishlist.add('2307');"
+                                                           class="product-card__btn product-card__btn--whishlist icon-whishlist"
+                                                           tabindex="0"></a>
+                                                        <a onclick="compare.add('2307');"
+                                                           class="product-card__btn product-card__btn--compare icon-compare"
+                                                           tabindex="0"></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="products-slider__slide slick-slide" data-slick-index="4"
+                                             aria-hidden="true" style="width: 249px;" tabindex="-1" role="option"
+                                             aria-describedby="slick-slide04">
+                                            <div class="product-card ">
+
+                                                <a href="ua/978-ids-2cd7a26g0p-izhs-c"
+                                                   class="product-card__image" tabindex="-1">
+                                                    <img src="image/cache/catalog/i/gl/em/33aa0c23e9b84a511c987cc1316b1c86-260x260.png"
+                                                         alt="IP відеокамера 978 iDS-2CD7A26G0/P-IZHS (C)">
+                                                </a>
+                                                <div class="product-card__content">
+                                                    <a href="ua/978-ids-2cd7a26g0p-izhs-c"
+                                                       class="product-card__title" tabindex="-1">IP відеокамера
+                                                        978 iDS-2CD7A26G0/P-IZHS (C)</a>
+
+                                                    <div class="product-card__status ">В наявності</div>
+                                                    <div class="product-card__price">
+
+                                                        <span class="current">33 620 ₴</span>
+                                                    </div>
+                                                    <div class="product-card__buttons">
+
+
+                                                        <a onclick="cart.add('2657', '1');"
+                                                           class="product-card__buy btn-red-out remarketing_cart_button"
+                                                           data-product_id="2657" tabindex="-1">В кошик</a>
+
+
+                                                        <a onclick="wishlist.add('2657');"
+                                                           class="product-card__btn product-card__btn--whishlist icon-whishlist"
+                                                           tabindex="-1"></a>
+                                                        <a onclick="compare.add('2657');"
+                                                           class="product-card__btn product-card__btn--compare icon-compare"
+                                                           tabindex="-1"></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="products-slider__slide slick-slide" data-slick-index="5"
+                                             aria-hidden="true" style="width: 249px;" tabindex="-1" role="option"
+                                             aria-describedby="slick-slide05">
+                                            <div class="product-card ">
+
+                                                <a href="ua/978-ds-2cd1043g0-iuf-4-mm"
+                                                   class="product-card__image" tabindex="-1">
+                                                    <img src="image/cache/catalog/i/fj/gb/ad1b93af39429458cddc1195ea3470fa-260x260.png"
+                                                         alt="IP відеокамера 978 DS-2CD1043G0-IUF (4 мм)">
+                                                </a>
+                                                <div class="product-card__content">
+                                                    <a href="ua/978-ds-2cd1043g0-iuf-4-mm"
+                                                       class="product-card__title" tabindex="-1">IP відеокамера
+                                                        978 DS-2CD1043G0-IUF (4 мм)</a>
+
+                                                    <div class="product-card__status ">В наявності</div>
+                                                    <div class="product-card__price">
+
+                                                        <span class="current">4 425 ₴</span>
+                                                    </div>
+                                                    <div class="product-card__buttons">
+
+
+                                                        <a onclick="cart.add('3277', '1');"
+                                                           class="product-card__buy btn-red-out remarketing_cart_button"
+                                                           data-product_id="3277" tabindex="-1">В кошик</a>
+
+
+                                                        <a onclick="wishlist.add('3277');"
+                                                           class="product-card__btn product-card__btn--whishlist icon-whishlist"
+                                                           tabindex="-1"></a>
+                                                        <a onclick="compare.add('3277');"
+                                                           class="product-card__btn product-card__btn--compare icon-compare"
+                                                           tabindex="-1"></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="products-slider__slide slick-slide" data-slick-index="6"
+                                             aria-hidden="true" style="width: 249px;" tabindex="-1" role="option"
+                                             aria-describedby="slick-slide06">
+                                            <div class="product-card ">
+
+                                                <a href="ua/978-ds-2cd2143g2-i-28-mm"
+                                                   class="product-card__image" tabindex="-1">
+                                                    <img src="image/cache/catalog/2423i4-260x260.png"
+                                                         alt="IP відеокамера 978 DS-2CD2143G2-I (2.8 мм)">
+                                                </a>
+                                                <div class="product-card__content">
+                                                    <a href="ua/978-ds-2cd2143g2-i-28-mm"
+                                                       class="product-card__title" tabindex="-1">IP відеокамера
+                                                        978 DS-2CD2143G2-I (2.8 мм)</a>
+
+                                                    <div class="product-card__status ">В наявності</div>
+                                                    <div class="product-card__price">
+
+                                                        <span class="current">5 389 ₴</span>
+                                                    </div>
+                                                    <div class="product-card__buttons">
+
+
+                                                        <a onclick="cart.add('2441', '1');"
+                                                           class="product-card__buy btn-red-out remarketing_cart_button"
+                                                           data-product_id="2441" tabindex="-1">В кошик</a>
+
+
+                                                        <a onclick="wishlist.add('2441');"
+                                                           class="product-card__btn product-card__btn--whishlist icon-whishlist"
+                                                           tabindex="-1"></a>
+                                                        <a onclick="compare.add('2441');"
+                                                           class="product-card__btn product-card__btn--compare icon-compare"
+                                                           tabindex="-1"></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="products-slider__slide slick-slide" data-slick-index="7"
+                                             aria-hidden="true" style="width: 249px;" tabindex="-1" role="option"
+                                             aria-describedby="slick-slide07">
+                                            <div class="product-card ">
+
+                                                <a href="ua/978-ds-2cd1743g0-izc-28-12mm"
+                                                   class="product-card__image" tabindex="-1">
+                                                    <img src="image/cache/catalog/i/oh/dn/3ea4418285924513955cad46f30ced69-260x260.jpg"
+                                                         alt="4Мп IP камера 978 DS-2CD1743G0-IZ(C) 2.8-12мм">
+                                                </a>
+                                                <div class="product-card__content">
+                                                    <a href="ua/978-ds-2cd1743g0-izc-28-12mm"
+                                                       class="product-card__title" tabindex="-1">4Мп IP камера 978
+                                                        DS-2CD1743G0-IZ(C) 2.8-12мм</a>
+
+                                                    <div class="product-card__status ">В наявності</div>
+                                                    <div class="product-card__price">
+
+                                                        <span class="current">8 133 ₴</span>
+                                                    </div>
+                                                    <div class="product-card__buttons">
+
+
+                                                        <a onclick="cart.add('2733', '1');"
+                                                           class="product-card__buy btn-red-out remarketing_cart_button"
+                                                           data-product_id="2733" tabindex="-1">В кошик</a>
+
+
+                                                        <a onclick="wishlist.add('2733');"
+                                                           class="product-card__btn product-card__btn--whishlist icon-whishlist"
+                                                           tabindex="-1"></a>
+                                                        <a onclick="compare.add('2733');"
+                                                           class="product-card__btn product-card__btn--compare icon-compare"
+                                                           tabindex="-1"></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="products-slider__slide slick-slide" data-slick-index="8"
+                                             aria-hidden="true" style="width: 249px;" tabindex="-1" role="option"
+                                             aria-describedby="slick-slide08">
+                                            <div class="product-card ">
+
+                                                <a href="ua/978-ds-2cd4212fwd-iz"
+                                                   class="product-card__image" tabindex="-1">
+                                                    <img src="image/cache/catalog/foto/krrgbr10-260x260.JPG"
+                                                         alt="IP камера 978 DS-2CD4212FWD-IZ">
+                                                </a>
+                                                <div class="product-card__content">
+                                                    <a href="ua/978-ds-2cd4212fwd-iz"
+                                                       class="product-card__title" tabindex="-1">IP камера 978
+                                                        DS-2CD4212FWD-IZ</a>
+
+                                                    <div class="product-card__status ">В наявності</div>
+                                                    <div class="product-card__price">
+
+                                                        <span class="current">4 100 ₴</span>
+                                                    </div>
+                                                    <div class="product-card__buttons">
+
+
+                                                        <a onclick="cart.add('423', '1');"
+                                                           class="product-card__buy btn-red-out remarketing_cart_button"
+                                                           data-product_id="423" tabindex="-1">В кошик</a>
+
+
+                                                        <a onclick="wishlist.add('423');"
+                                                           class="product-card__btn product-card__btn--whishlist icon-whishlist"
+                                                           tabindex="-1"></a>
+                                                        <a onclick="compare.add('423');"
+                                                           class="product-card__btn product-card__btn--compare icon-compare"
+                                                           tabindex="-1"></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="products-slider__slide slick-slide" data-slick-index="9"
+                                             aria-hidden="true" style="width: 249px;" tabindex="-1" role="option"
+                                             aria-describedby="slick-slide09">
+                                            <div class="product-card ">
+
+                                                <a href="ua/978-ds-2cd5026g0-ap"
+                                                   class="product-card__image" tabindex="-1">
+                                                    <img src="image/cache/catalog/ds-2cd5026g0-ap-260x260.png"
+                                                         alt="IP відеокамера 978 DS-2CD5026G0-AP">
+                                                </a>
+                                                <div class="product-card__content">
+                                                    <a href="ua/978-ds-2cd5026g0-ap"
+                                                       class="product-card__title" tabindex="-1">IP відеокамера
+                                                        978 DS-2CD5026G0-AP</a>
+
+                                                    <div class="product-card__status ">В наявності</div>
+                                                    <div class="product-card__price">
+
+                                                        <span class="current">Ціну уточнюйте</span>
+                                                    </div>
+                                                    <div class="product-card__buttons">
+
+
+                                                        <button id="button-preorder" type="button"
+                                                                onclick="askforprice('7', '1529', '1');"
+                                                                class="product-card__buy btn-red-out" tabindex="-1">
+                                                            Дізнатись ціну
+                                                        </button>
+
+
+                                                        <a onclick="wishlist.add('1529');"
+                                                           class="product-card__btn product-card__btn--whishlist icon-whishlist"
+                                                           tabindex="-1"></a>
+                                                        <a onclick="compare.add('1529');"
+                                                           class="product-card__btn product-card__btn--compare icon-compare"
+                                                           tabindex="-1"></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="products-slider__slide slick-slide slick-cloned"
+                                             data-slick-index="10" id="" aria-hidden="true" style="width: 249px;"
+                                             tabindex="-1">
+                                            <div class="product-card ">
+
+                                                <a href="ua/978-ds-2cd1t47g0-l"
+                                                   class="product-card__image" tabindex="-1">
+                                                    <img src="image/cache/catalog/i/gg/gl/a1d933b45681f4d51cd402a3bcfa437b-260x260.jpg"
+                                                         alt="4MP IP камера 978 DS-2CD1T47G0-L ">
+                                                </a>
+                                                <div class="product-card__content">
+                                                    <a href="ua/978-ds-2cd1t47g0-l"
+                                                       class="product-card__title" tabindex="-1">4MP IP камера 978
+                                                        DS-2CD1T47G0-L </a>
+
+                                                    <div class="product-card__status ">В наявності</div>
+                                                    <div class="product-card__price">
+
+                                                        <span class="current">5 681 ₴</span>
+                                                    </div>
+                                                    <div class="product-card__buttons">
+
+
+                                                        <a onclick="cart.add('2824', '1');"
+                                                           class="product-card__buy btn-red-out remarketing_cart_button"
+                                                           data-product_id="2824" tabindex="-1">В кошик</a>
+
+
+                                                        <a onclick="wishlist.add('2824');"
+                                                           class="product-card__btn product-card__btn--whishlist icon-whishlist"
+                                                           tabindex="-1"></a>
+                                                        <a onclick="compare.add('2824');"
+                                                           class="product-card__btn product-card__btn--compare icon-compare"
+                                                           tabindex="-1"></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="products-slider__slide slick-slide slick-cloned"
+                                             data-slick-index="11" id="" aria-hidden="true" style="width: 249px;"
+                                             tabindex="-1">
+                                            <div class="product-card ">
+
+                                                <a href="ua/978-ds-2cd2555fwd-iws-28-mm"
+                                                   class="product-card__image" tabindex="-1">
+                                                    <img src="image/cache/catalog/foto/ogth1dll-260x260.JPG"
+                                                         alt="IP камера 978 DS-2CD2555FWD-IWS (2.8 мм)">
+                                                </a>
+                                                <div class="product-card__content">
+                                                    <a href="ua/978-ds-2cd2555fwd-iws-28-mm"
+                                                       class="product-card__title" tabindex="-1">IP камера 978
+                                                        DS-2CD2555FWD-IWS (2.8 мм)</a>
+
+                                                    <div class="product-card__status ">В наявності</div>
+                                                    <div class="product-card__price">
+
+                                                        <span class="current">10 742 ₴</span>
+                                                    </div>
+                                                    <div class="product-card__buttons">
+
+
+                                                        <a onclick="cart.add('425', '1');"
+                                                           class="product-card__buy btn-red-out remarketing_cart_button"
+                                                           data-product_id="425" tabindex="-1">В кошик</a>
+
+
+                                                        <a onclick="wishlist.add('425');"
+                                                           class="product-card__btn product-card__btn--whishlist icon-whishlist"
+                                                           tabindex="-1"></a>
+                                                        <a onclick="compare.add('425');"
+                                                           class="product-card__btn product-card__btn--compare icon-compare"
+                                                           tabindex="-1"></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="products-slider__slide slick-slide slick-cloned"
+                                             data-slick-index="12" id="" aria-hidden="true" style="width: 249px;"
+                                             tabindex="-1">
+                                            <div class="product-card ">
+
+                                                <a href="ua/978-ds-2cd1121-id-28-mm"
+                                                   class="product-card__image" tabindex="-1">
+                                                    <img src="image/cache/catalog/foto/wphueyix-260x260.jpg"
+                                                         alt="IP камера 978 DS-2CD1121-I (D) (2.8 мм)">
+                                                </a>
+                                                <div class="product-card__content">
+                                                    <a href="ua/978-ds-2cd1121-id-28-mm"
+                                                       class="product-card__title" tabindex="-1">IP камера 978
+                                                        DS-2CD1121-I (D) (2.8 мм)</a>
+
+                                                    <div class="product-card__status ">В наявності</div>
+                                                    <div class="product-card__price">
+
+                                                        <span class="current">2 891 ₴</span>
+                                                    </div>
+                                                    <div class="product-card__buttons">
+
+
+                                                        <a onclick="cart.add('941', '1');"
+                                                           class="product-card__buy btn-red-out remarketing_cart_button"
+                                                           data-product_id="941" tabindex="-1">В кошик</a>
+
+
+                                                        <a onclick="wishlist.add('941');"
+                                                           class="product-card__btn product-card__btn--whishlist icon-whishlist"
+                                                           tabindex="-1"></a>
+                                                        <a onclick="compare.add('941');"
+                                                           class="product-card__btn product-card__btn--compare icon-compare"
+                                                           tabindex="-1"></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="products-slider__slide slick-slide slick-cloned"
+                                             data-slick-index="13" id="" aria-hidden="true" style="width: 248px;"
+                                             tabindex="-1">
+                                            <div class="product-card ">
+
+                                                <a href="ua/978-ds-2cd2t46g2-isusl"
+                                                   class="product-card__image" tabindex="-1">
+                                                    <img src="image/cache/catalog/product/ipcamera/ds-2cd2t26g1-4i%284mm%29-260x260.jpg"
+                                                         alt="IP відеокамера 978 DS-2CD2T46G2-ISU/SL">
+                                                </a>
+                                                <div class="product-card__content">
+                                                    <a href="ua/978-ds-2cd2t46g2-isusl"
+                                                       class="product-card__title" tabindex="-1">IP відеокамера
+                                                        978 DS-2CD2T46G2-ISU/SL</a>
+
+                                                    <div class="product-card__status ">В наявності</div>
+                                                    <div class="product-card__price">
+
+                                                        <span class="current">8 376 ₴</span>
+                                                    </div>
+                                                    <div class="product-card__buttons">
+
+
+                                                        <a onclick="cart.add('2307', '1');"
+                                                           class="product-card__buy btn-red-out remarketing_cart_button"
+                                                           data-product_id="2307" tabindex="-1">В кошик</a>
+
+
+                                                        <a onclick="wishlist.add('2307');"
+                                                           class="product-card__btn product-card__btn--whishlist icon-whishlist"
+                                                           tabindex="-1"></a>
+                                                        <a onclick="compare.add('2307');"
+                                                           class="product-card__btn product-card__btn--compare icon-compare"
+                                                           tabindex="-1"></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- Products Slider > Controls -->
+                                <div class="slick-controls">
+                                    <div class="slick-controls__dots" role="toolbar">
+                                        <ul class="slick-dots" style="" role="tablist">
+                                            <li class="slick-active" aria-hidden="false" role="presentation"
+                                                aria-selected="true" aria-controls="navigation00" id="slick-slide00">
+                                                <button type="button" data-role="none" role="button" tabindex="0">1
+                                                </button>
+                                            </li>
+                                            <li aria-hidden="true" role="presentation" aria-selected="false"
+                                                aria-controls="navigation01" id="slick-slide01">
+                                                <button type="button" data-role="none" role="button" tabindex="0">2
+                                                </button>
+                                            </li>
+                                            <li aria-hidden="true" role="presentation" aria-selected="false"
+                                                aria-controls="navigation02" id="slick-slide02">
+                                                <button type="button" data-role="none" role="button" tabindex="0">3
+                                                </button>
+                                            </li>
+                                            <li aria-hidden="true" role="presentation" aria-selected="false"
+                                                aria-controls="navigation03" id="slick-slide03">
+                                                <button type="button" data-role="none" role="button" tabindex="0">4
+                                                </button>
+                                            </li>
+                                            <li aria-hidden="true" role="presentation" aria-selected="false"
+                                                aria-controls="navigation04" id="slick-slide04">
+                                                <button type="button" data-role="none" role="button" tabindex="0">5
+                                                </button>
+                                            </li>
+                                            <li aria-hidden="true" role="presentation" aria-selected="false"
+                                                aria-controls="navigation05" id="slick-slide05">
+                                                <button type="button" data-role="none" role="button" tabindex="0">6
+                                                </button>
+                                            </li>
+                                            <li aria-hidden="true" role="presentation" aria-selected="false"
+                                                aria-controls="navigation06" id="slick-slide06">
+                                                <button type="button" data-role="none" role="button" tabindex="0">7
+                                                </button>
+                                            </li>
+                                            <li aria-hidden="true" role="presentation" aria-selected="false"
+                                                aria-controls="navigation07" id="slick-slide07">
+                                                <button type="button" data-role="none" role="button" tabindex="0">8
+                                                </button>
+                                            </li>
+                                            <li aria-hidden="true" role="presentation" aria-selected="false"
+                                                aria-controls="navigation08" id="slick-slide08">
+                                                <button type="button" data-role="none" role="button" tabindex="0">9
+                                                </button>
+                                            </li>
+                                            <li aria-hidden="true" role="presentation" aria-selected="false"
+                                                aria-controls="navigation09" id="slick-slide09">
+                                                <button type="button" data-role="none" role="button" tabindex="0">10
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="slick-controls__arrows">
+                                        <button type="button" data-role="none" class="slick-prev slick-arrow"
+                                                aria-label="Previous" role="button" style="">Previous
+                                        </button>
+                                        <button type="button" data-role="none" class="slick-next slick-arrow"
+                                                aria-label="Next" role="button" style="">Next
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ========== /.Product Slider ========== -->
+
+                        </div>
+                    </section>
+                    <!-- ===================== /.Recomented Products =====================-->
+
+
+                    <!--microdatapro 7.0 breadcrumb start [json-ld] -->
+                    <script type="application/ld+json">
+{
+"@context": "http://schema.org",
+"@type": "BreadcrumbList",
+"itemListElement": [{
+"@type": "ListItem",
+"position": 1,
+"item": {
+"@id": "ua",
+"name": "Main"
+}
+},{
+"@type": "ListItem",
+"position": 2,
+"item": {
+"@id": "ua/kamery-videonablyudeniya/",
+"name": "Камери відеоспостереження"
+}
+},{
+"@type": "ListItem",
+"position": 3,
+"item": {
+"@id": "ua/kamery-videonablyudeniya/ip-kamery/",
+"name": "IP камери"
+}
+},{
+"@type": "ListItem",
+"position": 4,
+"item": {
+"@id": "ua/978-ds-2cd2423g2-i-28mm",
+"name": "2 МП AcuSense IP камера 978 DS-2CD2423G2-I 2.8мм"
+}
+}]
+}
+</script>
+                    <!--microdatapro 7.0 breadcrumb end [json-ld] -->
+                    <!--microdatapro 7.0 product start [json-ld] -->
+                    <script type="application/ld+json">
+{
+"@context": "http://schema.org",
+"@type": "Product",
+"url": "ua/978-ds-2cd2423g2-i-28mm",
+"category": "IP камери",
+"image": "image/cache/catalog/i/na/aa/97068a1e5a361fcf09649c61d9817780-650x650.png",
+"brand": "978",
+"manufacturer": "978",
+"model": "DS-2CD2423G2-I 2.8мм",
+"sku": "3418",
+"mpn": "3418",
+"aggregateRating": {
+"@type": "AggregateRating",
+"ratingValue": "666",
+"ratingCount": "8",
+"reviewCount": "8",
+"bestRating": "5",
+"worstRating": "1"
+},
+"description": "2 МП AcuSense IP камера 978 DS-2CD2423G2-I 2.8мм Особливості: 2 Мп IP; Матриця: 1/2.8  CMOS; стистення: H.264 / H.265 / H.264+ / H.265+; Об’єктив: f=2.8 мм (кут огляду 108); колір: 0,005 лк (F1.6, AGC ON), Ч / Б: 0 лк з ІЧ ; запис: 1920 х 1080, 1280 x 960, 1280 x 720 - 25 к/с; Функції: WDR 120 дБ, 3D DNR, BLC, HLC; аналітика: детекція обличчя, перетин лінії, вторгнення, цільові типи; вбуд. мікрофон і динамік; ІЧ-підсвітка до 10 м, PIR до 10 метров; Слот пам’яті: micro SD до 256 Гб; DC 12В/7Вт; PoE 802.3af; 103 х 65 х 33 мм;   -10 °C - 40 °C; 120 г",
+"name": "2 МП AcuSense IP камера 978 DS-2CD2423G2-I 2.8мм",
+"offers": {
+"@type": "Offer",
+"availability": "http://schema.org/InStock",
+"price": "4275",
+"priceCurrency": "UAH",
+"itemCondition": "http://schema.org/NewCondition",
+"priceValidUntil": "12-11-2022",
+"url": "ua/978-ds-2cd2423g2-i-28mm"
+},"additionalProperty":[
+{
+"@type": "PropertyValue",
+"name": "Вид (форм фактор)",
+"value": "Мініатюрна, Кубічна"
+},{
+"@type": "PropertyValue",
+"name": "Дальність ІЧ-підсвічування",
+"value": " 10 метрів"
+},{
+"@type": "PropertyValue",
+"name": "Запис",
+"value": "На SD карту пам яті, На жорсткий диск HDD"
+},{
+"@type": "PropertyValue",
+"name": "Особливості",
+"value": "ІЧ підсвічування, Відеоаналітика, Мікрофон, Запис звуку, Датчик руху, Розпізнавання облич, Ширококутова, Віддалений перегляд"
+},{
+"@type": "PropertyValue",
+"name": "Призначення",
+"value": "Для будинку, Для квартири, Для магазину, Для офісу, Для приміщення"
+},{
+"@type": "PropertyValue",
+"name": "Роздільна здатність",
+"value": " 2 МП"
+},{
+"@type": "PropertyValue",
+"name": "Тип встановлення",
+"value": " Внутрішня"
+},{
+"@type": "PropertyValue",
+"name": "Тип підключення",
+"value": "Дротові, PoE живлення"
+},{
+"@type": "PropertyValue",
+"name": "Вага",
+"value": "120 г"
+},{
+"@type": "PropertyValue",
+"name": "Матеріал",
+"value": "пластик"
+},{
+"@type": "PropertyValue",
+"name": "Робоча температура",
+"value": "-10 °C - 40 °C"
+},{
+"@type": "PropertyValue",
+"name": "BLC",
+"value": "Підтримує"
+},{
+"@type": "PropertyValue",
+"name": "HLC",
+"value": "Підтримує"
+},{
+"@type": "PropertyValue",
+"name": "PoE",
+"value": "802.3af, Class 3"
+},{
+"@type": "PropertyValue",
+"name": "ROI",
+"value": "1 зона для головного та дод. потоку"
+},{
+"@type": "PropertyValue",
+"name": "WDR",
+"value": "120 дБ"
+},{
+"@type": "PropertyValue",
+"name": "Ідентифікація об єкта",
+"value": "3 м"
+},{
+"@type": "PropertyValue",
+"name": "Апертура",
+"value": "F1.6"
+},{
+"@type": "PropertyValue",
+"name": "Відео компресія",
+"value": "H.265/H.264/H.264+/H.265+"
+},{
+"@type": "PropertyValue",
+"name": "Виявлення облич",
+"value": "Підтримує"
+},{
+"@type": "PropertyValue",
+"name": "Виявлення об’єкта",
+"value": "39 м"
+},{
+"@type": "PropertyValue",
+"name": "Вторгнення в область",
+"value": "Підтримує"
+},{
+"@type": "PropertyValue",
+"name": "Дальність підсвічування",
+"value": "10 м"
+},{
+"@type": "PropertyValue",
+"name": "Живлення",
+"value": "12 В DC, 0.49 A"
+},{
+"@type": "PropertyValue",
+"name": "Кількість одночасних підключень",
+"value": "6"
+},{
+"@type": "PropertyValue",
+"name": "Користувачі/рівні",
+"value": "32/3"
+},{
+"@type": "PropertyValue",
+"name": "Кути огляду",
+"value": "Г: 108.8°, В: 57.7°, Д: 129.4°"
+},{
+"@type": "PropertyValue",
+"name": "Мін. Чутливість",
+"value": "Колір: 0,005 лк (F1.6, AGC ON), Ч/Б: 0 лк з ІЧ"
+},{
+"@type": "PropertyValue",
+"name": "Матриця",
+"value": "1/2.8  CMOS"
+},{
+"@type": "PropertyValue",
+"name": "Мережеві інтерфейси",
+"value": "1 RJ45 10 M/100 M"
+},{
+"@type": "PropertyValue",
+"name": "Метод зберігання",
+"value": "NAS (NFS, SMB/CIFS), (ANR), microSD 256 Гб"
+},{
+"@type": "PropertyValue",
+"name": "Підтримка браузерів",
+"value": "IE 10, IE 11, Chrome 57.0+, Firefox 52.0+"
+},{
+"@type": "PropertyValue",
+"name": "Перетин лінії",
+"value": "Підтримує"
+},{
+"@type": "PropertyValue",
+"name": "Потужність споживання",
+"value": "7 Вт"
+},{
+"@type": "PropertyValue",
+"name": "Придушення шуму (DNR)",
+"value": "3D"
+},{
+"@type": "PropertyValue",
+"name": "Програмне забезпечення",
+"value": "iVMS-4200, Hik-Connect, Hik-Central"
+},{
+"@type": "PropertyValue",
+"name": "Регулювання по осях",
+"value": "Поворот: 0 ° - 360 °, нахил: 0 ° - 90°, оберт: 0 ° - 360°"
+},{
+"@type": "PropertyValue",
+"name": "Розміри",
+"value": "103 × 65 × 33 мм"
+},{
+"@type": "PropertyValue",
+"name": "Розпізнавання об’єкту",
+"value": "7 м"
+},{
+"@type": "PropertyValue",
+"name": "Спостереження за об’єктом",
+"value": "15 м"
+},{
+"@type": "PropertyValue",
+"name": "Сумісність",
+"value": "ONVIF (PROFILE S, PROFILE G, PROFILE T), ISAPI, SDK"
+},{
+"@type": "PropertyValue",
+"name": "Тип підсвічування",
+"value": "ІЧ"
+},{
+"@type": "PropertyValue",
+"name": "Фокусна відстань",
+"value": "2.8 мм"
+},{
+"@type": "PropertyValue",
+"name": "Цільові типи",
+"value": "Підтримує"
+},{
+"@type": "PropertyValue",
+"name": "Частота кадрів (головний потік)",
+"value": "1920 × 1080, 1280 × 720 25 к/с"
+},{
+"@type": "PropertyValue",
+"name": "Частота кадрів (дод2. потік)",
+"value": "1920 × 1080, 1280 × 720, 640 × 480, 640 × 360 10 к/с"
+},{
+"@type": "PropertyValue",
+"name": "Частота кадрів (доп. потік)",
+"value": "640 × 480, 640 × 360 25 к/с"
+},{
+"@type": "PropertyValue",
+"name": "Швидкість затвора",
+"value": "1/3 -1/100,000 с"
+}]
+}
+</script>
+                    <!--microdatapro 7.0 product end [json-ld] -->
+                    <!--microdatapro 7.0 image start [json-ld] -->
+                    <script type="application/ld+json">
+{
+"@context": "http://schema.org",
+"@type": "ImageObject",
+"author": "978",
+"thumbnailUrl": "image/cache/catalog/i/na/aa/97068a1e5a361fcf09649c61d9817780-450x450.png",
+"contentUrl": "image/cache/catalog/i/na/aa/97068a1e5a361fcf09649c61d9817780-650x650.png",
+"datePublished": "2021-12-24",
+"description": "2 МП AcuSense IP камера 978 DS-2CD2423G2-I 2.8мм",
+"name": "2 МП AcuSense IP камера 978 DS-2CD2423G2-I 2.8мм"
+}
+</script>
+                    <!--microdatapro 7.0 image end [json-ld] -->
+                    <!--microdatapro 7.0 gallery start [json-ld] -->
+                    <script type="application/ld+json">
+{
+"@context": "http://schema.org",
+"@type": "ImageGallery",
+"associatedMedia":[
+{
+"@type": "ImageObject",
+"author": "978",
+"thumbnailUrl": "",
+"contentUrl": "",
+"datePublished": "2021-12-24",
+"description": "2 МП AcuSense IP камера 978 DS-2CD2423G2-I 2.8мм",
+"name": "2 МП AcuSense IP камера 978 DS-2CD2423G2-I 2.8мм"
+},{
+"@type": "ImageObject",
+"author": "978",
+"thumbnailUrl": "",
+"contentUrl": "",
+"datePublished": "2021-12-24",
+"description": "2 МП AcuSense IP камера 978 DS-2CD2423G2-I 2.8мм",
+"name": "2 МП AcuSense IP камера 978 DS-2CD2423G2-I 2.8мм"
+}]
+}
+</script>
+                    <!--microdatapro 7.0 gallery end [json-ld] -->
+
+                </article>
+                <!-- ========================================== Article Content ========================================== -->
+
+
+            </div>
+        </div>
+    </main>
+    <script>
+        $(document).on('click', '.form__rating [aria-valuenow]', function () {
+            $("#comment_rating").val($(this).attr("aria-valuenow"))
+
+        });
+        $(document).ready(function () {
+
+
+            var hash = window.location.hash;
+            if (hash) {
+                var hashpart = hash.split('#');
+                var vals = hashpart[1].split('-');
+                for (i = 0; i < vals.length; i++) {
+                    $('div.options').find('select option[value="' + vals[i] + '"]').attr('selected', true).trigger('select');
+                    $('div.options').find('input[type="radio"][value="' + vals[i] + '"]').attr('checked', true).trigger('click');
+                }
+            }
+
+
+        })
+        //-->
+    </script>
+    <div class="init_popup">
+        <div style="display: none;" class="window_holder1">
+            <div class="newsletter_module popup">
+                <div class="table">
+                    <div class="table-cell white-saas-generator">
+                    <span style="position:absolute;right: 12px;top: 12px;z-index: 99;cursor: pointer;"
+                          class="popup_close">
+                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="16.8881" height="1.36194"
+                                  transform="matrix(0.701851 0.712324 -0.701851 0.712324 1.14709 0)" fill="#828282"/>
+                            <rect width="16.8881" height="1.36194"
+                                  transform="matrix(0.701851 -0.712324 0.701851 0.712324 0 12.0298)" fill="#828282"/>
+                        </svg>
+                    </span>
+                        <div class="white-saas-generator-container">
+                            <div>
+                                <div class="head">
+                                    <span>Специальные цены! </span>на весь ассортимент 978
+                                </div>
+                                <div class="text">
+                                    Чтобы гарантированно получить<br>
+                                    Уникальное предложение оставьте<br>
+                                    свои контакты и нажмите «Получить!»
+                                </div>
+                                <div class="inpt">
+                                    <label>Имя</label>
+                                    <input id="name0" name="name" type="text" class="callback-popup__input"
+                                           placeholder="Имя" maxlength="34">
+                                    <label>Телефон</label>
+                                    <input id="email0" name="email" type="tel" class="callback-popup__input"
+                                           placeholder="Введите ваш телефон" maxlength="34">
+                                    <div id="respond1" class="0"></div>
+                                </div>
+                                <div class="formbtn">
+                                    <a id="button-subscribe" class="0 btn-red btn-blick">Получить!</a>
+                                    <a href="javascript:void(0)" class="popup_close btn-red-out btn-blick">Спасибо, не
+                                        нужно</a>
+                                </div>
+                            </div>
+                            <div>
+                                <img src="image/catalog/demo/banners/logo.svg" alt=""
+                                     class="white-saas-generator-image">
+                                <img class="white-saas-generator-image" src="image/catalog/bgg.png">
+                            </div>
+                        </div>
+                        <div id="respond" style="display:none;" class="0">
+                            <span class="text-success">Спасибо за Ваш запрос! В ближайшее время мы свяжемся с вами и сделаем специальное предложение.</span>
+                            <a href="javascript:void(0)" class="btn-red btn-blick popup_close" style="margin-top:25px;">Закрыть</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="popup_mask popup_close" style="display: none;"></div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            if (localStorage.getItem("popups")) {
+
+
+            } else {
+
+                setTimeout(function () {
+                    $('.popup_mask').fadeTo(750, 0.5);
+                    $('.window_holder1').show();
+                    setTimeout(function () {
+                        $('.window_holder1').addClass('active');
+                    }, 750);
+                }, 10000);
+
+
+            }
+            $('.popup_close').click(function () {
+                $('.popup_mask').hide();
+                $('.window_holder1').hide();
+                $('body').removeClass('sk');
+            });
+            localStorage.setItem("popups", true);
+        });
+    </script>
+    <link rel="stylesheet" href="{% static 'css/cbk.css' %}">
+    <style>
+        .newsletter_module .text-success {
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .white-saas-generator.success {
+            width: 800px;
+            height: 200px;
+        }
+
+        .white-saas-generator.success .white-saas-generator-btn-cancel {
+            white-space: nowrap;
+            overflow: hidden;
+            margin: 10px auto 0;
+            display: block;
+            color: #fff !important;
+            font-size: 15px;
+            background: #848484;
+            background-color: rgb(132, 132, 132);
+            padding: 4px 0 8px;
+            text-decoration: none;
+            max-width: 212px;
+            text-align: center;
+            border-radius: 4px;
+        }
+    </style>
+    <script type="text/javascript"><!--
+    $('#product input[type=\'radio\'], #product input[type=\'checkbox\'], #product select').on('change', function () {
+        changeOptionPreOrder('');
+    });
+    //-->
+    </script>
+    <script>
+        function animateMainPrice_callback() {
+            main_price_start += main_step;
+
+            if ((main_step > 0) && (main_price_start > main_price_final)) {
+                main_price_start = main_price_final;
+            } else if ((main_step < 0) && (main_price_start < main_price_final)) {
+                main_price_start = main_price_final;
+            } else if (main_step == 0) {
+                main_price_start = main_price_final;
+            }
+
+            if (main_price_start > 0) {
+                $('.autocalc-product-price').html(price_format(main_price_start));
+            }
+
+            if (main_price_start != main_price_final) {
+                main_timeout_id = setTimeout(animateMainPrice_callback, animate_delay);
+            }
+        }
+
+        function animateMainPrice(price) {
+            main_price_start = main_price_final;
+            main_price_final = price;
+            main_step = (main_price_final - main_price_start) / 10;
+
+            clearTimeout(main_timeout_id);
+            main_timeout_id = setTimeout(animateMainPrice_callback, animate_delay);
+        }
+
+        function recalculateprice() {
+            var main_price = 2895;
+            var input_quantity = Number($('input[name="quantity"]').val());
+            var special = 0;
+            var tax = 0;
+            discount_coefficient = 1;
+
+            if (isNaN(input_quantity)) input_quantity = 0;
+
+            main_price = process_discounts(main_price, input_quantity);
+            tax = process_discounts(tax, input_quantity);
+
+
+            var option_price = 0;
+
+
+            $('input:checked,option:selected').each(function () {
+                if ($(this).data('prefix') == '=') {
+                    option_price += Number($(this).data('price'));
+                    main_price = 0;
+                    special = 0;
+                }
+            });
+
+            $('input:checked,option:selected').each(function () {
+                if ($(this).data('prefix') == '+') {
+                    option_price += Number($(this).data('price'));
+                }
+                if ($(this).data('prefix') == '-') {
+                    option_price -= Number($(this).data('price'));
+                }
+                if ($(this).data('prefix') == 'u') {
+                    pcnt = 1.0 + (Number($(this).data('price')) / 100.0);
+                    option_price *= pcnt;
+                    main_price *= pcnt;
+                    special *= pcnt;
+                }
+                if ($(this).data('prefix') == 'd') {
+                    pcnt = 1.0 - (Number($(this).data('price')) / 100.0);
+                    option_price *= pcnt;
+                    main_price *= pcnt;
+                    special *= pcnt;
+                }
+                if ($(this).data('prefix') == '*') {
+                    option_price *= Number($(this).data('price'));
+                    main_price *= Number($(this).data('price'));
+                    special *= Number($(this).data('price'));
+                }
+                if ($(this).data('prefix') == '/') {
+                    option_price /= Number($(this).data('price'));
+                    main_price /= Number($(this).data('price'));
+                    special /= Number($(this).data('price'));
+                }
+            });
+
+            special += option_price;
+            main_price += option_price;
+
+            tax = main_price;
+
+            // Process TAX.
+            main_price = calculate_tax(main_price);
+            special = calculate_tax(special);
+
+            if (input_quantity > 0) {
+                main_price *= input_quantity;
+                special *= input_quantity;
+                tax *= input_quantity;
+            }
+
+            // Display Main Price
+            animateMainPrice(main_price);
+
+        }
+
+        $(document).ready(function () {
+            $('input[type="checkbox"]').bind('change', function () {
+                recalculateprice();
+            });
+            $('input[type="radio"]').bind('change', function () {
+                recalculateprice();
+            });
+            $('select').bind('change', function () {
+                recalculateprice();
+            });
+
+            $quantity = $('input[name="quantity"]');
+            $quantity.data('val', $quantity.val());
+            (function () {
+                if ($quantity.val() != $quantity.data('val')) {
+                    $quantity.data('val', $quantity.val());
+                    recalculateprice();
+                }
+                setTimeout(arguments.callee, 250);
+            })();
+
+
+            recalculateprice();
+        });
+    </script>
+    <script>
+        $('.ts-mw-icon').click(function () {
+            $('#ts-mw-id').toggleClass('open');
+            $('.ts-mw-substrate').toggleClass('active');
+        });
+        $('.ts-mw-li a').click(function () {
+            $('#ts-mw-id').removeClass('open');
+            $('.ts-mw-substrate').removeClass('active');
+        });
+        $('.ts-mw-substrate').click(function () {
+            $('#ts-mw-id').removeClass('open');
+            $('.ts-mw-substrate').removeClass('active');
+        });
+    </script>
+    <div id="mobil_mini"><i class="fa fa-times"></i></div>
+    <div class="callback-popup">
+        <div class="callback-popup__wrap">
+            <div class="callback-popup__container">
+                <!-- ========= Callback Popup > Content ========= -->
+                <div id="orderModal" class="callback-popup__box">
+                    <div class="modal-dialog">
+                        <!-- Callback Popup > Header -->
+                        <a href="#" class="callback-popup__close js-callback-popup"></a>
+                        <!-- Callback Popup > Form -->
+                        <div class="callback-popup__body">
+                            <div class="callback-popup__head">
+                                <p class="callback-popup__title">Оставьте свои данные</p>
+                                <p class="callback-popup__subtitle">И наш менеджер перезвонит вам в ближайшее время</p>
+                            </div>
+                            <div class="callback-popup__form">
+                                <div class="callback-popup__group">
+                                    <input type="text" id="quickordername" name="quickordername"
+                                           class="callback-popup__input" placeholder="Ваше имя">
+                                    <input type="tel" id="quickorderphone" name="quickorderphone"
+                                           class="callback-popup__input" placeholder="Ваш телефон" required>
+                                    <input type="text" class="callback-popup__input" id="quickordercomment"
+                                           name="quickordercomment" placeholder="Комментарий">
+                                </div>
+                                <div class="callback-popup__suc" style="display:none;">
+                                    Ваш запрос успешно сформирован, мы скоро вам перезвоним
+                                </div>
+                                <a id="callback-popup__btn" class="callback-popup__btn btn-red btn-blick">Оставить
+                                    заявку</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ========= /.Callback Popup > Content ========= -->
+            </div>
+        </div>
+    </div>
+    <div class="popup-popup">
+        <div class="callback-popup__wrap">
+            <div class="callback-popup__container">
+                <!-- ========= Callback Popup > Content ========= -->
+                <div id="popupModal" class="callback-popup__box">
+                    <div class="modal-dialog">
+                        <!-- Callback Popup > Header -->
+                        <a href="#" class="popup__close"></a>
+                        <!-- Callback Popup > Form -->
+                        <div class="callback-popup__body">
+                            <div class="callback-popup__head">
+                                <p class="callback-popup__title">Корзина</p>
+                                <p class="callback-popup__subtitle"></p>
+                            </div>
+                            <div class="callback-popup__form">
+                                <div class="popup-popup__group">
+                                </div>
+                                <div class="popup__suc">
+                                    <a href="cart/">
+                                        Перейти в корзину
+                                        <svg width="6" height="12" viewBox="0 0 6 12" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6 6L4.29138e-07 12L9.53674e-07 -2.62268e-07L6 6Z" fill="#363636"/>
+                                        </svg>
+                                    </a>
+                                    <div class="popup__suc2">Итого к оплате: <span></span></div>
+                                </div>
+                                <div class="popup__sucbtn">
+                                    <a class="popup__fastch">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M2.67187 7.5C2.46181 7.49979 2.26018 7.5826 2.11091 7.7304C1.96165 7.87821 1.87685 8.07901 1.87499 8.28906C1.87414 8.36187 1.88469 8.43436 1.90624 8.50391L3.92578 15.625C4.01938 15.9576 4.21942 16.2504 4.49527 16.4586C4.77111 16.6667 5.10757 16.7787 5.45312 16.7774H14.5469C14.8931 16.7777 15.23 16.6654 15.5069 16.4576C15.7838 16.2498 15.9856 15.9575 16.082 15.625L18.1016 8.50391L18.125 8.28906C18.1231 8.07901 18.0383 7.87821 17.8891 7.7304C17.7398 7.5826 17.5382 7.49979 17.3281 7.5H2.67187ZM10.2234 13.7527C9.89876 13.7511 9.58184 13.6534 9.31268 13.4718C9.04351 13.2903 8.83415 13.033 8.71103 12.7326C8.5879 12.4322 8.55653 12.102 8.62086 11.7838C8.68519 11.4655 8.84235 11.1735 9.0725 10.9445C9.30265 10.7155 9.59548 10.5598 9.91404 10.497C10.2326 10.4343 10.5626 10.4673 10.8624 10.5919C11.1622 10.7165 11.4184 10.9272 11.5986 11.1972C11.7788 11.4673 11.875 11.7847 11.875 12.1094C11.8729 12.546 11.698 12.9641 11.3885 13.272C11.079 13.58 10.6601 13.7529 10.2234 13.7527V13.7527Z"
+                                                  stroke="#D7000F" stroke-width="2" stroke-linejoin="round"/>
+                                            <path d="M6.25 7.5L10 2.5L13.75 7.5" stroke="#D7000F" stroke-width="2"
+                                                  stroke-linejoin="round"/>
+                                        </svg>
+                                        Быстрый заказ
+                                    </a>
+                                    <a class="btn-red btn-blick" href="simplecheckout/">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M1.875 15.5961C1.875 13.0934 2.43906 11.0938 3.55117 9.64844C4.89414 7.90352 7.01523 6.96211 9.86211 6.8457V2.8125L18.125 9.84375L9.86211 16.875V12.8652C8.13359 12.9117 6.82852 13.1613 5.78906 13.6402C4.66602 14.1578 3.85156 14.9313 2.97344 15.9332L1.875 17.1875V15.5961Z"
+                                                  fill="white"/>
+                                        </svg>
+                                        Оформить заказ
+                                    </a>
+                                    <div>
+                                        <a class="popup__close">Продолжить покупки ></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ========= /.Callback Popup > Content ========= -->
+            </div>
+        </div>
+    </div>
+    <div class="ord-popup">
+        <div class="callback-popup__wrap">
+            <div class="callback-popup__container">
+                <!-- ========= Callback Popup > Content ========= -->
+                <div id="ordModal" class="callback-popup__box">
+                    <div class="modal-dialog">
+                        <!-- Callback Popup > Header -->
+                        <a href="#" class="ord__close"></a>
+                        <!-- Callback Popup > Form -->
+                        <div class="callback-popup__body">
+                            <div class="callback-popup__head">
+                                <p class="callback-popup__title">Быстрое оформление заказa</p>
+                            </div>
+                            <div class="ord-form">
+                                <div class="callback-popup__form">
+                                    <div class="callback-popup__group">
+                                        <input type="tel" id="quickorderphone" name="quickorderphone"
+                                               class="callback-popup__input" placeholder="* +38(___)___-__-__" required>
+                                        <input type="text" id="quickordername" name="quickordername"
+                                               class="callback-popup__input" placeholder="Ваше имя">
+                                        <input type="text" class="callback-popup__input" id="quickordercomment"
+                                               name="quickordercomment" placeholder="Комментарий">
+                                    </div>
+                                </div>
+                                <div class="callback-popup__form2">
+                                    <div class="ord-popup__suc">
+                                        Нажмите Оформить заказ, чтобы сделать запрос, и мы вам скоро перезвоним
+                                    </div>
+                                    <a id="ord-popup__btn" class="callback-popup__btn btn-red btn-blick">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M0 15.7836C0 13.2809 0.564063 11.2812 1.67617 9.83594C3.01914 8.09102 5.14023 7.14961 7.98711 7.0332V3L16.25 10.0312L7.98711 17.0625V13.0527C6.25859 13.0992 4.95352 13.3488 3.91406 13.8277C2.79102 14.3453 1.97656 15.1188 1.09844 16.1207L0 17.375V15.7836Z"
+                                                  fill="white"/>
+                                        </svg>
+                                        Оформить заказ
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="modal-body2"></div>
+                            <div class="popup__suc">
+                                <a class="ord__close">Продолжить покупки ></a>
+                                <div class="popup__suc2">Итого к оплате: <span></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ========= /.Callback Popup > Content ========= -->
+            </div>
+        </div>
+    </div>
+    <div class="preord-popup">
+        <div class="callback-popup__wrap">
+            <div class="callback-popup__container">
+                <!-- ========= Callback Popup > Content ========= -->
+                <div id="preordModal" class="callback-popup__box">
+                    <div class="modal-dialog">
+                        <!-- Callback Popup > Header -->
+                        <a href="#" class="preord__close"></a>
+                        <!-- Callback Popup > Form -->
+                        <div class="callback-popup__body">
+                            <div class="callback-popup__head">
+                                <p class="callback-popup__title"></p>
+                                <div class="preoredertexttop"></div>
+                            </div>
+                            <div class="ord-form">
+                                <div class="infproduct">
+                                    <img src=""/>
+                                    <a></a>
+                                </div>
+                                <div class="callback-popup__form">
+                                    <div class="callback-popup__group">
+                                        <form id="form-preorder">
+                                            <input type="text" id="preordername" name="preordername"
+                                                   class="callback-popup__input" placeholder="Ваше имя">
+                                            <input type="tel" id="preorderphone" name="preorderphone"
+                                                   class="callback-popup__input" placeholder="+38(___)___-__-__"
+                                                   required>
+                                            <input type="hidden" id="getpriceemail" name="preorderemail"
+                                                   class="callback-popup__input" value="Сообщить когда появится!">
+                                            <input type="hidden" name="product_id" value=""/>
+                                            <input type="hidden" class="callback-popup__input" id="preordercomment"
+                                                   name="preordercomment" placeholder="Комментарий">
+                                            <a id="ord-popup__btn" data-texto="Оставить заявку"
+                                               onclick="submitPreOrder();"
+                                               class="callback-popup__btn btn-red btn-blick">Оставить заявку</a>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ========= /.Callback Popup > Content ========= -->
+            </div>
+        </div>
+    </div>
+    <div class="getprice-popup">
+        <div class="callback-popup__wrap">
+            <div class="callback-popup__container">
+                <!-- ========= Callback Popup > Content ========= -->
+                <div id="getpriceModal" class="callback-popup__box">
+                    <div class="modal-dialog">
+                        <!-- Callback Popup > Header -->
+                        <a href="#" class="getprice__close"></a>
+                        <!-- Callback Popup > Form -->
+                        <div class="callback-popup__body">
+                            <div class="callback-popup__head">
+                                <p class="callback-popup__title"></p>
+                                <div class="preoredertexttop"></div>
+                            </div>
+                            <div class="ord-form">
+                                <div class="infproduct">
+                                    <img src=""/>
+                                    <a></a>
+                                </div>
+                                <div class="callback-popup__form">
+                                    <div class="callback-popup__group">
+                                        <form id="form-getprice">
+                                            <input type="text" id="getpricename" name="preordername"
+                                                   class="callback-popup__input" placeholder="Ваше имя">
+                                            <input type="tel" id="getpricephone" name="preorderphone"
+                                                   class="callback-popup__input" placeholder="+38(___)___-__-__"
+                                                   required>
+                                            <input type="hidden" id="getpriceemail" name="preorderemail"
+                                                   class="callback-popup__input" value="Узнать цену!">
+                                            <input type="hidden" name="product_id" value=""/>
+                                            <input type="hidden" class="callback-popup__input" id="preordercomment"
+                                                   name="getpricecomment" placeholder="Комментарий">
+                                            <a id="ord-popup__btn" data-texto="Оставить заявку"
+                                               onclick="submitgetprice();"
+                                               class="callback-popup__btn btn-red btn-blick">Оставить заявку</a>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ========= /.Callback Popup > Content ========= -->
+            </div>
+        </div>
+    </div>
+    <script>
+        $('.popup__fastch').on('click', function () {
+            $('#ordModal').find('.modal-body2').load('index.php?route=common/cart/info ul', function () {
+                $("body").removeClass("popup-popup--active");
+                $("body").addClass("ord-popup--active");
+            });
+        });
+        $('#ord-popup__btn').on('click', function () {
+            if (!$(this).hasClass('btn-success')) {
+                $.ajax({
+                    url: 'index.php?route=common/footer/addquickorder',
+                    type: 'post',
+                    data: $('#ordModal input[type=\'text\'], #ordModal input[type=\'tel\']'),
+                    dataType: 'json',
+                    success: function (json) {
+                        $('.alert, .text-danger').remove();
+                        $('.callback-popup__input').removeClass('has-error');
+                        if (json['error']) {
+
+
+                            if (json['error']['validation']) {
+                                $("#ordModal .panel").removeClass('panel-info');
+                                $("#ordModal .panel").addClass('panel-danger');
+                                $("#ordModal .panel small").html(json['error']['validation']);
+                                $('#ordModal .btn-primary').removeAttr('disabled');
+                            }
+                            $('.callback-popup__input').addClass('has-error');
+                        }
+                        if (json['success']) {
+                            $("#ordModal .ord-popup__suc").html(json['success']);
+                            $('#ordModal #ord-popup__btn').addClass('btn-success');
+                            $('#ordModal #ord-popup__btn').html('Заказ принят <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 12C21 7.03125 16.9688 3 12 3C7.03125 3 3 7.03125 3 12C3 16.9688 7.03125 21 12 21C16.9688 21 21 16.9688 21 12Z" stroke="white" stroke-width="2" stroke-miterlimit="10"/><path d="M16.5 8.25L10.2 15.75L7.5 12.75" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+                            $("#ordModal .modal-body2").hide();
+                        }
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                    }
+                });
+            }
+
+        });
+    </script>
+    <script>
+        $('#callback-popup__btn').on('click', function () {
+
+            $.ajax({
+                url: 'index.php?route=common/footer/addCallback',
+                type: 'post',
+                data: $('#orderModal input[type=\'text\'], #orderModal input[type=\'tel\']'),
+                dataType: 'json',
+                success: function (json) {
+                    $('.alert, .text-danger').remove();
+                    $('.callback-popup__input').removeClass('has-error');
+                    if (json['error']) {
+
+
+                        if (json['error']['validation']) {
+                            $("#orderModal .panel").removeClass('panel-info');
+                            $("#orderModal .panel").addClass('panel-danger');
+                            $("#orderModal .panel small").html(json['error']['validation']);
+                            $('#orderModal .btn-primary').removeAttr('disabled');
+                        }
+                        $('.callback-popup__input').addClass('has-error');
+                    }
+                    if (json['success']) {
+                        $("#orderModal .callback-popup__suc").show();
+                        $("#orderModal .callback-popup__body").addClass('panel-success');
+                        $('#orderModal .callback-popup__btn').addClass('btn-success');
+                        $('#orderModal .callback-popup__btn').html('Запрос отправлен <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 12C21 7.03125 16.9688 3 12 3C7.03125 3 3 7.03125 3 12C3 16.9688 7.03125 21 12 21C16.9688 21 21 16.9688 21 12Z" stroke="white" stroke-width="2" stroke-miterlimit="10"/><path d="M16.5 8.25L10.2 15.75L7.5 12.75" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                }
+            });
+
+        });
+    </script>
+    <script>
+        if ($('#column-left').length) {
+            $('body').append('<div class="toggle-column-left hidden-xs hidden-sm hidden-lg hidden-md"><div class="btn btn-sm btn-default"><i class="fa fa-angle-down"></i>&nbsp; Левая панель</div></div>');
+        }
+        if ($('#column-right').length) {
+            $('body').append('<div class="toggle-column-right hidden-xs hidden-sm hidden-lg hidden-md"><div class="btn btn-sm btn-default"><i class="fa fa-angle-up"></i>&nbsp; Правая панель</div></div>');
+        }
+        //-->
+    </script>
+    <script>
+        $(document).ready(function () {
+            $(window).on('load', function () {
+                var oldSSB = $.fn.modal.Constructor.prototype.setScrollbar;
+                $.fn.modal.Constructor.prototype.setScrollbar = function () {
+                    oldSSB.apply(this);
+                    if (this.bodyIsOverflowing && this.scrollbarWidth) {
+                        $('.navbar-fixed-top, .navbar-fixed-bottom').css('padding-right', this.scrollbarWidth);
+                    }
+                }
+                var oldRSB = $.fn.modal.Constructor.prototype.resetScrollbar;
+                $.fn.modal.Constructor.prototype.resetScrollbar = function () {
+                    oldRSB.apply(this);
+                    $('.navbar-fixed-top, .navbar-fixed-bottom').css('padding-right', '');
+                }
+            });
+
+            $('.navbar-cart-toggle').click(function (e) {
+                e.stopPropagation();
+                if (!$('#top .navbar-collapse').hasClass('in') && $('#top .navbar-toggle').length) {
+                    $('#top').addClass('cart-opened');
+                    $('.navbar-toggle').click();
+                    $('#top').on('shown.bs.collapse', function () {
+                        if (!$('#cart').hasClass('open') && $('#top').hasClass('cart-opened')) {
+                            $('#cart > .dropdown-toggle').click();
+                            $("#cart > .dropdown-toggle").velocity("scroll", {duration: 1000});
+                        }
+                    })
+                } else if (($('#top .navbar-collapse').hasClass('in') && !$('#cart').hasClass('open')) || (!$('#top .navbar-toggle').length && !$('#cart').hasClass('open'))) {
+                    $('#cart > .dropdown-toggle').click();
+                    $("#cart > .dropdown-toggle").velocity("scroll", {duration: 1000});
+                } else if ($('#cart').hasClass('open')) {
+                    $('#cart > .dropdown-toggle').click();
+                }
+                $('.dropdown').on('hide.bs.dropdown', function () {
+                    $('#top').removeClass('cart-opened');
+                })
+            });
+            $('.navbar-search-toggle').click(function (e) {
+                e.stopPropagation();
+                if (!$('#top .navbar-collapse').hasClass('in') && $('#top .navbar-toggle').length) {
+                    $('#top').addClass('search-opened');
+                    $('.navbar-toggle').click();
+                    $('#top').on('shown.bs.collapse', function () {
+                        if (!$('#search').hasClass('open') && $('#top').hasClass('search-opened')) {
+                            $('#search > .dropdown-toggle').click();
+                            $("#search").velocity("scroll", {duration: 1000});
+                        }
+                    })
+                } else if (($('#top .navbar-collapse').hasClass('in') && !$('#search').hasClass('open')) || (!$('#top .navbar-toggle').length && !$('#search').hasClass('open'))) {
+                    $('#search > .dropdown-toggle').click();
+                    setTimeout(' $("#search > .dropdown-toggle").velocity("scroll", { duration: 1000 }); ', 300);
+                } else if ($('#search').hasClass('open')) {
+                    $('#search > .dropdown-toggle').click();
+                }
+                $('.dropdown').on('hide.bs.dropdown', function () {
+                    $('#top').removeClass('search-opened');
+                })
+            });
+            $('.navbar-language-toggle').click(function (e) {
+                e.stopPropagation();
+                if (!$('#top .navbar-collapse').hasClass('in') && $('#top .navbar-toggle').length) {
+                    $('#top').addClass('language-opened');
+                    $('.navbar-toggle').click();
+                    $('#top').on('shown.bs.collapse', function () {
+                        if (!$('#language-dropdown').hasClass('open') && $('#top').hasClass('language-opened')) {
+                            $('#language-dropdown > .dropdown-toggle').click();
+                            $("#language-dropdown > .dropdown-toggle").velocity("scroll", {duration: 1000});
+                        }
+                    })
+                } else if (($('#top .navbar-collapse').hasClass('in') && !$('#language-dropdown').hasClass('open')) || (!$('#top .navbar-toggle').length && !$('#language-dropdown').hasClass('open'))) {
+                    $('#language-dropdown > .dropdown-toggle').click();
+                    setTimeout(' $("#language-dropdown > .dropdown-toggle").velocity("scroll", { duration: 1000 }); ', 300);
+                } else if ($('#language-dropdown').hasClass('open')) {
+                    $('#language-dropdown > .dropdown-toggle').click();
+                }
+                $('.dropdown').on('hide.bs.dropdown', function () {
+                    $('#top').removeClass('language-opened');
+                })
+            });
+
+            $(document).on('show.bs.modal', '.modal', function (event) {
+                var zIndex = 1040 + (10 * $('.modal:visible').length);
+                $(this).css('z-index', zIndex);
+                setTimeout(function () {
+                    $('.modal-backdrop').not('.modal-stack').css('z-index', zIndex - 1).addClass('modal-stack');
+                }, 0);
+            });
+            $(document).on('hidden.bs.modal', '.modal', function () {
+                $('.modal:visible').length && $(document.body).addClass('modal-open');
+            });
+
+
+            $('#search a.dropdown-toggle').click(function () {
+                setTimeout('$("#search > ul > li > div > input").focus()', 300);
+            });
+            if ($('.hidden-xs').is(":visible")) {
+                $('.dropdown-toggle').dropdownHover({delay: 100, hoverDelay: 100});
+            }
+
+            $('#orderModal').on('hidden.bs.modal', function (event) {
+                if (($("#popupModal").data('bs.modal') || {}).isShown) $('#popupModal').modal('hide');
+                $('#orderModal .panel-default').remove();
+            })
+            $('#popupModal').on('hidden.bs.modal', function (event) {
+                $('#popupModal').css('opacity', '1');
+            })
+
+            $('#orderModal').on('show.bs.modal', function (event) {
+                if (($("#popupModal").data('bs.modal') || {}).isShown) $('#popupModal').css('opacity', '0');
+                var target = $(event.relatedTarget);
+                var mode = target.data('order-mode');
+                var product_id = target.data('order-product-id');
+                var title = target.data('order-title');
+                var img_src = target.data('order-img-src');
+                var price = target.data('order-price') && target.data('order-price').toString().replace(":", " ");
+                var modal = $(this);
+                modal.find('.modal-body2').html('');
+                modal.find('.modal-header input').val(product_id);
+                if (mode == "cart") {
+                    $('#orderModal').find('.modal-body2').load('index.php?route=common/cart/info ul', function () {
+                        $('#orderModal .modal-body2 > ul').removeClass('dropdown-menu keep-open');
+                        $('#orderModal .modal-body2 > ul').addClass('list-unstyled');
+                        $('#orderModal .modal-body2 > ul > li > div.text-center').remove();
+                        $('#orderModal .modal-body2 > ul > li > table > tbody').prepend('<tr><td colspan="5"><hr></td></tr>');
+                        $('#orderModal .modal-body2 > ul > li table td.text-center > a.text-muted').remove();
+                    });
+                }
+                if (mode == "product") {
+                    if ($(".autocalc-product-price")[0]) {
+                        price = $(".autocalc-product-price").first().text();
+                    } else if ($(".autocalc-product-special")[0]) {
+                        price = $(".autocalc-product-special").first().text();
+                    } else {
+                        modal.find('.modal-body input[type=\'hidden\']').val($("#input-quantity").val());
+                        if ($("#input-quantity").val() > 1) price = price + ' x ' + $("#input-quantity").val();
+                    }
+                }
+                modal.find('.modal-title.h4').text(title);
+                modal.find('.img-responsive').addClass("hidden");
+                modal.find('.img-responsive').parent().find('div').addClass("hidden");
+                $('#quickorderemail').attr("placeholder", "Требуется только для отправки вам деталей заказа");
+                if (img_src !== 0 && typeof img_src !== 'undefined') {
+                    modal.find('.img-responsive').removeClass("hidden");
+                    modal.find('.img-responsive').attr("src", img_src);
+                }
+                if (mode == "product" || mode == "catalog" || mode == "cart") {
+                    modal.find('.modal-dialog .form-group.required:first-child').removeClass('hidden');
+                    modal.find('.modal-dialog .form-group.required:nth-child(2)').removeClass('hidden');
+                    modal.find('.modal-dialog .form-group.optional').removeClass('hidden');
+                    modal.find('.modal-dialog .form-group.required:first-child').addClass('hidden');
+                    modal.find('.modal-dialog #quickorderemail').val('info@978.com.ua');
+                    $("#quickorderemail").addClass('valid');
+                    modal.find('.modal-dialog').removeClass('modal-dialog-callback');
+                    modal.find('.modal-dialog').removeClass('modal-dialog-newsletter');
+                    modal.find('.modal-dialog').addClass('modal-dialog-order');
+                    modal.find('.modal-title.h4').append(" <small>(" + price + ")</small>");
+                    modal.find('.btn-primary').html('<i class="fa fa-fw fa-flip-horizontal fa-reply-all"></i> Оставить заявку');
+                    modal.find('.panel small').html('И наш менеджер перезвонит вам в ближайшее время');
+                } else if (mode == "callback") {
+                    modal.find('.modal-dialog .form-group.required:nth-child(2)').removeClass('hidden');
+                    modal.find('.modal-dialog .form-group.optional').removeClass('hidden');
+                    modal.find('.modal-dialog .form-group.required:first-child').addClass('hidden');
+                    modal.find('.modal-dialog').removeClass('modal-dialog-order');
+                    modal.find('.modal-dialog').removeClass('modal-dialog-newsletter');
+                    modal.find('.modal-dialog').addClass('modal-dialog-callback');
+                    modal.find('.btn-primary').html('<i class="fa fa-fw fa-flip-horizontal fa-reply-all"></i> Оставить заявку');
+                    modal.find('.panel small').html('Ваш запрос успешно сформирован, мы скоро вам перезвоним');
+                } else {
+                    modal.find('.modal-dialog .form-group.required:first-child').removeClass('hidden');
+                    modal.find('.modal-dialog .form-group.required:nth-child(2)').addClass('hidden');
+                    modal.find('.modal-dialog .form-group.optional').addClass('hidden');
+                    modal.find('.modal-dialog #quickorderemail').val('');
+                    modal.find('.modal-dialog').removeClass('modal-dialog-order');
+                    modal.find('.modal-dialog').removeClass('modal-dialog-callback');
+                    modal.find('.modal-dialog').addClass('modal-dialog-newsletter');
+                    $('#quickorderemail').attr("placeholder", "");
+                    modal.find('.img-responsive').parent().find('div.hidden').html("И будьте в курсе всех актуальных событий на нашем сайте");
+                    modal.find('.img-responsive').parent().find('div.hidden').removeClass("hidden");
+                    if ($('#newsletteremail').val() || $('input[type="text"].newsletteremail').val()) {
+                        if ($('input[type="text"].newsletteremail').val()) {
+                            modal.find('.modal-dialog #quickorderemail').val($('input[type="text"].newsletteremail').val());
+                        } else {
+                            modal.find('.modal-dialog #quickorderemail').val($('#newsletteremail').val());
+                        }
+                        $('#orderModal').one('shown.bs.modal', function (event) {
+                            if (emailValidation($("#quickorderemail").val())) {
+                                $('#quickorderemail').parent().parent().removeClass('has-error');
+                                $("#quickorderemail").addClass('valid');
+                                $("#quickorderemail").parent().parent().addClass('has-success has-feedback');
+                                $(".quickorderemail.form-control-feedback").removeClass('hidden');
+                            } else {
+                                $("#quickorderemail").removeClass('valid');
+                                $("#quickorderemail").parent().parent().removeClass('has-success has-feedback');
+                                $(".quickorderemail.form-control-feedback").addClass('hidden');
+                            }
+                            $('#orderModal .btn-primary').click();
+                        })
+                    }
+                    modal.find('.btn-primary').html('<i class="fa fa-fw fa-flip-horizontal fa-reply-all"></i> Подписаться');
+                    modal.find('.panel small').html('Нажмите Подписаться, чтобы присоединиться к рассылке');
+                }
+                modal.find('.panel').removeClass('panel-danger');
+                modal.find('.panel').removeClass('panel-success');
+                modal.find('.panel').addClass('panel-info');
+                modal.find('.btn-primary').removeClass('btn-success');
+                modal.find('.btn-primary').removeAttr('disabled');
+                if (((mode == "product") && ($('#cart > ul > li > table').length > 0)) || ((mode == "catalog") && ($('#cart > ul > li > table').length > 0))) {
+                    $('<div class="panel panel-default"><div class="panel-heading text-center"><small>К вашему заказу будут добавлены товары из <a href="cart/">вашей корзины</a> на сумму ' + $('#cart-total').text() + '</small></div></div>').insertAfter($('#orderModal .panel'));
+                }
+            })
+            $('#orderModal .btn-primary').bind('click', function (e) {
+                initialValidation();
+            });
+            $("#quickorderphone").mmr2mask(
+                '+38(000)000-00-00', {
+                    placeholder: "+38(___)___-__-__",
+                    onChange: function () {
+                        $("#quickorderphone").removeClass('valid');
+                        $("#quickorderphone").parent().parent().removeClass('has-success has-feedback');
+                        $(".quickorderphone.form-control-feedback").addClass('hidden');
+                    },
+                    onComplete: function () {
+                        $('#quickorderphone').parent().parent().removeClass('has-error');
+                        $("#quickorderphone").addClass('valid');
+                        $("#quickorderphone").parent().parent().addClass('has-success has-feedback');
+                        $(".quickorderphone.form-control-feedback").removeClass('hidden');
+                    },
+                }
+            );
+
+            function emailValidation(email) {
+                var regexp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return regexp.test(email);
+            }
+
+            if (emailValidation($("#quickorderemail").val())) {
+                $('#quickorderemail').parent().parent().removeClass('has-error');
+                $("#quickorderemail").addClass('valid');
+                $("#quickorderemail").parent().parent().addClass('has-success has-feedback');
+                $(".quickorderemail.form-control-feedback").removeClass('hidden');
+            }
+            $('#quickorderemail').on('input', function (e) {
+                if (emailValidation($("#quickorderemail").val())) {
+                    $('#quickorderemail').parent().parent().removeClass('has-error');
+                    $("#quickorderemail").addClass('valid');
+                    $("#quickorderemail").parent().parent().addClass('has-success has-feedback');
+                    $(".quickorderemail.form-control-feedback").removeClass('hidden');
+                } else {
+                    $("#quickorderemail").removeClass('valid');
+                    $("#quickorderemail").parent().parent().removeClass('has-success has-feedback');
+                    $(".quickorderemail.form-control-feedback").addClass('hidden');
+                }
+            });
+
+            function initialValidation() {
+                $('#orderModal .panel-default').remove();
+                if ((($("#orderModal .modal-dialog-order").length && $("#quickorderemail").hasClass('valid') && $("#quickorderphone").hasClass('valid')) || ($("#orderModal .modal-dialog-callback").length && $("#quickorderphone").hasClass('valid')) || ($("#orderModal .modal-dialog-newsletter").length && $("#quickorderemail").hasClass('valid')))) {
+                    $("#orderModal .panel").removeClass('panel-danger');
+                    $('#quickorderagree').parent().parent().removeClass('text-danger');
+                    $("#orderModal .panel").addClass('panel-info');
+                    $("#quickordercomment").parent().parent().addClass('has-success has-feedback');
+                    $(".quickordercomment.form-control-feedback").removeClass('hidden');
+                    $("#quickordername").parent().parent().addClass('has-success has-feedback');
+                    $(".quickordername.form-control-feedback").removeClass('hidden');
+                    $("#orderModal .panel small").html('<i class="fa fa-spinner fa-spin"></i> Загрузка...');
+                    $('#orderModal .btn-primary').attr('disabled', 'disabled');
+                    if ($("#orderModal .modal-dialog-callback").length) {
+                        addCallback();
+                    }
+                    if ($("#orderModal .modal-dialog-newsletter").length) {
+                        addSubscriber();
+                    }
+                    if ($("#orderModal .modal-dialog-order").length) {
+                        addQuickOrder();
+                    }
+                } else {
+                    $("#orderModal .panel").removeClass('panel-info');
+                    $("#orderModal .panel").addClass('panel-danger');
+                    $("#orderModal .panel small").html('');
+                }
+                if (($("#orderModal .modal-dialog-order").length && !$("#quickorderemail").hasClass('valid')) || ($("#orderModal .modal-dialog-newsletter").length && !$("#quickorderemail").hasClass('valid'))) {
+                    $('#quickorderemail').parent().parent().addClass('has-error');
+                    $("#orderModal .panel small").html('Пожалуйста укажите корректный адрес e-mail<br />');
+                }
+                if (!$("#orderModal .modal-dialog-newsletter").length && !$("#quickorderphone").hasClass('valid')) {
+                    $('#quickorderphone').parent().parent().addClass('has-error');
+                    $("#orderModal .panel small").html($("#orderModal .panel small").html() + 'Пожалуйста укажите ваш номер телефона<br />');
+                }
+            };
+
+
+            <script type="text/javascript">
+                (function (d, w, s
+                ) {
+                var widgetHash = 'wBuy5sqFyAV15xBd0jID', bch = d.createElement(s); bch.type = 'text/javascript'; bch.async = true;
+                bch.src = '//widgets.binotel.com/chat/widgets/' + widgetHash + '.js';
+                var sn = d.getElementsByTagName(s)[0]; sn.parentNode.insertBefore(bch, sn);
+            })
+                (document, window, 'script'
+                )
+                ;
+
+                $(document).on('click', '.ts-callback a
+                ', function (){
+
+                $('button.bwc-chat').trigger('click');
+                return false;
+            })
+                ;
+
+                $(document).on('click', '.ts-mw-button .
+                ts - mw - icon
+                ', function (){
+
+                $('.bwc-chat-show button.bwc-close').trigger('click');
+
+            })
+                ;
+
+    </script>
+    <script>
+        $(document).on('click touchstart', '.product-thumb', function () {
+            if (typeof ecommerce_product_data !== 'undefined') {
+                product_id = $(this).find('.remarketing_cart_button').attr('data-product_id');
+
+                if (product_id) {
+                    $(ecommerce_product_data).each(function (key, data) {
+                        if (data['id'] == product_id) {
+                            if (typeof ecommerce_product_data[key] !== 'undefined') {
+                                if (typeof sendEcommerceClick !== 'undefined') {
+                                    sendEcommerceClick(ecommerce_product_data[key]);
+                                }
+                            }
+                        }
+                    })
+                }
+            }
+        });
+
+    </script>
+{% endblock %}
+</body></html>

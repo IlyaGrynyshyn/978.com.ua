@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% block contend %}
+    {% block custom_css %}
+    {% endblock custom_css %}
+    <main class="main">
+        <div class="breadcrumbs">
+            <div class="container">
+                <ol>
+                    <li><a href="{% url 'home' %}"><i class="fa fa-home"></i></a></li>
+                    <li>Кошик</li>
+                </ol>
+            </div>
+        </div>
+        <!-- ===================== /.Page Breadcrumbs ===================== -->
+
+        <section class="section cart cabinet">
+            <div class="container">
+                <h3 class="cabinet__title section__title-2">Кошик</h3>
+                <div class="cabinet__inner row">
+
+                    <!-- =========== Cart > Nav  =========== -->
+                    <div class="cabinet__nav">
+
+                        <!-- Cabinet > Ordering -->
+                        <div class="cabinet-ordering">
+                            <div class="cabinet-ordering__sum">
+                                <span>Разом без вартості доставки:</span>
+                                <span class="sum">{{ cart.get_total_price }} ₴</span>
+                            </div>
+                            <div class="cabinet-ordering__sum">
+                                <span>Всього</span>
+                                <span class="sum">{{ cart.get_total_price }} ₴</span>
+                            </div>
+
+                            <a href="{% url 'order:order_create' %}"
+                               class="cabinet-ordering__btn btn-red btn-blick">Оформлення замовлення</a>
+                        </div>
+
+                        <!-- Cabinet > Promocode -->
+                        <div class="cabinet-promocode">
+                            <h6>Промокод</h6>
+                            <form action="#" class="form">
+                                <div class="form__group">
+                                    <input type="text" name="coupon" value="" placeholder="Промокод" id="input-coupon"
+                                           class="form-control">
+                                </div>
+                                <button id="button-coupon" type="submit" class="form__submit btn-red btn-blick">
+                                    Підтвердити
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+
+                    <!-- =========== Cart > Content =========== -->
+                    <div class="cabinet__content">
+                        <div class="cart-content">
+                            <div>
+
+                                {% for item in cart %}
+                                    {% with product=item.product %}
+                                        <!-- Cart > Item-->
+                                        <div class="cart-item">
+                                            <div class="cart-item__product">
+                                                <a href="{{ item.product.get_absolute_url }}"
+                                                   class="cart-item__image">
+                                                    <img src="{{ item.product.productimage_set.first.img.url }}"
+                                                         alt="{{ item.product.title }}"
+                                                         title="{{ item.product.title }}">
+                                                </a>
+                                                <a href="{{ item.product.get_absolute_url }}"
+                                                   class="cart-item__title">{{ item.product.title }}</a>
+                                            </div>
+                                            <div class="cart-item__actions">
+                                                <div class="cart-item__counter">
+                                                    <div class="decrement"><a
+                                                            href="{% url 'cart:subtraction_quantity' product.id %}"><span>–</span></a>
+                                                    </div>
+                                                    <a class="quantity">{{ item.quantity }}</a>
+                                                    <div class="increment"><a
+                                                            href="{% url 'cart:cart_add' product.id %}"><span>+</span></a>
+                                                    </div>
+                                                </div>
+                                                <div class="cart-item__price">
+                                                    <div>
+                                                        <span class="cart-item__price-current">{{ item.price }} ₴</span>
+                                                    </div>
+                                                </div>
+                                                <div class="cart-item__total">
+                                                    <div>
+                                                        <h6>Разом</h6>
+                                                        <span class="cart-item__total-price">{{ item.total_price }} ₴</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div href="{% url 'cart:cart_remove' product.id %}"
+                                               class="cart-item__remove"></div>
+                                        </div>
+                                    {% endwith %}
+                                {% endfor %}
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ===================== /.Shopping Cart =====================-->
+
+    </main>
+
+{% endblock %}

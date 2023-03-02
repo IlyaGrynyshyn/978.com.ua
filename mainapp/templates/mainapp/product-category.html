@@ -1,0 +1,276 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="product-catalog-content">
+    <div class="product-catalog-content-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 side-bar">
+                    <div class="side-bar-wrapper">
+                        <div id="sideFilter" class="side-filter">
+                            <form method="post" action="#">
+                                <div class="price-slider-wrapper">
+                                    <div class="price-input">
+                                        <div class="field">
+                                            <input type="number" class="input-min" value="0"/>
+                                        </div>
+                                        <div class="separator">-</div>
+                                        <div class="field">
+                                            <input type="number" class="input-max" value="200000"/>
+                                        </div>
+                                    </div>
+                                    <div class="price-slider">
+                                        <div class="progress"></div>
+                                    </div>
+                                    <div class="range-input">
+                                        <input type="range" class="range-min" min="0" max="100000" value="0"
+                                               step="100"/>
+                                        <input type="range" class="range-max" min="0" max="100000" value="0"
+                                               step="100"/>
+                                    </div>
+                                </div>
+                                <div class="sidebar-items">
+                                    <div class="sidebar-items-wrapper">
+                                        <div class="sidebar-items-inner">
+                                            <div class="sidebar-item-title">Наявність</div>
+                                            <div class="sideva-item-inner">
+                                                <ul class="item-paramentr-list">
+                                                    <li>
+                                                        <div class="form-checkbox">
+                                                            <input class="check-input" type="checkbox" value=""
+                                                                   id="flexCheckDefault">
+                                                            <label class="check-label" for="flexCheckDefault">
+                                                                Готовий до відправленн
+                                                            </label>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sidebar-items">
+                                    <div class="sidebar-items-wrapper">
+                                        <div class="sidebar-items-inner">
+                                            <div class="sidebar-item-title">Рекомендації</div>
+                                            <div class="sideva-item-inner">
+                                                <ul class="item-paramentr-list">
+                                                    <li>
+                                                        <div class="form-checkbox">
+                                                            <input class="check-input" type="checkbox" value=""
+                                                                   id="flexCheckDefault">
+                                                            <label class="check-label" for="flexCheckDefault">
+                                                                Супер ціна
+                                                            </label>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-checkbox">
+                                                            <input class="check-input" type="checkbox" value=""
+                                                                   id="flexCheckDefault">
+                                                            <label class="check-label" for="flexCheckDefault">
+                                                                Акція
+                                                            </label>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-checkbox">
+                                                            <input class="check-input" type="checkbox" value=""
+                                                                   id="flexCheckDefault">
+                                                            <label class="check-label" for="flexCheckDefault">
+                                                                Скоро в продажі
+                                                            </label>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sidebar-items">
+                                    <div class="sidebar-items-wrapper">
+                                        <div class="sidebar-items-inner">
+                                            <div class="sidebar-item-title">Виробник</div>
+                                            <div class="sideva-item-inner">
+                                                <ul class="item-paramentr-list">
+                                                    <li>
+                                                        <div class="form-checkbox">
+                                                            <input class="check-input" type="checkbox" value=""
+                                                                   id="flexCheckDefault">
+                                                            <label class="check-label" for="flexCheckDefault">
+                                                                Raspberry
+                                                            </label>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-checkbox">
+                                                            <input class="check-input" type="checkbox" value=""
+                                                                   id="flexCheckDefault">
+                                                            <label class="check-label" for="flexCheckDefault">
+                                                                Banana
+                                                            </label>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-checkbox">
+                                                            <input class="check-input" type="checkbox" value=""
+                                                                   id="flexCheckDefault">
+                                                            <label class="check-label" for="flexCheckDefault">
+                                                                Arduino
+                                                            </label>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-checkbox">
+                                                            <input class="check-input" type="checkbox" value=""
+                                                                   id="flexCheckDefault">
+                                                            <label class="check-label" for="flexCheckDefault">
+                                                                ESP
+                                                            </label>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12catalog">
+                    <div class="catalog-top-info">
+                        <h1>{{ categories.name }}</h1>
+                    </div>
+                    <div class="catalog-list">
+                        <div class="row catalog-row">
+                            {% for product in products %}
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                                <div class="product-card-item">
+                                    <div class="product-card-inner">
+                                        <div class="product-name"><a href="{{ product.get_absolute_url }}">
+                                            {{product.title}} </a></div>
+                                        <div class="product-code">Код: {{product.product_code}}</div>
+                                        <div class="product-pic">
+                                            <a href="{{ product.get_absolute_url }}" class="product-pic__link">
+                                                <img src="{{product.productimage_set.first.img.url}}" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="product-lower-block">
+                                            <div class="product-price">
+                                                {{ product.price}}
+                                                <span class="product-price-curency">грн</span>
+                                            </div>
+                                            <div class="product-add-wishlist">
+                                                <a href="#" class="product-wishlist__link">
+                                                    <svg width="40" height="41" viewBox="0 0 40 41" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                                d="M35.9297 11.1953C35.4061 9.98299 34.6511 8.88436 33.707 7.96097C32.7622 7.03482 31.6483 6.29882 30.4258 5.793C29.1581 5.26641 27.7985 4.99687 26.4258 5.00003C24.5 5.00003 22.6211 5.52737 20.9883 6.52347C20.5977 6.76175 20.2266 7.02347 19.875 7.30862C19.5234 7.02347 19.1523 6.76175 18.7617 6.52347C17.1289 5.52737 15.25 5.00003 13.3242 5.00003C11.9375 5.00003 10.5938 5.26565 9.32422 5.793C8.09766 6.30081 6.99219 7.03128 6.04297 7.96097C5.09764 8.88332 4.34249 9.98221 3.82031 11.1953C3.27734 12.4571 3 13.7969 3 15.1758C3 16.4766 3.26563 17.8321 3.79297 19.211C4.23438 20.3633 4.86719 21.5586 5.67578 22.7657C6.95703 24.6758 8.71875 26.668 10.9062 28.6876C14.5312 32.0352 18.1211 34.3477 18.2734 34.4415L19.1992 35.0352C19.6094 35.2969 20.1367 35.2969 20.5469 35.0352L21.4727 34.4415C21.625 34.3438 25.2109 32.0352 28.8398 28.6876C31.0273 26.668 32.7891 24.6758 34.0703 22.7657C34.8789 21.5586 35.5156 20.3633 35.9531 19.211C36.4805 17.8321 36.7461 16.4766 36.7461 15.1758C36.75 13.7969 36.4727 12.4571 35.9297 11.1953Z"
+                                                                fill="#808080"/>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                            <div class="procuct-add-cart">
+                                                <form action="{% url "cart:cart_add" product.id %}" method="post">
+                                                    {% csrf_token %}
+                                                    <button>
+                                                    <svg width="24" height="20" viewBox="0 0 37 40" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                                d="M33.3702 27.418H11.99L13.0635 25.0391L30.9001 25.0039C31.5033 25.0039 32.0203 24.5352 32.128 23.8867L34.5981 8.84375C34.6628 8.44922 34.5658 8.04297 34.3288 7.73438C34.2117 7.5825 34.0657 7.46016 33.9007 7.37585C33.7358 7.29153 33.556 7.24726 33.3738 7.24609L10.6831 7.16406L10.4893 6.17188C10.3672 5.53906 9.843 5.07812 9.24701 5.07812H3.69999C3.36386 5.07813 3.0415 5.2234 2.80382 5.482C2.56614 5.74059 2.43262 6.09132 2.43262 6.45703C2.43262 6.82274 2.56614 7.17347 2.80382 7.43207C3.0415 7.69066 3.36386 7.83594 3.69999 7.83594H8.22018L9.06749 12.2187L11.1535 23.207L8.46791 27.9766C8.32845 28.1814 8.24445 28.4245 8.22541 28.6786C8.20638 28.9326 8.25307 29.1874 8.3602 29.4141C8.57562 29.8789 9.01005 30.1719 9.49115 30.1719H11.7459C11.2652 30.8665 11.0056 31.7126 11.0063 32.582C11.0063 34.793 12.6578 36.5898 14.6899 36.5898C16.722 36.5898 18.3736 34.793 18.3736 32.582C18.3736 31.7109 18.1079 30.8633 17.634 30.1719H23.4179C22.9373 30.8665 22.6776 31.7126 22.6783 32.582C22.6783 34.793 24.3299 36.5898 26.362 36.5898C28.3941 36.5898 30.0456 34.793 30.0456 32.582C30.0456 31.7109 29.7799 30.8633 29.306 30.1719H33.3738C34.0703 30.1719 34.6412 29.5547 34.6412 28.793C34.6391 28.4276 34.5043 28.078 34.2662 27.8204C34.0281 27.5629 33.706 27.4182 33.3702 27.418ZM11.2109 9.88281L31.8839 9.95703L29.8589 22.293L13.62 22.3242L11.2109 9.88281ZM14.6899 33.8164C14.0652 33.8164 13.5554 33.2617 13.5554 32.582C13.5554 31.9023 14.0652 31.3477 14.6899 31.3477C15.3146 31.3477 15.8244 31.9023 15.8244 32.582C15.8244 32.9094 15.7049 33.2234 15.4921 33.4549C15.2794 33.6864 14.9908 33.8164 14.6899 33.8164ZM26.362 33.8164C25.7373 33.8164 25.2274 33.2617 25.2274 32.582C25.2274 31.9023 25.7373 31.3477 26.362 31.3477C26.9867 31.3477 27.4965 31.9023 27.4965 32.582C27.4965 32.9094 27.377 33.2234 27.1642 33.4549C26.9514 33.6864 26.6629 33.8164 26.362 33.8164Z"
+                                                                fill="white"/>
+                                                    </svg>
+                                                    </button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <!--                        <div class="pagination">-->
+                <!--                            <div class="row">-->
+                <!--                                <div class="col">-->
+                <!--                                    <nav aria-label="Page navigation example">-->
+                <!--                                        <ul class="pagination">-->
+                <!--                                            <li class="page-item"><a class="page-link active" href="#">1</a></li>-->
+                <!--                                            <li class="page-item"><a class="page-link" href="#">2</a></li>-->
+                <!--                                            <li class="page-item"><a class="page-link" href="#">3</a></li>-->
+                <!--                                        </ul>-->
+                <!--                                    </nav>-->
+                <!--                                </div>-->
+                <!--                            </div>-->
+                <!--                        </div>-->
+
+
+                <!--Pagination-->
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="True">Previous</a>
+                        </li>
+                        {% endif %}
+
+                        {% if page_obj.number|add:'-4' > 1 %}
+                        <li class="page-item"><a class="page-link"
+                                                 href="?page={{ page_obj.number|add:'-5' }}">&hellip;</a></li>
+                        {% endif %}
+
+                        {% for i in page_obj.paginator.page_range %}
+                        {% if page_obj.number == i %}
+                        <li class="page-item active" aria-current="page">
+              <span class="page-link">
+                {{ i }}
+                <span class="sr-only">(current)</span>
+              </span>
+                        </li>
+                        {% elif i > page_obj.number|add:'-5' and i < page_obj.number|add:'5' %}
+                        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                        {% endif %}
+                        {% endfor %}
+
+                        {% if page_obj.paginator.num_pages > page_obj.number|add:'4' %}
+                        <li class="page-item"><a class="page-link"
+                                                 href="?page={{ page_obj.number|add:'5' }}">&hellip;</a></li>
+                        {% endif %}
+
+                        {% if page_obj.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="True">Next</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+                <!--end of Pagination-->
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}
+
+
+<a href="#">
+    <div class="row mt-2 mb-2">
+        <div class="col-2">
+            <img src="${product.img}" alt="">
+        </div>
+        <div class="col-10">
+            <h5>${product.title}</h5>
+        </div>
+    </div>
+</a>

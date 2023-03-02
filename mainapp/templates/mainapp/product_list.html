@@ -1,0 +1,498 @@
+{% extends 'base.html' %}
+{% load search_filter %}
+{% load static %}
+{% block custom_css %}
+    <link rel="stylesheet" href="{% static 'mainapp/css/pagination.css' %}">
+    <link rel="stylesheet" href="{% static 'mainapp/css/category_page.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+{% endblock custom_css %}
+{% block contend %}
+    <!-- =========== Header > Bottom =========== -->
+    {% include 'include/catalog.html' %}
+    <!-- ===================== Page Breadcrumbs ===================== -->
+    <div class="breadcrumbs">
+        <div class="breadcrumbs__inner">
+            <div class="container">
+                <ol>
+                    <li>
+                        <a href="{% url 'home' %}"><span>Головна</span></a>
+                    </li>
+                    <li>
+                        <a><span> {{ category.top_category.title }}</span></a>
+                    </li>
+                    <li>
+                        <a href="{{ category.get_absolute_url }}"><span>{{ category.title }}</span></a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <!-- ===================== /.Page Breadcrumbs ===================== -->
+    <!-- ===================== Catalog Header ===================== -->
+    <section class="section catalog-head">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-xl-7">
+                    <h1 class="catalog-head__title section__title">
+                        <span class="catalog-head__title-text">{{ category.title }} ({{ product_count.id__count }})</span>
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ===================== /.Catalog Header ===================== -->
+    <main class="main">
+        <div class="container">
+            <div class="main__inner row">
+                <!-- ========================================== Aside Content ========================================== -->
+                <aside class="main__aside">
+                    <div class="js_catalog-filter">
+                        <div class="catalog-filter ocf-category-104 ocf-theme-light ocf-mobile-1 ocf-mobile-left ocf-vertical ocf-left"
+                             id="ocf-module-1">
+                            <div class="ocf-content">
+                                <div class=" catalog-filter__title">
+                                    Фільтр
+                                    <button type="button" data-ocf="mobile"
+                                            class="ocf-btn ocf-btn-link ocf-mobile ocf-close-mobile"
+                                            aria-label="Close filter"><i class="ocf-icon ocf-icon-16 ocf-times"></i>
+                                    </button>
+                                </div>
+                                <form action="{% url 'category_detail' top_category_slug category_slug %}"
+                                      method="GET">
+                                    {% csrf_token %}
+                                    <div class="ocf-body">
+                                        <div class="ocf-filter-list ocf-clearfix">
+                                            <div style="border-top:0" class="ocf-filter ocf-slider ocf-has-input"
+                                                 id="">
+                                                <div class="catalog-filter__group catalog-filter__select active">
+                                                    <div class="catalog-filter__group-title" data-ocf="expand">
+                                                        <span class="ocf-filter-name">Ціна</span>
+                                                        <span class="ocf-filter-header-append"></span>
+                                                    </div>
+                                                    <style>
+                                                        .noUi-connect {
+                                                            background-color: #e91629;
+                                                        }
+
+                                                        .noUi-target {
+                                                            background-color: #bfbfbf;
+                                                            border: none;
+                                                            border-radius: 100px;
+                                                            box-shadow: none;
+                                                            height: 5px;
+                                                            margin: 24px 0 10px 0;
+                                                        }
+
+                                                        .noUi-handle::after,
+                                                        .noUi-handle::before {
+                                                            display: none;
+                                                        }
+
+                                                        .noUi-handle {
+                                                            border: 2px solid #d0d0d6;
+                                                            border-radius: 100%;
+                                                            cursor: default;
+                                                            background-color: #fff;
+                                                        }
+
+                                                        .noUi-horizontal .noUi-handle {
+                                                            width: 22px;
+                                                            height: 22px;
+                                                            top: -10px;
+                                                        }
+
+                                                        .noUi-horizontal .noUi-handle-upper {
+                                                            right: 0;
+                                                        }
+                                                    </style>
+                                                    <div class="catalog-filter__group-content">
+                                                        <div class="ocf-input-group ocf-slider-input-group">
+                                                            <input id="price-range_min" type="number"
+                                                                   name="price_min"
+                                                                   value="{{ minMaxPrice.price__min }}"
+                                                                   min="{{ minMaxPrice.price__min }}"
+                                                                   class="ocf-form-control"
+                                                                   autocomplete="off" aria-label="Цена">
+                                                            <input id="price-range_max" type="number"
+                                                                   name="price_max"
+                                                                   max="{{ minMaxPrice.price__max }}"
+                                                                   value="{{ minMaxPrice.price__max }}"
+                                                                   class="ocf-form-control"
+                                                                   autocomplete="off" aria-label="Цена">
+                                                        </div>
+                                                        <div id="filter-price__slider"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{ category|product_spec }}
+                                            <p class="text-center">
+                                                <button class="button-send" type="submit">Пошук</button>
+                                                <button class="button-reset" type="submit">Скинути</button>
+                                            </p>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="ocf-footer">
+                            <div class="ocf-between">
+                                <!--         <button type="button" data-ocf-discard="*" class="ocf-btn ocf-btn-link ocf-disabled" disabled="disabled">Скасувати</button>
+                                    -->
+                                <button type="button"
+                                        class="ocf-btn ocf-disabled ocf-btn-block ocf-search-btn-static"
+                                        data-ocf="button"
+                                        data-loading-text="<i class='fa fa-refresh fa-spin'></i> Завантаження.."
+                                        disabled="disabled">Виберіть фільтри
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.ocf-content -->
+                    <div class="ocf-is-mobile"></div>
+                    <div class="ocf-btn-mobile-fixed ocf-mobile">
+                        <button type="button" class="ocf-btn ocf-btn-default" data-ocf="mobile"
+                                aria-label="Фільтр">
+                            <span class="ocf-btn-name">Фільтр</span>
+                            <i class="ocf-icon ocf-icon-16 ocf-brand ocf-sliders"></i>
+                        </button>
+                    </div>
+                    <div class="ocf-hidden">
+                        <button class="ocf-btn ocf-search-btn-popover" data-ocf="button"
+                                data-loading-text="<i class='fa fa-refresh fa-spin'></i> Завантаження..">
+                            Виберіть фільтри
+                        </button>
+                    </div>
+            </div>
+            <!-- /.ocf-container -->
+        </div>
+        </aside>
+        <article class="catalog_main__article">
+            <!-- ===================== Catalog =====================-->
+            <section class="section">
+                <div class="container">
+                    <div class="catalog-sorting">
+                        <!-- Catalog Sorting > Filter Button -->
+                        <a data-ocf="mobile" href="#"
+                           class="catalog-sorting__filter btn-red js_filter">Фільтр</a>
+                        <!-- Catalog Sorting > Select -->
+                        <div class="catalog-sorting__select">
+                            <span>Сортувати:</span>
+                            <label>
+                                <select class="justselect">
+                                    <option selected="selected"
+                                            value="{% url 'category_detail' top_category_slug=top_category_slug category_slug=category_slug %}">
+                                        За замовчуванням
+                                    </option>
+                                    <option value="?{% if page_obj.number %}page={{ page_obj.number }}&{% endif %}orderby=popular">
+                                        За популярністю
+                                    </option>
+                                    <option value="?{% if page_obj.number %}page={{ page_obj.number }}&{% endif %}orderby=-price">
+                                        Від дорогих до дешевих
+                                    </option>
+                                    <option value="?{% if page_obj.number %}page={{ page_obj.number }}&{% endif %}?orderby=price">
+                                        Від дешевих до дорогих
+                                    </option>
+                                    <option value="?{% if page_obj.number %}page={{ page_obj.number }}&{% endif %}?orderby=title">
+                                        По найменуванню
+                                    </option>
+                                </select>
+                            </label>
+                        </div>
+                        <!-- Catalog Sorting > Checkbox -->
+                        <label class="custom-checkbox catalog-sorting__checkbox vch">
+                            <input type="checkbox">
+                            <span class="custom-checkbox__checkmark"></span>
+                            <span class="custom-checkbox__label">В наявності</span>
+                        </label>
+                        <div class="catalog-sorting__view">
+                            <a href="#" class="catalog-sorting__view-item view--col active"
+                               data-view="column"></a>
+                            <a href="#" class="catalog-sorting__view-item view--row" data-view="row"></a>
+                        </div>
+                    </div>
+                    <div class="catalog-products">
+                        {% for product in page_obj %}
+                            <div class="col-lg-3">
+                                <div class="productsticker">
+                                    {% if product.tag %}
+                                        <span style="color: {{ product.tag.color }}; background: {{ product.tag.background }};"
+                                              class="product-gallery__detail-label  ">{{ product.tag.title }}</span>
+                                    {% endif %}
+                                </div>
+                                <div class="product-card ">
+                                    <a href="{{ product.get_absolute_url }}" class="product-card__image">
+                                        <img src="{{ product.productimage_set.first.img.url }}"
+                                             alt="{{ product.title }}">
+                                    </a>
+                                    <div class="product-card__content">
+                                        <a href="{{ product.get_absolute_url }}"
+                                           class="product-card__title">{{ product.title }}</a>
+                                        <div class="product-card__status ">В наявності</div>
+                                        <div class="product-card__price">
+                                            <span class="current">{{ product.price }} ₴</span>
+                                        </div>
+                                        <div class="product-card__buttons">
+                                            <a href="{% url 'cart:cart_add' product.id %}"
+                                               class="product-card__buy btn-red-out">В кошик</a>
+                                            <a href="{% url 'wishlist:add_to_wishlist' product.slug %}" class="product-card__btn product-card__btn--whishlist icon-whishlist"></a>
+                                            <a class="product-card__btn product-card__btn--compare icon-compare"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="catalog-footer">
+                        {#                            {% if is_paginated %}#}
+                        <!-- Catalog Footer > Pagination -->
+                        <div id="app" class="container_pa">
+                            <ul class="page">
+                                {% if page_obj.has_previous %}
+                                    <li class="page__btn">
+                                        <a href="?{% if order %}orderby={{ order }}&{% endif %}page={{ page_obj.previous_page_number }}"></a>
+                                        <a class="material-icons"
+                                           href="?{% if order %}orderby={{ order }}&{% endif %}page={{ page_obj.previous_page_number }}">chevron_left</a>
+                                    </li>
+                                {% endif %}
+                                {% if page_obj.number > 5 %}
+                                    <li class=""><a
+                                            href="?{% if order %}orderby={{ order }}&{% endif %}page={{ page_num }}">{{ page_num }}</a>
+                                    </li>
+                                    <li class="page__numbers">
+                                        <a href="?{% if order %}orderby={{ order }}&{% endif %}page=1">1</a>
+                                    </li>
+                                {% endif %}
+                                {% if page_obj.number|add:'-5' > 1 %}
+                                    <li class="page__dots"><a
+                                            href="?{% if order %}orderby={{ order }}&{% endif %}page={{ page_obj.number|add:'-5' }}">...</a>
+                                    </li>
+                                {% endif %}
+                                {% for page_num in page_obj.paginator.page_range %}
+                                    {% if page_obj.number == page_num %}
+                                        <li class="page__numbers active"><a
+                                                href="?{% if order %}orderby={{ order }}&{% endif %}page={{ page_num }}">{{ page_num }} </a>
+                                        </li>
+                                    {% elif page_num > page_obj.number|add:'-5' and page_num < page_obj.number|add:'5' %}
+                                        <li class="page__numbers"><a
+                                                href="?{% if order %}orderby={{ order }}&{% endif %}page={{ page_num }}">{{ page_num }} </a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                                {% if page_obj.paginator.num_pages > page_obj.number|add:'5' %}
+                                    <li>
+                                        <a href="?{% if order %}orderby={{ order }}&{% endif %}page={{ page_obj.number|add:'-5' }}">&hellip;</a>
+                                    </li>
+                                    <li class=""><a
+                                            href="?{% if order %}orderby={{ order }}&{% endif %}page={{ page_num }}">{{ page_num }}</a>
+                                    </li>
+                                    <li class="page__numbers">
+                                        <a href="?{% if order %}orderby={{ order }}&{% endif %}page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
+                                    </li>
+                                {% endif %}
+                                {% if page_obj.has_next %}
+                                    <li class="page__btn">
+                                        <a href="?{% if order %}orderby={{ order }}&{% endif %}page={{ page_obj.next_page_number }}"></a>
+                                        <a class="material-icons"
+                                           href="?{% if order %}orderby={{ order }}&{% endif %}page={{ page_obj.next_page_number }}">chevron_right</a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                    {#                        {% endif %}#}
+                </div>
+            </section>
+            <div class="catalog-tops">
+                <!-- ===================== Топ товаров =====================-->
+                <section class="section">
+                    <div class="container">
+                        <h2 class="section__title">Нещодавно переглянуті</h2>
+                        <!-- ========== Product Slider ========== -->
+                        <div class="products-slider products-slider--1">
+                            {% for i in recently_viewed %}
+                                <div class="products-slider__slide">
+                                    <div class="product-card">
+                                        <a href="{{ i.get_absolute_url }}" class="product-card__image">
+                                            <img src="{{ i.productimage_set.first.img.url }}"
+                                                 alt="{{ i.title }}">
+                                        </a>
+                                        <div class="product-card__content">
+                                            <a href="{{ i.get_absolute_url }}"
+                                               class="product-card__title">{{ i.title }}</a>
+                                            <div class="product-card__status ">В наявності</div>
+                                            <div class="product-card__price">
+                                                <span class="current">{{ i.price }} ₴</span>
+                                            </div>
+                                            <div class="product-card__buttons">
+                                                <a href="{% url 'cart:cart_add' i.id %}"
+                                                   class="product-card__buy btn-red-out remarketing_cart_button"
+                                                   tabindex="0">В
+                                                    кошик</a>
+                                                <a class="product-card__btn product-card__btn--whishlist icon-whishlist"
+                                                   tabindex="0"></a>
+                                                <a class="product-card__btn product-card__btn--compare icon-compare"
+                                                   tabindex="0"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <!-- ========== /.Product Slider ========== -->
+                    </div>
+                </section>
+            </div>
+            <section class="section info">
+                <div class="container">
+                    <div class="row">
+                        <!-- ========== Consultation ========== -->
+                        <div class="col-md-7 js_consultation--mobile"></div>
+                        <!-- ========== Help ========== -->
+                        <div class="col-md-5 js_help--mobile"></div>
+                    </div>
+                </div>
+            </section>
+            <script>
+                $("[data-view]").click(function () {
+                    $(this).addClass("active").siblings().removeClass("active");
+                    if ($(this).data("view") == "row") {
+                        $(".catalog-products").addClass("catalog-view--row");
+                    } else {
+                        $(".catalog-products").removeClass("catalog-view--row");
+                    }
+                    return false;
+                });
+                $(document).on('click', '.vch', function () {
+                    if ($(this).hasClass('active')) {
+                        $(this).find('input').prop('checked', false);
+
+                        $(this).removeClass('active');
+                        //  console.log(location.href.replace(\/nalichie/g, ''));
+                        location = location.href.replace(/nalichie/g, '');
+                    } else {
+                        $(this).find('input').prop('checked', true);
+                        // console.log(location.href + 'nalichie');
+                        $(this).addClass('active');
+                        location = location.href + 'nalichie';
+                    }
+                    return false;
+                });
+                $(window).on('load', function () {
+                    if ($('[name="qnts[1]"]').next().hasClass('actionis')) {
+                        $('.vch').addClass('active');
+                        $('.vch').find('input').prop('checked', true);
+
+                    }
+                });
+            </script>
+        </article>
+        </div>
+        </div>
+    </main>
+    <div class="ts-mw-substrate"></div>
+    <script>
+        $('.ts-mw-icon').click(function () {
+            $('#ts-mw-id').toggleClass('open');
+            $('.ts-mw-substrate').toggleClass('active');
+        });
+        $('.ts-mw-li a').click(function () {
+            $('#ts-mw-id').removeClass('open');
+            $('.ts-mw-substrate').removeClass('active');
+        });
+        $('.ts-mw-substrate').click(function () {
+            $('#ts-mw-id').removeClass('open');
+            $('.ts-mw-substrate').removeClass('active');
+        });
+    </script>
+    <script src="{% static 'js/nouislider.min.js' %}"></script>
+    <script>
+        let price__slider = document.getElementById("filter-price__slider");
+        let price__min = document.getElementById("price-range_min");
+        let price__max = document.getElementById("price-range_max");
+        console.log()
+        noUiSlider.create(price__slider, {
+
+            start: [parseInt(price__min.getAttribute("min")), parseInt(price__max.getAttribute("max"))],
+            connect: true,
+            step: 1,
+            range: {
+                'min': parseInt(price__min.getAttribute("min")),
+                'max': parseInt(price__max.getAttribute("max"))
+            }
+        });
+        price__slider.noUiSlider.on('update', function (values, handle) {
+            var value = values[handle];
+            if (handle) {
+                price__max.value = Math.round(value);
+            } else {
+                price__min.value = Math.round(value);
+            }
+        });
+        price__min.addEventListener('change', function () {
+            price__slider.noUiSlider.set([this.value, null]);
+        });
+        price__max.addEventListener('change', function () {
+            price__slider.noUiSlider.set([null, this.value]);
+        });
+
+    </script>
+
+    <div id="mobil_mini"><i class="fa fa-times"></i></div>
+
+    <div class="popup-popup">
+        <div class="callback-popup__wrap">
+            <div class="callback-popup__container">
+                <!-- ========= Callback Popup > Content ========= -->
+                <div id="popupModal" class="callback-popup__box">
+                    <div class="modal-dialog">
+                        <!-- Callback Popup > Header -->
+                        <a href="#" class="popup__close"></a>
+                        <!-- Callback Popup > Form -->
+                        <div class="callback-popup__body">
+                            <div class="callback-popup__head">
+                                <p class="callback-popup__title">Кошик</p>
+                                <p class="callback-popup__subtitle"></p>
+                            </div>
+                            <div class="callback-popup__form">
+                                <div class="popup-popup__group">
+                                </div>
+                                <div class="popup__suc">
+                                    <a href="ua/cart/">
+                                        Перейти в кошик
+                                        <svg width="6" height="12" viewBox="0 0 6 12" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6 6L4.29138e-07 12L9.53674e-07 -2.62268e-07L6 6Z" fill="#363636"/>
+                                        </svg>
+                                    </a>
+                                    <div class="popup__suc2">Всього до сплати: <span></span></div>
+                                </div>
+                                <div class="popup__sucbtn">
+                                    <a class="popup__fastch">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M2.67187 7.5C2.46181 7.49979 2.26018 7.5826 2.11091 7.7304C1.96165 7.87821 1.87685 8.07901 1.87499 8.28906C1.87414 8.36187 1.88469 8.43436 1.90624 8.50391L3.92578 15.625C4.01938 15.9576 4.21942 16.2504 4.49527 16.4586C4.77111 16.6667 5.10757 16.7787 5.45312 16.7774H14.5469C14.8931 16.7777 15.23 16.6654 15.5069 16.4576C15.7838 16.2498 15.9856 15.9575 16.082 15.625L18.1016 8.50391L18.125 8.28906C18.1231 8.07901 18.0383 7.87821 17.8891 7.7304C17.7398 7.5826 17.5382 7.49979 17.3281 7.5H2.67187ZM10.2234 13.7527C9.89876 13.7511 9.58184 13.6534 9.31268 13.4718C9.04351 13.2903 8.83415 13.033 8.71103 12.7326C8.5879 12.4322 8.55653 12.102 8.62086 11.7838C8.68519 11.4655 8.84235 11.1735 9.0725 10.9445C9.30265 10.7155 9.59548 10.5598 9.91404 10.497C10.2326 10.4343 10.5626 10.4673 10.8624 10.5919C11.1622 10.7165 11.4184 10.9272 11.5986 11.1972C11.7788 11.4673 11.875 11.7847 11.875 12.1094C11.8729 12.546 11.698 12.9641 11.3885 13.272C11.079 13.58 10.6601 13.7529 10.2234 13.7527V13.7527Z"
+                                                  stroke="#D7000F" stroke-width="2" stroke-linejoin="round"/>
+                                            <path d="M6.25 7.5L10 2.5L13.75 7.5" stroke="#D7000F" stroke-width="2"
+                                                  stroke-linejoin="round"/>
+                                        </svg>
+                                        Швидке замовлення
+                                    </a>
+                                    <a class="btn-red btn-blick" href="ua/simplecheckout/">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M1.875 15.5961C1.875 13.0934 2.43906 11.0938 3.55117 9.64844C4.89414 7.90352 7.01523 6.96211 9.86211 6.8457V2.8125L18.125 9.84375L9.86211 16.875V12.8652C8.13359 12.9117 6.82852 13.1613 5.78906 13.6402C4.66602 14.1578 3.85156 14.9313 2.97344 15.9332L1.875 17.1875V15.5961Z"
+                                                  fill="white"/>
+                                        </svg>
+                                        Оформити замовлення
+                                    </a>
+                                    <div>
+                                        <a class="popup__close">Продовжити покупки ></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ========= /.Callback Popup > Content ========= -->
+            </div>
+        </div>
+    </div>
+{% endblock %}
