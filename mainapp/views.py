@@ -101,9 +101,9 @@ class CategoryListView(DetailView):
             id__in=[pf_['product_id'] for pf_ in pf]).prefetch_related('features')
         context['product_filter'] = product_filter
         # products = Product.objects.filter(id__in=[pf_['product_id'] for pf_ in pf]).prefetch_related('features')
-        # products = Product.objects.category_product(category=category)
-        products = Product.objects.category_product(category=category).filter(
-            id__in=[pf_['product_id'] for pf_ in pf]).prefetch_related('features')
+        products = Product.objects.category_product(category=category)
+        # products = Product.objects.category_product(category=category).filter(
+        #     id__in=[pf_['product_id'] for pf_ in pf]).prefetch_related('features')
         if order:
             products = Product.objects.order(category=category, order_by=order)
         if query:
