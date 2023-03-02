@@ -7,13 +7,14 @@ import psycopg2
 from psycopg2.errorcodes import UNIQUE_VIOLATION
 from psycopg2 import errors
 import random
+import mysql.connector
 
 
-conn = mysql.connector.connect(
+conn = psycopg2.connect(
     host="localhost",
-    database="falex728_978.com.ua",
-    user="falex728_ilya",
-    password="Vbvb2003")
+    database="978.com.ua",
+    user="postgres",
+    password="postgres")
 
 tree = ET.parse('wByx7xJQyn5PoYIF.xml')
 root = tree.getroot()
@@ -280,15 +281,15 @@ def main(root):
     combin_spec(root)
     end7 = time.time() - start7
 
-    # end = time.time() - start
+    end = time.time() - start
 
-    # print(f'{end1} - fell_top_category')
-    # print(f'{end2} - fell_category')
-    # print(f'{end3} - product_filling')
+    print(f'{end1} - fell_top_category')
+    print(f'{end2} - fell_category')
+    print(f'{end3} - product_filling')
     # print(f'{end4} - filling_product_img_table')
-    # print(f'{end5} - feel_spec_category')
-    # print(f'{end6} - feel_spec_product')
-    # print(f'{end7} - combin_spec')
-    # print(f'В загальному {end} або {end / 60} хв.')
+    print(f'{end5} - feel_spec_category')
+    print(f'{end6} - feel_spec_product')
+    print(f'{end7} - combin_spec')
+    print(f'В загальному {end} або {end / 60} хв.')
 
 main(root)
