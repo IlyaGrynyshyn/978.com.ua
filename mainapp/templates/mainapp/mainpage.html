@@ -41,17 +41,17 @@
 
 <div class="mobile-menu mobile-menu--hide">
 <div class="mobile-menu__wrapper">
-<div class="mobile-menu__content"><a class="mobile-menu__logo" href=""> <picture> <source srcset="image/catalog/demo/banners/logo.svg" type="image/webp" /> <img alt="" src="image/catalog/demo/banners/logo.svg" /> </picture> </a> <!-- Mobile Menu > Login -->
+<div class="mobile-menu__content"><a class="mobile-menu__logo" href="{% url 'home' %}"> <picture> <source srcset="{% static '978.svg' %}" type="image/webp" /> <img alt="" src="{% static '978.svg' %}" /> </picture> </a> <!-- Mobile Menu > Login -->
 
-<div class="mobile-menu__login"><a class="mobile-menu__login--sign-in" href="">Вход</a> <a class="mobile-menu__login--register" href="">Регистрация</a></div>
+<div class="mobile-menu__login"><a class="mobile-menu__login--sign-in" href="{% url 'accounts:login' %}">Вхід</a> <a class="mobile-menu__login--register" href="{% url 'accounts:registration' %}">Реєстрація</a></div>
 <!-- Mobile Menu > Catalog -->
 
 <ul class="mobile-menu__catalog">
-	<li><a id="mobmenu"><span>Каталог товаров</span></a>
+	<li><a id="mobmenu"><span>Каталог товарів</span></a>
 
 	<ul>
 		<li>{% for i in top_category %}</li>
-		<li><a href=""> <img class="menucust_icon" src="{{ i.category_icon.url }}" /> <span>{{ i.title }}</span></a>
+		<li><a> <img class="menucust_icon" src="{{ i.category_icon.url }}" /> <span>{{ i.title }}</span></a>
 		<ul>
 			<li>{% for cat in i.category_set.all %}</li>
 			<li><a href="{{ cat.get_absolute_url }}"><span>{{ cat.title }}</span></a></li>
@@ -64,62 +64,45 @@
 </ul>
 <!-- Mobile Menu > Actions -->
 
-<div class="mobile-menu__actions"><a class="mobile-menu__actions--whishlist" href="wishlist/">Избранное</a> <a class="mobile-menu__actions--compare" href="compare-products/">Сравнение</a> <a class="mobile-menu__actions--cart" href="simplecheckout/">Корзина</a></div>
+<div class="mobile-menu__actions"><a class="mobile-menu__actions--whishlist" href="{% url 'wishlist:wishlist' %}">Закладки</a><a class="mobile-menu__actions--cart" href="{% url 'cart:cart_detail' %}">Корзина</a></div>
 <!-- Mobile Menu > Contacts -->
 
-<div class="mobile-menu__contacts"><a class="callback js-callback-popup" data-target="#orderModal">Обратная связь</a> <a class="email" href="#">info@978.com.ua</a> <a class="phone" href="tel:++38(066)520-80-05">+38(066)520-80-05</a></div>
+<div class="mobile-menu__contacts"><a class="callback js-callback-popup" data-target="#orderModal">Зворотній зв'язок</a> <a class="email" href="#">info@978.com.ua</a> <a class="phone" href="tel:++38(055)55-55-05">+38(999)440-20-10</a></div>
 <!-- Mobile Menu > Menu -->
 
 <ul class="mobile-menu__menu">
-	<li><a href="blog"><span>Блог</span></a></li>
-	<li><a href="dostavka-oplata"><span>Оплата и доставка</span></a></li>
-	<li><a href="contact-us"><span>Контакты</span></a></li>
+	<li><a href="dostavka-oplata"><span>Оплата й доставка</span></a></li>
+	<li><a href="contact-us"><span>Контакти</span></a></li>
 </ul>
 
-<div class="header__language" id="ocd_multilang"><a class="header__language-button" style="cursor:pointer"> <span>RU</span> </a>
-
-<ul class="header__language-menu">
-	<li><a href=""><span>Русский</span></a></li>
-	<li><a href="ua"><span>Українська</span></a></li>
-</ul>
-</div>
-
-<ul class="mobile-menu__language" id="ocd_multilang2">
-	<li><a href="#"><span>Русский</span></a>
-
-	<ul>
-		<li><a href=""><span>Русский</span></a></li>
-		<li><a href="ua"><span>Українська</span></a></li>
-	</ul>
-	</li>
-</ul>
 </div>
 <!-- Mobile Menu > Close Button --><a class="mobile-menu__close js__mobile-menu" href="#">Закрыть</a></div>
 </div>
 <!-- ===================== /.Mobile Menu / Mobile Catalog =====================--><!-- ===================== Promo Section =====================-->
 
 <section class="promo">
-<div class="container">
-<div class="row">
-<div class="col-lg-9 offset-lg-3 promo__inner"><!-- =========== Promo > Slider =========== -->
-<div class="promo__slider">{% for i in banner %}
-<div class="promo__slider-slide">{#
-<div class="promo__slider-image">#}
-<div><picture><img alt="Бесплатная доставка" src="{{ i.image.url }}" /></picture></div>
-</div>
-{% endfor %}</div>
-<!-- Promo Slider > Controls -->
-
-<div class="promo__slider-controls slick-controls">
-<div class="slick-controls__dots"></div>
-
-<div class="slick-controls__arrows"></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9 offset-lg-3 promo__inner">
+                    <!-- =========== Promo > Slider =========== -->
+                    <div class="promo__slider">
+                        {% for i in banner %}
+                            <div class="promo__slider-slide">
+                                <div class="">
+                                    <picture><img src="{{ i.image.url }}" alt="Бесплатная доставка"/></picture>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <!-- Promo Slider > Controls -->
+                    <div class="promo__slider-controls slick-controls">
+                        <div class="slick-controls__dots"></div>
+                        <div class="slick-controls__arrows"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 <!-- ===================== /.Promo Section =====================-->
 
 <section class="section advantages">
@@ -227,6 +210,7 @@
 </div>
 </section>
 
+{% if recently_viewed %}
 <section class="section tabs">
 <div class="container">
 <div class="tabs__head">
@@ -238,7 +222,7 @@
 <div class="tabs__tab"><!-- ========== Product Slider ========== -->
 <div class="products-slider">{% for i in recently_viewed %}
 <div class="products-slider__slide">
-<div class="product-card"><a class="product-card__image" href="{{ i.get_absolute_url }}"><img alt="IC Mifare карта IC-S50" src="{{ i.productimage_set.first.img.url }}" /> </a>
+<div class="product-card"><a class="product-card__image" href="{{ i.get_absolute_url }}"><img alt="{{ i.title }}" src="{{ i.productimage_set.first.img.url }}" /> </a>
 
 <div class="product-card__content"><a class="product-card__title" href="{{ i.get_absolute_url }}">{{ i.title }}</a>
 
@@ -262,6 +246,7 @@
 <!-- ========== /.Tabs > Tab ========== --></div>
 </div>
 </section>
+{% endif %}
 
 </article>
 </div>

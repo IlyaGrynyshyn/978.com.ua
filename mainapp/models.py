@@ -9,7 +9,7 @@ from ckeditor.fields import RichTextField
 
 
 def content_file_name(instance, filename):
-    return f"images/{instance.__class__.__name__}/{instance.title}/{filename}"
+    return f"images/{instance.__class__.__name__}/{filename}"
 
 
 class TopCategory(models.Model):
