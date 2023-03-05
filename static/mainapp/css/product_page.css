@@ -1,34 +1,3 @@
-@font-face {
-    font-family: Geometria;
-    src: url('../fonts/geometria.eot');
-    src: local('Geometria'), url('../fonts/geometria.eot?#iefix') format('embedded-opentype'), url('../fonts/geometria.woff2') format('woff2'), url('../fonts/geometria.woff') format('woff'), url('../fonts/geometria.ttf') format('truetype'), url('../fonts/geometria.svg#Geometria') format('svg');
-    font-weight: 400;
-    font-style: normal
-}
-
-@font-face {
-    font-family: Geometria;
-    src: url('../fonts/geometria-bold.eot');
-    src: local('Geometria-Bold'), url('../fonts/geometria-bold.eot?#iefix') format('embedded-opentype'), url('../fonts/geometria-bold.woff2') format('woff2'), url('../fonts/geometria-bold.woff') format('woff'), url('../fonts/geometria-bold.ttf') format('truetype'), url('../fonts/geometria-bold.svg#Geometria-Bold') format('svg');
-    font-weight: 700;
-    font-style: normal
-}
-
-@font-face {
-    font-family: Geometria;
-    src: url('../fonts/geometria-medium.eot');
-    src: local('Geometria-Medium'), url('../fonts/geometria-medium.eot?#iefix') format('embedded-opentype'), url('../fonts/geometria-medium.woff2') format('woff2'), url('../fonts/geometria-medium.woff') format('woff'), url('../fonts/geometria-medium.ttf') format('truetype'), url('../fonts/geometria-medium.svg#Geometria-Medium') format('svg');
-    font-weight: 500;
-    font-style: normal
-}
-
-@font-face {
-    font-family: 'Reem Kufi';
-    src: url('../fonts/reemkufi-regular.eot');
-    src: local('Reem Kufi Regular'), local('ReemKufi-Regular'), url('../fonts/reemkufi-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/reemkufi-regular.woff2') format('woff2'), url('../fonts/reemkufi-regular.woff') format('woff'), url('../fonts/reemkufi-regular.ttf') format('truetype'), url('../fonts/reemkufi-regular.svg#ReemKufi-Regular') format('svg');
-    font-weight: 400;
-    font-style: normal
-}
 
 .content {
     max-width: 1360px;

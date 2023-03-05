@@ -226,7 +226,7 @@
                                     <div class="b-pmi-col-left">
                                         <ul class="b-i-product-hi-list">
                                             <li>
-                                                <a class="b-i-product-hi-link-add2wish" href="#cPopupEnterTab"
+                                                <a class="b-i-product-hi-link-add2wish" href="{% url 'wishlist:add_to_wishlist' product.slug %}"
                                                    data-toggle="modal" data-target="#popupERL" rel="nofollow"
                                                    title="Увійти">До
                                                     списку бажань</a>
@@ -269,18 +269,16 @@
                         </div>
                     </div>
                 </div><!-- /.b-wrap-ptech-chars -->
-                <div class="text-section__block">
-                    <h2 class="ph4">Опис {{ product.title }}</h2>
-                    <div>
-                        <div id="full_text">
-                            {{ product.description|safe }}
-                        </div>
-                    </div>
-                </div>
+{#                <div class="text-section__block">#}
+{#                    <h2 class="ph4">Опис {{ product.title }}</h2>#}
+{#                    <div>#}
+{#                        <div id="full_text">#}
+{#                            {{ product.description|safe }}#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
                 <div class="b-related-products c-active">
                     <div class="b-product-mob-body">
-                        <h2 class="b-related-products-head">Рекомендуємо до покупки <span
-                                class="b-related-products-product-name">{{ product.title }}</span></h2>
                         {% if recently_viewed %}
                             <section class="section tabs">
                                 <div class="container">

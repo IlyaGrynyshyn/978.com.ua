@@ -1,56 +1,7 @@
 $(document).ready(function() {
 	
 	// ==================================== Скрипты для страницы товара ==================================== //
- 	function product_gallary(){
 
- 		// Большое фото товара
-		var detail = $("#product-detail");
-
-		// Маленькое фото товара
-		var product_gallery = $('#product-gallery > .product-gallery__item');
-
-		// Установить первое фото
-		product_gallery.eq(0).addClass("active");
-		detail.attr("data-index", 0).attr("href", product_gallery.eq(0).find("> a").attr("href"));
-		detail.find("img").attr("src", product_gallery.eq(0).find("> a").attr("href"));
-		detail.find("source").attr("srcset", product_gallery.eq(0).find("> a").attr("href"));
-
-
-		// При клике на слайд сделать активным и открыть текущее фото
-		product_gallery.find("> a").on("click", function(e) {
-		   e.preventDefault();		
-
-		   var current_index = $(this).parents('.product-gallery__item').index(),
-	    		 current_image = $(this).attr("href");
-
-		   // Сделать активным при клике
-		   $(".product-gallery__item").removeClass("active");
-		   $(this).parent().addClass("active");
-
-
-		   detail.attr("data-index", current_index).attr("href", current_image);
-		   detail.find("img").attr("src", current_image);
-		   detail.find("source").attr("srcset", current_image);
-
-		   return false;
-		});
-
-
-		// Работа Fancybox
-		$(".product-gallery__detail").on("click", function (){
-			$.fancybox.open(product_gallery.find("> a"),{}, detail.attr('data-index'));
-			return false;
-		});
- 	}
- 	product_gallary();
-
-
- 	// ============ Установка рейтинга
- 	function set_rating(){
-
- 	}
-
- 	set_rating();
 	
 
 	// ============ Скролить до характеристик
