@@ -8063,6 +8063,14 @@ p.useful-info__item:before {
     order: 1;
 }
 
+@media only screen and (max-width: 767px) {
+    .products-slider ul.slick-dots {
+        max-width: 70%;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+}
+
 .catalog-products {
     display: -webkit-box;
     display: -ms-flexbox;
