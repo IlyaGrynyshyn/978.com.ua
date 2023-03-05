@@ -150,7 +150,7 @@ def search(request):
     if is_ajax(request=request):
         product = request.POST.get('product')
         res = None
-        qs = Product.objects.filter(title__icontains=product).select_related('section', 'tag', 'category')
+        qs = Product.objects.filter(title__icontains=product).select_related('section', 'tag', 'category')[:6]
         product_image = ProductImage.objects.all().select_related('product')
         if len(qs) > 0 and len(product) > 0:
             data = []
@@ -175,7 +175,7 @@ def search_page(request):
     q = request.GET.get('q')
     data = Product.objects.search(query=q)
     context = {
-        'products': data,
+        'page_obj': data,
         'top_category': TopCategory.objects.all(),
         'cart': Cart(request),
         'category_slug': category_slug,
