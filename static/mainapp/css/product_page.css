@@ -1,3 +1,4 @@
+@charset "UTF-8";
 
 .content {
     max-width: 1360px;
@@ -1433,10 +1434,7 @@ input[type=radio]:disabled + label:after {
     display: block
 }
 
-.b-popular-products-slider .b-poprpdpsd-item {
-    float: left;
-    max-width: 305px
-}
+
 
 .b-popular-products-slider.slick-initialized .b-poprpdpsd-item {
     max-width: 100%
@@ -1553,7 +1551,7 @@ input[type=radio]:disabled + label:after {
 }
 
 .b-product-db-photos-slider-big.slick-initialized img {
-    display: block
+    display: block;
 }
 
 .b-product-db-photos-slider-thumbs img {
@@ -3522,4 +3520,93 @@ input[type=radio]:disabled + label:after {
     width: 40px;
     height: 40px;
     z-index: 5
+}
+
+
+@media(min-width:992px) {
+    .b-wrapper-side-affix-block {
+        margin: 0 -35px 0 0;
+        position: relative;
+    }
+
+    .b-wrapper-side-affix-block .b-side-affix-block {
+        width: 280px;
+        border: 1px solid #e5e5e5
+    }
+
+    .b-wrapper-side-affix-block .b-side-filter {
+        margin: 0;
+        border: none;
+    }
+
+    .b-side-affix-block.affix {
+        top: 77px;
+        position: fixed !important;
+    }
+
+    .b-side-affix-block.affix .b-sfilt-scr-wrapper {
+        max-height: calc(100vh - 77px - 120px - 78px - 20px);
+        overflow: auto;
+        border-bottom: 1px solid #e5e5e5;
+    }
+
+    .b-side-affix-block.affix-bottom {
+        position: absolute !important;
+        top: 77px;
+    }
+    .b-side-affix-block.affix-bottom .b-sfilt-scr-wrapper {
+        max-height: calc(100vh - 77px - 120px - 78px - 20px);
+        overflow: auto;
+        border-bottom: 1px solid #e5e5e5;
+    }
+    .b-side-affix-block .jspVerticalBar {
+        width: 3px;
+    }
+    .b-side-affix-block .jspTrack {
+        width: 3px;
+        background: #ddd;
+        border-radius:0;
+    }
+    .b-side-affix-block .jspDrag {
+        width: 3px;
+        background: #a2c617;
+        border-radius:0;
+    }
+}
+
+
+
+
+@media (min-width: 544px) {
+    .ast-container {
+        max-width: 100%
+    }
+}
+
+@media (min-width: 768px) {
+    .ast-container {
+        max-width: 100%
+    }
+}
+
+@media (min-width: 992px) {
+    .ast-container {
+        max-width: 100%
+    }
+}
+
+@media (min-width: 1200px) {
+    .ast-container {
+        max-width: 100%
+    }
+}
+
+
+img {
+    height: auto;
+    max-width: 100%
+}
+
+.slick-list{
+    width: 100%;
 }
