@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-5t(_v_1-1%5s^+3pqk01j+q7=$52+mzreric_a+%s90%kap(hp
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['978.com.ua','www.978.com.ua']
 
 # Application definition
 
@@ -96,25 +96,14 @@ WSGI_APPLICATION = 'gip_west.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': '978.com.ua',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'falex728_978.com.ua',
+        'USER': 'falex728_ilya',
+        'PASSWORD': 'Vbvb2003',
         'HOST': 'localhost',
-        'PORT': '5432',
+        'PORT': '3306',
     }
 }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'site978',
-#         'USER': 'root',
-#         'PASSWORD': 'root',
-#         'HOST': 'localhost',
-#         'PORT': '3306',
-#     }
-# }
 
 
 # Password validation
@@ -151,12 +140,8 @@ RECENTLY_VIEWED = 'recently_viewed'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
-if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
-]
+STATIC_URL = '/static/'
+STATIC_ROOT = '/home/falex728/978.com.ua/static'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
